@@ -15,7 +15,7 @@ returning live price data as JSON.
 | Best for | Repeatable batch downloads across many tickers | Quick prototyping / visual demo of a flow |
 
  Takeaway
-The Python agent is more practical for downloading 100+ tickers at scale ‚Äî
+The Python agent is more practical for downloading 100+ tickers at scale ‚AI
 easy to loop, log, and extend. n8n is faster to demo visually and is useful for
 non-technical stakeholders to see the flow, but the local installation issues
 made it less reliable to set up than the Python route.
