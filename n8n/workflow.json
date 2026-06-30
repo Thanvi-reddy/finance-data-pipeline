@@ -1,0 +1,61 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e2cfbe6c-a5aa-43c5-ba2a-eacdc38905be",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://query1.finance.yahoo.com/v8/finance/chart/AAPL?range=max&interval=1d",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7f2c7f87-8788-43cc-b614-aa0a82cf8693",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "9cb62939-432f-4054-bea4-0cedae214fa2",
+  "meta": {
+    "instanceId": "b541aa8c8745891fd454a0ca12376499496471a9e3750f709c4e6202a4f88f62"
+  },
+  "nodeGroups": [],
+  "id": "HULkV9vqZCqLld5j",
+  "tags": []
+}
