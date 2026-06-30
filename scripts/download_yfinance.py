@@ -2,7 +2,12 @@ import yfinance as yf
 import pandas as pd
 import os
 
-tickers = ["AAPL", "MSFT", "SPY"]
+import csv
+
+with open("tickers.csv") as f:
+    reader = csv.reader(f)
+    next(reader)  # skip header
+    tickers = [row[0] for row in reader]
 
 output_dir = "data/raw"
 os.makedirs(output_dir, exist_ok=True)
