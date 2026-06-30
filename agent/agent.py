@@ -1,13 +1,4 @@
-"""
-Stock Data Download Agent
---------------------------
-Skill: Downloads maximum available historical price data for a given ticker
-       and saves it as a CSV, with basic validation and error handling.
 
-Input:  ticker symbol (string), e.g. "AAPL"
-Output: CSV file saved to data/raw/<TICKER>_max_agent.csv
-        Returns a status dict: {ticker, status, message, filepath, rows, earliest_date}
-"""
 
 import yfinance as yf
 import os
@@ -19,10 +10,7 @@ RETRY_DELAY_SECONDS = 3
 
 
 def download_ticker(ticker: str) -> dict:
-    """
-    Downloads max-history data for a single ticker.
-    Returns a result dict describing what happened.
-    """
+    
     ticker = ticker.strip().upper()
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -91,11 +79,15 @@ def run_agent(tickers: list) -> list:
 
     return results
 
+import csv
 
 if __name__ == "__main__":
-    # Example run — replace/extend with your full ticker list as needed
-    test_tickers = ["AAPL", "MSFT", "SPY", "ZZZZ"]  # ZZZZ is an intentional invalid ticker test
-    summary = run_agent(test_tickers)
+    with open("tickers.csv") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        all_tickers = [row[0] for row in reader]
+
+    summary = run_agent(all_tickers)
 
     print("\n--- Summary ---")
     for r in summary:
