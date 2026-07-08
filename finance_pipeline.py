@@ -1,8 +1,4 @@
-"""
-Finance Data Pipeline
-----------------------
-Run: python finance_pipeline.py
-"""
+
 
 import yfinance as yf
 import pandas as pd
