@@ -1,50 +1,18 @@
-markdown# Finance Data Pipeline
+# Finance Data Pipeline
 
-An automated pipeline that downloads and maintains historical stock price data
-for 100 tickers across all major sectors — combining a manual Yahoo Finance
-workflow, a Python (yfinance) library approach, a repo agent, and an n8n
-workflow experiment, per the assigned task.
-
----
-
-## Overview
-
-This project explores two parallel paths for acquiring historical stock data:
-
-1. **Manual download** from the Yahoo Finance website (primary objective)
-2. **Programmatic download** using the `yfinance` Python library (secondary,
-   to understand how the data is exposed under the hood)
-
-Both feed into an **automated agent pipeline** that can fetch, validate, and
-save data for any ticker with minimal manual effort, plus a daily scheduler
-and an n8n workflow experiment for comparison.
+A fully automated stock data pipeline that downloads and maintains 
+maximum historical price data for 100 tickers across all major sectors.
+Built to replace a paid stock data API — no API key needed.
 
 ---
 
-## Project Structure
-finance-data-pipeline/
-├── finance_pipeline.py          # Core automation — downloads & updates all tickers
-├── finance_cli.py               # Interactive CLI — view, manage, export data
-├── scheduler.py                 # Daily auto-scheduler (runs pipeline at 6 PM)
-├── tickers.csv                  # Full list of 100 tickers with sectors
-│
-├── data/
-│   ├── raw/                     # Downloaded CSVs, one per ticker (e.g. AAPL_max.csv)
-│   ├── earliest_dates_summary.csv  # Summary of earliest date / row count per ticker
-│   └── pipeline.log              # Run logs with timestamps
-│
-├── scripts/
-│   └── download_yfinance.py     # yfinance-based download script (library route)
-│
-├── agent/
-│   └── agent.py                 # Repo agent: fetch → validate → save, with retry & error handling
-│
-├── n8n/
-│   ├── workflow.json            # Exported n8n workflow
-│   └── evaluation.md            # n8n vs code-based approach comparison
-│
-└── docs/
-└── COMPARISON.md            # Manual download vs yfinance: dates, row counts, notes
+## What This Does
+
+- Downloads full historical data for 100 stock tickers using yfinance
+- Auto-updates daily with only new rows (no re-downloading everything)
+- Saves clean CSVs to `data/raw/` for direct use by a website or API
+- Logs every run with timestamps
+- Provides an interactive CLI for managing and exploring data
 
 ---
 
@@ -53,20 +21,43 @@ finance-data-pipeline/
 ### 1. Install dependencies
 pip install yfinance pandas schedule openpyxl
 
-### 2. Run the automation pipeline (no input needed)
+### 2. Run the automation pipeline (no user input needed)
 python finance_pipeline.py
 
-### 3. Run the interactive CLI
+### 3. Run the interactive CLI (for humans)
 python finance_cli.py
 
-### 4. Run the daily auto-scheduler (updates data every day at 6 PM)
+### 4. Run the daily auto-scheduler (keeps data updated every day at 6 PM)
 python scheduler.py
 
-### 5. Run the yfinance-only download script
-python scripts/download_yfinance.py
+---
 
-### 6. Run the repo agent for a single ticker
-python agent/agent.py <TICKER>
+## Project Structure
+finance-data-pipeline/
+│
+├── finance_pipeline.py      # Core automation — downloads & updates all tickers
+├── finance_cli.py           # Interactive CLI — view, manage, export data
+├── scheduler.py             # Daily auto-scheduler (runs pipeline at 6 PM)
+├── tickers.csv              # Full list of 100 tickers with sectors
+│
+├── data/
+│   ├── raw/                 # Downloaded CSVs (one per ticker)
+│   ├── exports/             # Excel exports
+│   ├── earliest_dates_summary.csv   # Summary of all ticker data
+│   └── pipeline.log         # Full run logs
+│
+├── scripts/
+│   └── download_yfinance.py # Original yfinance download script
+│
+├── agent/
+│   └── agent.py             # Download agent with retry & error handling
+│
+├── n8n/
+│   ├── workflow.json        # n8n workflow export
+│   └── evaluation.md        # n8n vs code comparison
+│
+└── docs/
+└── COMPARISON.md        # Manual vs yfinance comparison notes
 
 ---
 
@@ -82,32 +73,6 @@ python agent/agent.py <TICKER>
 | 6 | Manually trigger the pipeline |
 | 7 | View last 20 pipeline log entries |
 | 8 | Exit |
-
----
-
-## Manual vs yfinance
-
-Full comparison — earliest dates, row counts, and any gaps/splits observed —
-is documented in `docs/COMPARISON.md`.
-
----
-
-## Repo Agent
-
-`agent/agent.py` wraps the download in a single reusable function:
-- **Input:** a ticker symbol
-- **Output:** a saved CSV in `data/raw/`, plus a success/fail status
-- **Handles:** invalid tickers, empty responses, and network errors with retry
-
-Adding a new ticker only requires adding it to `tickers.csv` — no code changes.
-
----
-
-## n8n Workflow
-
-An equivalent download flow was built in n8n and exported to
-`n8n/workflow.json`. The setup, reliability, and maintainability comparison
-against the Python agent is written up in `n8n/evaluation.md`.
 
 ---
 
@@ -131,15 +96,16 @@ against the Python agent is written up in `n8n/evaluation.md`.
 
 ## Notes
 
-- Yahoo Finance's direct CSV export was used for the manual download route;
-  `yfinance` was used to replicate the same data programmatically for comparison.
-- Manual download blocker was raised and yfinance confirmed as an approved
-  supplementary approach.
-- n8n local install hit a Node version mismatch (v25.6.1); the cloud version
-  was used instead.
+- Yahoo Finance CSV download is now behind a paywall — yfinance is used
+  as the free alternative and produces identical data
+- Manual download blocker raised with supervisor; yfinance confirmed as
+  approved workaround
+- n8n local install failed due to Node version mismatch (v25.6.1);
+  cloud version used instead
 
 ---
 
 
+---
 
-*Built by Thanvi | Finance Data Pipeline Task | July 2026*
+*Built by Thanvi | Finance Data Pipeline Internship Task | July 2026*
