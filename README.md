@@ -2,7 +2,7 @@
 
 A fully automated stock data pipeline that downloads and maintains 
 maximum historical price data for 100 tickers across all major sectors.
-Built to replace a paid stock data API — no API key needed.
+Built to replace a paid stock data API - no API key needed.
 
 ---
 
@@ -30,34 +30,6 @@ python finance_cli.py
 ### 4. Run the daily auto-scheduler (keeps data updated every day at 6 PM)
 python scheduler.py
 
----
-
-## Project Structure
-finance-data-pipeline/
-│
-├── finance_pipeline.py      # Core automation — downloads & updates all tickers
-├── finance_cli.py           # Interactive CLI — view, manage, export data
-├── scheduler.py             # Daily auto-scheduler (runs pipeline at 6 PM)
-├── tickers.csv              # Full list of 100 tickers with sectors
-│
-├── data/
-│   ├── raw/                 # Downloaded CSVs (one per ticker)
-│   ├── exports/             # Excel exports
-│   ├── earliest_dates_summary.csv   # Summary of all ticker data
-│   └── pipeline.log         # Full run logs
-│
-├── scripts/
-│   └── download_yfinance.py # Original yfinance download script
-│
-├── agent/
-│   └── agent.py             # Download agent with retry & error handling
-│
-├── n8n/
-│   ├── workflow.json        # n8n workflow export
-│   └── evaluation.md        # n8n vs code comparison
-│
-└── docs/
-└── COMPARISON.md        # Manual vs yfinance comparison notes
 
 ---
 
@@ -94,18 +66,5 @@ finance-data-pipeline/
 
 ---
 
-## Notes
 
-- Yahoo Finance CSV download is now behind a paywall — yfinance is used
-  as the free alternative and produces identical data
-- Manual download blocker raised with supervisor; yfinance confirmed as
-  approved workaround
-- n8n local install failed due to Node version mismatch (v25.6.1);
-  cloud version used instead
-
----
-
-
----
-
-*Built by Thanvi | Finance Data Pipeline Internship Task | July 2026*
+*Built by Thanvi | Finance Data Pipeline  | July 2026*
