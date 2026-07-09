@@ -1,95 +1,101 @@
-ticker
-AAPL
-MSFT
-NVDA
-GOOGL
-META
-AMZN
-ORCL
-ADBE
-CRM
-INTC
-AMD
-CSCO
-IBM
-TXN
-QCOM
-JPM
-BAC
-WFC
-GS
-MS
-C
-BLK
-AXP
-SCHW
-V
-MA
-JNJ
-UNH
-PFE
-MRK
-ABBV
-LLY
-TMO
-ABT
-BMY
-AMGN
-GILD
-CVS
-PG
-KO
-PEP
-WMT
-COST
-MDLZ
-CL
-KMB
-HD
-MCD
-NKE
-SBUX
-LOW
-TGT
-BKNG
-TJX
-DIS
-F
-XOM
-CVX
-COP
-SLB
-EOG
-PSX
-OXY
-BA
-CAT
-GE
-HON
-UPS
-RTX
-LMT
-DE
-MMM
-UNP
-T
-VZ
-TMUS
-CMCSA
-NFLX
-NEE
-DUK
-SO
-AMT
-PLD
-O
-SPY
-QQQ
-DIA
-IWM
-VTI
-TSLA
-PLTR
-SNOW
-COIN
-RIVN
+ticker,sector
+AAPL,Technology
+MSFT,Technology
+NVDA,Technology
+GOOGL,Technology
+META,Technology
+AMZN,Technology
+ORCL,Technology
+ADBE,Technology
+CRM,Technology
+INTC,Technology
+AMD,Technology
+CSCO,Technology
+IBM,Technology
+TXN,Technology
+QCOM,Technology
+JPM,Financials
+BAC,Financials
+WFC,Financials
+GS,Financials
+MS,Financials
+C,Financials
+BLK,Financials
+AXP,Financials
+SCHW,Financials
+V,Financials
+MA,Financials
+BRK-B,Financials
+JNJ,Healthcare
+UNH,Healthcare
+PFE,Healthcare
+MRK,Healthcare
+ABBV,Healthcare
+LLY,Healthcare
+TMO,Healthcare
+ABT,Healthcare
+BMY,Healthcare
+AMGN,Healthcare
+GILD,Healthcare
+CVS,Healthcare
+PG,Consumer Staples
+KO,Consumer Staples
+PEP,Consumer Staples
+WMT,Consumer Staples
+COST,Consumer Staples
+MDLZ,Consumer Staples
+CL,Consumer Staples
+KMB,Consumer Staples
+HD,Consumer Discretionary
+MCD,Consumer Discretionary
+NKE,Consumer Discretionary
+SBUX,Consumer Discretionary
+LOW,Consumer Discretionary
+TGT,Consumer Discretionary
+BKNG,Consumer Discretionary
+TJX,Consumer Discretionary
+DIS,Consumer Discretionary
+F,Consumer Discretionary
+UBER,Consumer Discretionary
+ABNB,Consumer Discretionary
+XOM,Energy
+CVX,Energy
+COP,Energy
+SLB,Energy
+EOG,Energy
+PSX,Energy
+OXY,Energy
+BA,Industrials
+CAT,Industrials
+GE,Industrials
+HON,Industrials
+UPS,Industrials
+RTX,Industrials
+LMT,Industrials
+DE,Industrials
+MMM,Industrials
+UNP,Industrials
+T,Communication
+VZ,Communication
+TMUS,Communication
+CMCSA,Communication
+NFLX,Communication
+SNAP,Communication
+NEE,Utilities/REIT
+DUK,Utilities/REIT
+SO,Utilities/REIT
+AMT,Utilities/REIT
+PLD,Utilities/REIT
+O,Utilities/REIT
+SPY,ETF
+QQQ,ETF
+DIA,ETF
+IWM,ETF
+VTI,ETF
+TSLA,Edge Case
+PLTR,Edge Case
+SNOW,Edge Case
+COIN,Edge Case
+RIVN,Edge Case
+SHOP,Technology
+SQ,Technology
