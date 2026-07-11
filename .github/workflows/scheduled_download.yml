@@ -1,0 +1,46 @@
+name: Scheduled Stock Download
+
+on:
+  schedule:
+    # Every 30 min, 13:00-21:00 UTC Mon-Fri (covers EST and EDT window)
+    - cron: "0,30 13-21 * * 1-5"
+  workflow_dispatch: # allow manual runs for testing
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install yfinance pandas pandas_market_calendars
+
+      - name: Market-hours guard
+        id: guard
+        continue-on-error: true
+        run: python scripts/market_guard.py
+
+      - name: Run download (only if market open)
+        if: steps.guard.outcome == 'success'
+        run: |
+          mkdir -p logs
+          echo "RUN $(date -u) - market open, downloading" | tee -a logs/run.log
+          python finance_pipeline.py
+
+      - name: Log skip (market closed)
+        if: steps.guard.outcome == 'failure'
+        run: |
+          mkdir -p logs
+          echo "SKIP $(date -u) - market closed" | tee -a logs/run.log
+
+      - name: Commit logs and data
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'actions@github.com'
+          git add -A && git commit -m "scheduled run $(date -u)" || echo 'nothing to commit'
+          git push || echo 'nothing to push'
