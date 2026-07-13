@@ -65,6 +65,36 @@ python scheduler.py
 | Edge Case | TSLA, PLTR, SNOW, COIN, RIVN |
 
 ---
+---
 
+Scheduler, GUI Monitor & JSON
+
+### Step 1 — NYSE Calendar
+- Built 2026 NYSE trading calendar using `pandas_market_calendars`
+- 251 trading days, all 10 holidays verified against nyse.com
+- Saved to `calendar/nyse_2026.csv`
+- Run: `python calendar/build_calendar.py`
+
+### Step 2 — GitHub Actions Scheduler
+- Workflow: `.github/workflows/scheduled_download.yml`
+- Runs every 30 min during 13:00-21:00 UTC Mon-Fri
+- Market guard (`scripts/market_guard.py`) checks NYSE hours before every run
+- Logs RUN or SKIP with UTC timestamp to `logs/run.log`
+- Commits logs back to repo automatically
+- Cadence: 30 min (stable) → 20 min → 10 min (progressive)
+
+### Step 3 — Windows GUI Monitor
+- File: `gui_monitor.py`
+- Run: `py -3.11 gui_monitor.py`
+- Shows: market status (OPEN/CLOSED), last run, next run countdown,
+  scrollable data summary (all tickers), scrollable run log
+- Auto-refreshes every 30 seconds, read-only
+
+### Step 4 — CSV to JSON
+- Script: `scripts/csv_to_json.py`
+- Run: `python scripts/csv_to_json.py`
+- Converts all CSVs in `data/raw/` to JSON in `data/json/`
+- Keeps both files — CSV is primary, JSON is recovery copy
+- Round-trip verified: JSON matches CSV perfectly
 
 *Built by Thanvi | Finance Data Pipeline  | July 2026*
