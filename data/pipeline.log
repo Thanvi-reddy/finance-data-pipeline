@@ -3876,3 +3876,401 @@
 2026-07-14 19:08:20,859 | WARNING | Attempt 3 failed for SHOP: 'str' object has no attribute 'date'
 2026-07-14 19:08:20,859 | ERROR | [99/99] SHOP: Failed
 2026-07-14 19:08:21,359 | INFO | Pipeline complete — 0 success | 99 failed
+2026-07-15 14:31:20,700 | INFO | Pipeline started — 99 tickers
+2026-07-15 14:31:20,742 | WARNING | Attempt 1 failed for AAPL: 'str' object has no attribute 'date'
+2026-07-15 14:31:23,742 | WARNING | Attempt 2 failed for AAPL: 'str' object has no attribute 'date'
+2026-07-15 14:31:26,743 | WARNING | Attempt 3 failed for AAPL: 'str' object has no attribute 'date'
+2026-07-15 14:31:26,743 | ERROR | [1/99] AAPL: Failed
+2026-07-15 14:31:27,279 | WARNING | Attempt 1 failed for MSFT: 'str' object has no attribute 'date'
+2026-07-15 14:31:30,279 | WARNING | Attempt 2 failed for MSFT: 'str' object has no attribute 'date'
+2026-07-15 14:31:33,280 | WARNING | Attempt 3 failed for MSFT: 'str' object has no attribute 'date'
+2026-07-15 14:31:33,280 | ERROR | [2/99] MSFT: Failed
+2026-07-15 14:31:33,804 | WARNING | Attempt 1 failed for NVDA: 'str' object has no attribute 'date'
+2026-07-15 14:31:36,804 | WARNING | Attempt 2 failed for NVDA: 'str' object has no attribute 'date'
+2026-07-15 14:31:39,805 | WARNING | Attempt 3 failed for NVDA: 'str' object has no attribute 'date'
+2026-07-15 14:31:39,805 | ERROR | [3/99] NVDA: Failed
+2026-07-15 14:31:40,324 | WARNING | Attempt 1 failed for GOOGL: 'str' object has no attribute 'date'
+2026-07-15 14:31:43,325 | WARNING | Attempt 2 failed for GOOGL: 'str' object has no attribute 'date'
+2026-07-15 14:31:46,325 | WARNING | Attempt 3 failed for GOOGL: 'str' object has no attribute 'date'
+2026-07-15 14:31:46,325 | ERROR | [4/99] GOOGL: Failed
+2026-07-15 14:31:46,839 | WARNING | Attempt 1 failed for META: 'str' object has no attribute 'date'
+2026-07-15 14:31:49,839 | WARNING | Attempt 2 failed for META: 'str' object has no attribute 'date'
+2026-07-15 14:31:52,840 | WARNING | Attempt 3 failed for META: 'str' object has no attribute 'date'
+2026-07-15 14:31:52,840 | ERROR | [5/99] META: Failed
+2026-07-15 14:31:53,365 | WARNING | Attempt 1 failed for AMZN: 'str' object has no attribute 'date'
+2026-07-15 14:31:56,366 | WARNING | Attempt 2 failed for AMZN: 'str' object has no attribute 'date'
+2026-07-15 14:31:59,366 | WARNING | Attempt 3 failed for AMZN: 'str' object has no attribute 'date'
+2026-07-15 14:31:59,366 | ERROR | [6/99] AMZN: Failed
+2026-07-15 14:31:59,900 | WARNING | Attempt 1 failed for ORCL: 'str' object has no attribute 'date'
+2026-07-15 14:32:02,901 | WARNING | Attempt 2 failed for ORCL: 'str' object has no attribute 'date'
+2026-07-15 14:32:05,901 | WARNING | Attempt 3 failed for ORCL: 'str' object has no attribute 'date'
+2026-07-15 14:32:05,902 | ERROR | [7/99] ORCL: Failed
+2026-07-15 14:32:06,435 | WARNING | Attempt 1 failed for ADBE: 'str' object has no attribute 'date'
+2026-07-15 14:32:09,435 | WARNING | Attempt 2 failed for ADBE: 'str' object has no attribute 'date'
+2026-07-15 14:32:12,435 | WARNING | Attempt 3 failed for ADBE: 'str' object has no attribute 'date'
+2026-07-15 14:32:12,436 | ERROR | [8/99] ADBE: Failed
+2026-07-15 14:32:12,955 | WARNING | Attempt 1 failed for CRM: 'str' object has no attribute 'date'
+2026-07-15 14:32:15,955 | WARNING | Attempt 2 failed for CRM: 'str' object has no attribute 'date'
+2026-07-15 14:32:18,956 | WARNING | Attempt 3 failed for CRM: 'str' object has no attribute 'date'
+2026-07-15 14:32:18,956 | ERROR | [9/99] CRM: Failed
+2026-07-15 14:32:19,496 | WARNING | Attempt 1 failed for INTC: 'str' object has no attribute 'date'
+2026-07-15 14:32:22,496 | WARNING | Attempt 2 failed for INTC: 'str' object has no attribute 'date'
+2026-07-15 14:32:25,497 | WARNING | Attempt 3 failed for INTC: 'str' object has no attribute 'date'
+2026-07-15 14:32:25,497 | ERROR | [10/99] INTC: Failed
+2026-07-15 14:32:26,036 | WARNING | Attempt 1 failed for AMD: 'str' object has no attribute 'date'
+2026-07-15 14:32:29,036 | WARNING | Attempt 2 failed for AMD: 'str' object has no attribute 'date'
+2026-07-15 14:32:32,037 | WARNING | Attempt 3 failed for AMD: 'str' object has no attribute 'date'
+2026-07-15 14:32:32,037 | ERROR | [11/99] AMD: Failed
+2026-07-15 14:32:32,568 | WARNING | Attempt 1 failed for CSCO: 'str' object has no attribute 'date'
+2026-07-15 14:32:35,569 | WARNING | Attempt 2 failed for CSCO: 'str' object has no attribute 'date'
+2026-07-15 14:32:38,569 | WARNING | Attempt 3 failed for CSCO: 'str' object has no attribute 'date'
+2026-07-15 14:32:38,569 | ERROR | [12/99] CSCO: Failed
+2026-07-15 14:32:39,122 | WARNING | Attempt 1 failed for IBM: 'str' object has no attribute 'date'
+2026-07-15 14:32:42,123 | WARNING | Attempt 2 failed for IBM: 'str' object has no attribute 'date'
+2026-07-15 14:32:45,123 | WARNING | Attempt 3 failed for IBM: 'str' object has no attribute 'date'
+2026-07-15 14:32:45,124 | ERROR | [13/99] IBM: Failed
+2026-07-15 14:32:45,670 | WARNING | Attempt 1 failed for TXN: 'str' object has no attribute 'date'
+2026-07-15 14:32:48,671 | WARNING | Attempt 2 failed for TXN: 'str' object has no attribute 'date'
+2026-07-15 14:32:51,671 | WARNING | Attempt 3 failed for TXN: 'str' object has no attribute 'date'
+2026-07-15 14:32:51,672 | ERROR | [14/99] TXN: Failed
+2026-07-15 14:32:52,201 | WARNING | Attempt 1 failed for QCOM: 'str' object has no attribute 'date'
+2026-07-15 14:32:55,201 | WARNING | Attempt 2 failed for QCOM: 'str' object has no attribute 'date'
+2026-07-15 14:32:58,202 | WARNING | Attempt 3 failed for QCOM: 'str' object has no attribute 'date'
+2026-07-15 14:32:58,202 | ERROR | [15/99] QCOM: Failed
+2026-07-15 14:32:58,741 | WARNING | Attempt 1 failed for JPM: 'str' object has no attribute 'date'
+2026-07-15 14:33:01,742 | WARNING | Attempt 2 failed for JPM: 'str' object has no attribute 'date'
+2026-07-15 14:33:04,742 | WARNING | Attempt 3 failed for JPM: 'str' object has no attribute 'date'
+2026-07-15 14:33:04,743 | ERROR | [16/99] JPM: Failed
+2026-07-15 14:33:05,287 | WARNING | Attempt 1 failed for BAC: 'str' object has no attribute 'date'
+2026-07-15 14:33:08,287 | WARNING | Attempt 2 failed for BAC: 'str' object has no attribute 'date'
+2026-07-15 14:33:11,288 | WARNING | Attempt 3 failed for BAC: 'str' object has no attribute 'date'
+2026-07-15 14:33:11,288 | ERROR | [17/99] BAC: Failed
+2026-07-15 14:33:11,833 | WARNING | Attempt 1 failed for WFC: 'str' object has no attribute 'date'
+2026-07-15 14:33:14,834 | WARNING | Attempt 2 failed for WFC: 'str' object has no attribute 'date'
+2026-07-15 14:33:17,834 | WARNING | Attempt 3 failed for WFC: 'str' object has no attribute 'date'
+2026-07-15 14:33:17,834 | ERROR | [18/99] WFC: Failed
+2026-07-15 14:33:18,358 | WARNING | Attempt 1 failed for GS: 'str' object has no attribute 'date'
+2026-07-15 14:33:21,359 | WARNING | Attempt 2 failed for GS: 'str' object has no attribute 'date'
+2026-07-15 14:33:24,359 | WARNING | Attempt 3 failed for GS: 'str' object has no attribute 'date'
+2026-07-15 14:33:24,359 | ERROR | [19/99] GS: Failed
+2026-07-15 14:33:24,888 | WARNING | Attempt 1 failed for MS: 'str' object has no attribute 'date'
+2026-07-15 14:33:27,889 | WARNING | Attempt 2 failed for MS: 'str' object has no attribute 'date'
+2026-07-15 14:33:30,889 | WARNING | Attempt 3 failed for MS: 'str' object has no attribute 'date'
+2026-07-15 14:33:30,889 | ERROR | [20/99] MS: Failed
+2026-07-15 14:33:31,430 | WARNING | Attempt 1 failed for C: 'str' object has no attribute 'date'
+2026-07-15 14:33:34,431 | WARNING | Attempt 2 failed for C: 'str' object has no attribute 'date'
+2026-07-15 14:33:37,431 | WARNING | Attempt 3 failed for C: 'str' object has no attribute 'date'
+2026-07-15 14:33:37,432 | ERROR | [21/99] C: Failed
+2026-07-15 14:33:37,955 | WARNING | Attempt 1 failed for BLK: 'str' object has no attribute 'date'
+2026-07-15 14:33:40,956 | WARNING | Attempt 2 failed for BLK: 'str' object has no attribute 'date'
+2026-07-15 14:33:43,956 | WARNING | Attempt 3 failed for BLK: 'str' object has no attribute 'date'
+2026-07-15 14:33:43,956 | ERROR | [22/99] BLK: Failed
+2026-07-15 14:33:44,503 | WARNING | Attempt 1 failed for AXP: 'str' object has no attribute 'date'
+2026-07-15 14:33:47,504 | WARNING | Attempt 2 failed for AXP: 'str' object has no attribute 'date'
+2026-07-15 14:33:50,504 | WARNING | Attempt 3 failed for AXP: 'str' object has no attribute 'date'
+2026-07-15 14:33:50,505 | ERROR | [23/99] AXP: Failed
+2026-07-15 14:33:51,037 | WARNING | Attempt 1 failed for SCHW: 'str' object has no attribute 'date'
+2026-07-15 14:33:54,038 | WARNING | Attempt 2 failed for SCHW: 'str' object has no attribute 'date'
+2026-07-15 14:33:57,038 | WARNING | Attempt 3 failed for SCHW: 'str' object has no attribute 'date'
+2026-07-15 14:33:57,038 | ERROR | [24/99] SCHW: Failed
+2026-07-15 14:33:57,556 | WARNING | Attempt 1 failed for V: 'str' object has no attribute 'date'
+2026-07-15 14:34:00,556 | WARNING | Attempt 2 failed for V: 'str' object has no attribute 'date'
+2026-07-15 14:34:03,556 | WARNING | Attempt 3 failed for V: 'str' object has no attribute 'date'
+2026-07-15 14:34:03,557 | ERROR | [25/99] V: Failed
+2026-07-15 14:34:04,075 | WARNING | Attempt 1 failed for MA: 'str' object has no attribute 'date'
+2026-07-15 14:34:07,076 | WARNING | Attempt 2 failed for MA: 'str' object has no attribute 'date'
+2026-07-15 14:34:10,076 | WARNING | Attempt 3 failed for MA: 'str' object has no attribute 'date'
+2026-07-15 14:34:10,076 | ERROR | [26/99] MA: Failed
+2026-07-15 14:34:10,602 | WARNING | Attempt 1 failed for BRK-B: 'str' object has no attribute 'date'
+2026-07-15 14:34:13,603 | WARNING | Attempt 2 failed for BRK-B: 'str' object has no attribute 'date'
+2026-07-15 14:34:16,603 | WARNING | Attempt 3 failed for BRK-B: 'str' object has no attribute 'date'
+2026-07-15 14:34:16,603 | ERROR | [27/99] BRK-B: Failed
+2026-07-15 14:34:17,159 | WARNING | Attempt 1 failed for JNJ: 'str' object has no attribute 'date'
+2026-07-15 14:34:20,159 | WARNING | Attempt 2 failed for JNJ: 'str' object has no attribute 'date'
+2026-07-15 14:34:23,160 | WARNING | Attempt 3 failed for JNJ: 'str' object has no attribute 'date'
+2026-07-15 14:34:23,160 | ERROR | [28/99] JNJ: Failed
+2026-07-15 14:34:23,695 | WARNING | Attempt 1 failed for UNH: 'str' object has no attribute 'date'
+2026-07-15 14:34:26,696 | WARNING | Attempt 2 failed for UNH: 'str' object has no attribute 'date'
+2026-07-15 14:34:29,696 | WARNING | Attempt 3 failed for UNH: 'str' object has no attribute 'date'
+2026-07-15 14:34:29,696 | ERROR | [29/99] UNH: Failed
+2026-07-15 14:34:30,241 | WARNING | Attempt 1 failed for PFE: 'str' object has no attribute 'date'
+2026-07-15 14:34:33,242 | WARNING | Attempt 2 failed for PFE: 'str' object has no attribute 'date'
+2026-07-15 14:34:36,242 | WARNING | Attempt 3 failed for PFE: 'str' object has no attribute 'date'
+2026-07-15 14:34:36,242 | ERROR | [30/99] PFE: Failed
+2026-07-15 14:34:36,796 | WARNING | Attempt 1 failed for MRK: 'str' object has no attribute 'date'
+2026-07-15 14:34:39,797 | WARNING | Attempt 2 failed for MRK: 'str' object has no attribute 'date'
+2026-07-15 14:34:42,797 | WARNING | Attempt 3 failed for MRK: 'str' object has no attribute 'date'
+2026-07-15 14:34:42,798 | ERROR | [31/99] MRK: Failed
+2026-07-15 14:34:43,311 | WARNING | Attempt 1 failed for ABBV: 'str' object has no attribute 'date'
+2026-07-15 14:34:46,312 | WARNING | Attempt 2 failed for ABBV: 'str' object has no attribute 'date'
+2026-07-15 14:34:49,312 | WARNING | Attempt 3 failed for ABBV: 'str' object has no attribute 'date'
+2026-07-15 14:34:49,312 | ERROR | [32/99] ABBV: Failed
+2026-07-15 14:34:49,860 | WARNING | Attempt 1 failed for LLY: 'str' object has no attribute 'date'
+2026-07-15 14:34:52,860 | WARNING | Attempt 2 failed for LLY: 'str' object has no attribute 'date'
+2026-07-15 14:34:55,861 | WARNING | Attempt 3 failed for LLY: 'str' object has no attribute 'date'
+2026-07-15 14:34:55,862 | ERROR | [33/99] LLY: Failed
+2026-07-15 14:34:56,400 | WARNING | Attempt 1 failed for TMO: 'str' object has no attribute 'date'
+2026-07-15 14:34:59,401 | WARNING | Attempt 2 failed for TMO: 'str' object has no attribute 'date'
+2026-07-15 14:35:02,401 | WARNING | Attempt 3 failed for TMO: 'str' object has no attribute 'date'
+2026-07-15 14:35:02,401 | ERROR | [34/99] TMO: Failed
+2026-07-15 14:35:02,940 | WARNING | Attempt 1 failed for ABT: 'str' object has no attribute 'date'
+2026-07-15 14:35:05,940 | WARNING | Attempt 2 failed for ABT: 'str' object has no attribute 'date'
+2026-07-15 14:35:08,941 | WARNING | Attempt 3 failed for ABT: 'str' object has no attribute 'date'
+2026-07-15 14:35:08,941 | ERROR | [35/99] ABT: Failed
+2026-07-15 14:35:09,486 | WARNING | Attempt 1 failed for BMY: 'str' object has no attribute 'date'
+2026-07-15 14:35:12,487 | WARNING | Attempt 2 failed for BMY: 'str' object has no attribute 'date'
+2026-07-15 14:35:15,487 | WARNING | Attempt 3 failed for BMY: 'str' object has no attribute 'date'
+2026-07-15 14:35:15,488 | ERROR | [36/99] BMY: Failed
+2026-07-15 14:35:16,023 | WARNING | Attempt 1 failed for AMGN: 'str' object has no attribute 'date'
+2026-07-15 14:35:19,024 | WARNING | Attempt 2 failed for AMGN: 'str' object has no attribute 'date'
+2026-07-15 14:35:22,024 | WARNING | Attempt 3 failed for AMGN: 'str' object has no attribute 'date'
+2026-07-15 14:35:22,025 | ERROR | [37/99] AMGN: Failed
+2026-07-15 14:35:22,555 | WARNING | Attempt 1 failed for GILD: 'str' object has no attribute 'date'
+2026-07-15 14:35:25,555 | WARNING | Attempt 2 failed for GILD: 'str' object has no attribute 'date'
+2026-07-15 14:35:28,556 | WARNING | Attempt 3 failed for GILD: 'str' object has no attribute 'date'
+2026-07-15 14:35:28,556 | ERROR | [38/99] GILD: Failed
+2026-07-15 14:35:29,101 | WARNING | Attempt 1 failed for CVS: 'str' object has no attribute 'date'
+2026-07-15 14:35:32,101 | WARNING | Attempt 2 failed for CVS: 'str' object has no attribute 'date'
+2026-07-15 14:35:35,102 | WARNING | Attempt 3 failed for CVS: 'str' object has no attribute 'date'
+2026-07-15 14:35:35,102 | ERROR | [39/99] CVS: Failed
+2026-07-15 14:35:35,656 | WARNING | Attempt 1 failed for PG: 'str' object has no attribute 'date'
+2026-07-15 14:35:38,656 | WARNING | Attempt 2 failed for PG: 'str' object has no attribute 'date'
+2026-07-15 14:35:41,657 | WARNING | Attempt 3 failed for PG: 'str' object has no attribute 'date'
+2026-07-15 14:35:41,657 | ERROR | [40/99] PG: Failed
+2026-07-15 14:35:42,211 | WARNING | Attempt 1 failed for KO: 'str' object has no attribute 'date'
+2026-07-15 14:35:45,212 | WARNING | Attempt 2 failed for KO: 'str' object has no attribute 'date'
+2026-07-15 14:35:48,212 | WARNING | Attempt 3 failed for KO: 'str' object has no attribute 'date'
+2026-07-15 14:35:48,213 | ERROR | [41/99] KO: Failed
+2026-07-15 14:35:48,758 | WARNING | Attempt 1 failed for PEP: 'str' object has no attribute 'date'
+2026-07-15 14:35:51,759 | WARNING | Attempt 2 failed for PEP: 'str' object has no attribute 'date'
+2026-07-15 14:35:54,759 | WARNING | Attempt 3 failed for PEP: 'str' object has no attribute 'date'
+2026-07-15 14:35:54,760 | ERROR | [42/99] PEP: Failed
+2026-07-15 14:35:55,305 | WARNING | Attempt 1 failed for WMT: 'str' object has no attribute 'date'
+2026-07-15 14:35:58,305 | WARNING | Attempt 2 failed for WMT: 'str' object has no attribute 'date'
+2026-07-15 14:36:01,306 | WARNING | Attempt 3 failed for WMT: 'str' object has no attribute 'date'
+2026-07-15 14:36:01,306 | ERROR | [43/99] WMT: Failed
+2026-07-15 14:36:01,840 | WARNING | Attempt 1 failed for COST: 'str' object has no attribute 'date'
+2026-07-15 14:36:04,841 | WARNING | Attempt 2 failed for COST: 'str' object has no attribute 'date'
+2026-07-15 14:36:07,841 | WARNING | Attempt 3 failed for COST: 'str' object has no attribute 'date'
+2026-07-15 14:36:07,841 | ERROR | [44/99] COST: Failed
+2026-07-15 14:36:08,364 | WARNING | Attempt 1 failed for MDLZ: 'str' object has no attribute 'date'
+2026-07-15 14:36:11,365 | WARNING | Attempt 2 failed for MDLZ: 'str' object has no attribute 'date'
+2026-07-15 14:36:14,365 | WARNING | Attempt 3 failed for MDLZ: 'str' object has no attribute 'date'
+2026-07-15 14:36:14,365 | ERROR | [45/99] MDLZ: Failed
+2026-07-15 14:36:14,912 | WARNING | Attempt 1 failed for CL: 'str' object has no attribute 'date'
+2026-07-15 14:36:17,913 | WARNING | Attempt 2 failed for CL: 'str' object has no attribute 'date'
+2026-07-15 14:36:20,913 | WARNING | Attempt 3 failed for CL: 'str' object has no attribute 'date'
+2026-07-15 14:36:20,914 | ERROR | [46/99] CL: Failed
+2026-07-15 14:36:21,453 | WARNING | Attempt 1 failed for KMB: 'str' object has no attribute 'date'
+2026-07-15 14:36:24,454 | WARNING | Attempt 2 failed for KMB: 'str' object has no attribute 'date'
+2026-07-15 14:36:27,454 | WARNING | Attempt 3 failed for KMB: 'str' object has no attribute 'date'
+2026-07-15 14:36:27,454 | ERROR | [47/99] KMB: Failed
+2026-07-15 14:36:27,994 | WARNING | Attempt 1 failed for HD: 'str' object has no attribute 'date'
+2026-07-15 14:36:30,994 | WARNING | Attempt 2 failed for HD: 'str' object has no attribute 'date'
+2026-07-15 14:36:33,995 | WARNING | Attempt 3 failed for HD: 'str' object has no attribute 'date'
+2026-07-15 14:36:33,995 | ERROR | [48/99] HD: Failed
+2026-07-15 14:36:34,545 | WARNING | Attempt 1 failed for MCD: 'str' object has no attribute 'date'
+2026-07-15 14:36:37,545 | WARNING | Attempt 2 failed for MCD: 'str' object has no attribute 'date'
+2026-07-15 14:36:40,546 | WARNING | Attempt 3 failed for MCD: 'str' object has no attribute 'date'
+2026-07-15 14:36:40,546 | ERROR | [49/99] MCD: Failed
+2026-07-15 14:36:41,084 | WARNING | Attempt 1 failed for NKE: 'str' object has no attribute 'date'
+2026-07-15 14:36:44,084 | WARNING | Attempt 2 failed for NKE: 'str' object has no attribute 'date'
+2026-07-15 14:36:47,085 | WARNING | Attempt 3 failed for NKE: 'str' object has no attribute 'date'
+2026-07-15 14:36:47,085 | ERROR | [50/99] NKE: Failed
+2026-07-15 14:36:47,614 | WARNING | Attempt 1 failed for SBUX: 'str' object has no attribute 'date'
+2026-07-15 14:36:50,615 | WARNING | Attempt 2 failed for SBUX: 'str' object has no attribute 'date'
+2026-07-15 14:36:53,615 | WARNING | Attempt 3 failed for SBUX: 'str' object has no attribute 'date'
+2026-07-15 14:36:53,616 | ERROR | [51/99] SBUX: Failed
+2026-07-15 14:36:54,155 | WARNING | Attempt 1 failed for LOW: 'str' object has no attribute 'date'
+2026-07-15 14:36:57,156 | WARNING | Attempt 2 failed for LOW: 'str' object has no attribute 'date'
+2026-07-15 14:37:00,156 | WARNING | Attempt 3 failed for LOW: 'str' object has no attribute 'date'
+2026-07-15 14:37:00,156 | ERROR | [52/99] LOW: Failed
+2026-07-15 14:37:00,701 | WARNING | Attempt 1 failed for TGT: 'str' object has no attribute 'date'
+2026-07-15 14:37:03,701 | WARNING | Attempt 2 failed for TGT: 'str' object has no attribute 'date'
+2026-07-15 14:37:06,702 | WARNING | Attempt 3 failed for TGT: 'str' object has no attribute 'date'
+2026-07-15 14:37:06,702 | ERROR | [53/99] TGT: Failed
+2026-07-15 14:37:07,227 | WARNING | Attempt 1 failed for BKNG: 'str' object has no attribute 'date'
+2026-07-15 14:37:10,228 | WARNING | Attempt 2 failed for BKNG: 'str' object has no attribute 'date'
+2026-07-15 14:37:13,228 | WARNING | Attempt 3 failed for BKNG: 'str' object has no attribute 'date'
+2026-07-15 14:37:13,229 | ERROR | [54/99] BKNG: Failed
+2026-07-15 14:37:13,763 | WARNING | Attempt 1 failed for TJX: 'str' object has no attribute 'date'
+2026-07-15 14:37:16,763 | WARNING | Attempt 2 failed for TJX: 'str' object has no attribute 'date'
+2026-07-15 14:37:19,764 | WARNING | Attempt 3 failed for TJX: 'str' object has no attribute 'date'
+2026-07-15 14:37:19,764 | ERROR | [55/99] TJX: Failed
+2026-07-15 14:37:20,319 | WARNING | Attempt 1 failed for DIS: 'str' object has no attribute 'date'
+2026-07-15 14:37:23,320 | WARNING | Attempt 2 failed for DIS: 'str' object has no attribute 'date'
+2026-07-15 14:37:26,320 | WARNING | Attempt 3 failed for DIS: 'str' object has no attribute 'date'
+2026-07-15 14:37:26,321 | ERROR | [56/99] DIS: Failed
+2026-07-15 14:37:26,867 | WARNING | Attempt 1 failed for F: 'str' object has no attribute 'date'
+2026-07-15 14:37:29,868 | WARNING | Attempt 2 failed for F: 'str' object has no attribute 'date'
+2026-07-15 14:37:32,868 | WARNING | Attempt 3 failed for F: 'str' object has no attribute 'date'
+2026-07-15 14:37:32,869 | ERROR | [57/99] F: Failed
+2026-07-15 14:37:33,377 | WARNING | Attempt 1 failed for UBER: 'str' object has no attribute 'date'
+2026-07-15 14:37:36,378 | WARNING | Attempt 2 failed for UBER: 'str' object has no attribute 'date'
+2026-07-15 14:37:39,378 | WARNING | Attempt 3 failed for UBER: 'str' object has no attribute 'date'
+2026-07-15 14:37:39,378 | ERROR | [58/99] UBER: Failed
+2026-07-15 14:37:39,885 | WARNING | Attempt 1 failed for ABNB: 'str' object has no attribute 'date'
+2026-07-15 14:37:42,886 | WARNING | Attempt 2 failed for ABNB: 'str' object has no attribute 'date'
+2026-07-15 14:37:45,886 | WARNING | Attempt 3 failed for ABNB: 'str' object has no attribute 'date'
+2026-07-15 14:37:45,886 | ERROR | [59/99] ABNB: Failed
+2026-07-15 14:37:46,441 | WARNING | Attempt 1 failed for XOM: 'str' object has no attribute 'date'
+2026-07-15 14:37:49,441 | WARNING | Attempt 2 failed for XOM: 'str' object has no attribute 'date'
+2026-07-15 14:37:52,442 | WARNING | Attempt 3 failed for XOM: 'str' object has no attribute 'date'
+2026-07-15 14:37:52,442 | ERROR | [60/99] XOM: Failed
+2026-07-15 14:37:52,994 | WARNING | Attempt 1 failed for CVX: 'str' object has no attribute 'date'
+2026-07-15 14:37:55,995 | WARNING | Attempt 2 failed for CVX: 'str' object has no attribute 'date'
+2026-07-15 14:37:58,995 | WARNING | Attempt 3 failed for CVX: 'str' object has no attribute 'date'
+2026-07-15 14:37:58,996 | ERROR | [61/99] CVX: Failed
+2026-07-15 14:37:59,533 | WARNING | Attempt 1 failed for COP: 'str' object has no attribute 'date'
+2026-07-15 14:38:02,533 | WARNING | Attempt 2 failed for COP: 'str' object has no attribute 'date'
+2026-07-15 14:38:05,534 | WARNING | Attempt 3 failed for COP: 'str' object has no attribute 'date'
+2026-07-15 14:38:05,534 | ERROR | [62/99] COP: Failed
+2026-07-15 14:38:06,072 | WARNING | Attempt 1 failed for SLB: 'str' object has no attribute 'date'
+2026-07-15 14:38:09,072 | WARNING | Attempt 2 failed for SLB: 'str' object has no attribute 'date'
+2026-07-15 14:38:12,073 | WARNING | Attempt 3 failed for SLB: 'str' object has no attribute 'date'
+2026-07-15 14:38:12,073 | ERROR | [63/99] SLB: Failed
+2026-07-15 14:38:12,605 | WARNING | Attempt 1 failed for EOG: 'str' object has no attribute 'date'
+2026-07-15 14:38:15,606 | WARNING | Attempt 2 failed for EOG: 'str' object has no attribute 'date'
+2026-07-15 14:38:18,606 | WARNING | Attempt 3 failed for EOG: 'str' object has no attribute 'date'
+2026-07-15 14:38:18,606 | ERROR | [64/99] EOG: Failed
+2026-07-15 14:38:19,121 | WARNING | Attempt 1 failed for PSX: 'str' object has no attribute 'date'
+2026-07-15 14:38:22,122 | WARNING | Attempt 2 failed for PSX: 'str' object has no attribute 'date'
+2026-07-15 14:38:25,122 | WARNING | Attempt 3 failed for PSX: 'str' object has no attribute 'date'
+2026-07-15 14:38:25,122 | ERROR | [65/99] PSX: Failed
+2026-07-15 14:38:25,659 | WARNING | Attempt 1 failed for OXY: 'str' object has no attribute 'date'
+2026-07-15 14:38:28,659 | WARNING | Attempt 2 failed for OXY: 'str' object has no attribute 'date'
+2026-07-15 14:38:31,660 | WARNING | Attempt 3 failed for OXY: 'str' object has no attribute 'date'
+2026-07-15 14:38:31,660 | ERROR | [66/99] OXY: Failed
+2026-07-15 14:38:32,215 | WARNING | Attempt 1 failed for BA: 'str' object has no attribute 'date'
+2026-07-15 14:38:35,216 | WARNING | Attempt 2 failed for BA: 'str' object has no attribute 'date'
+2026-07-15 14:38:38,216 | WARNING | Attempt 3 failed for BA: 'str' object has no attribute 'date'
+2026-07-15 14:38:38,217 | ERROR | [67/99] BA: Failed
+2026-07-15 14:38:38,770 | WARNING | Attempt 1 failed for CAT: 'str' object has no attribute 'date'
+2026-07-15 14:38:41,770 | WARNING | Attempt 2 failed for CAT: 'str' object has no attribute 'date'
+2026-07-15 14:38:44,771 | WARNING | Attempt 3 failed for CAT: 'str' object has no attribute 'date'
+2026-07-15 14:38:44,771 | ERROR | [68/99] CAT: Failed
+2026-07-15 14:38:45,327 | WARNING | Attempt 1 failed for GE: 'str' object has no attribute 'date'
+2026-07-15 14:38:48,327 | WARNING | Attempt 2 failed for GE: 'str' object has no attribute 'date'
+2026-07-15 14:38:51,328 | WARNING | Attempt 3 failed for GE: 'str' object has no attribute 'date'
+2026-07-15 14:38:51,328 | ERROR | [69/99] GE: Failed
+2026-07-15 14:38:51,881 | WARNING | Attempt 1 failed for HON: 'str' object has no attribute 'date'
+2026-07-15 14:38:54,882 | WARNING | Attempt 2 failed for HON: 'str' object has no attribute 'date'
+2026-07-15 14:38:57,882 | WARNING | Attempt 3 failed for HON: 'str' object has no attribute 'date'
+2026-07-15 14:38:57,882 | ERROR | [70/99] HON: Failed
+2026-07-15 14:38:58,406 | WARNING | Attempt 1 failed for UPS: 'str' object has no attribute 'date'
+2026-07-15 14:39:01,406 | WARNING | Attempt 2 failed for UPS: 'str' object has no attribute 'date'
+2026-07-15 14:39:04,407 | WARNING | Attempt 3 failed for UPS: 'str' object has no attribute 'date'
+2026-07-15 14:39:04,407 | ERROR | [71/99] UPS: Failed
+2026-07-15 14:39:04,959 | WARNING | Attempt 1 failed for RTX: 'str' object has no attribute 'date'
+2026-07-15 14:39:07,959 | WARNING | Attempt 2 failed for RTX: 'str' object has no attribute 'date'
+2026-07-15 14:39:10,960 | WARNING | Attempt 3 failed for RTX: 'str' object has no attribute 'date'
+2026-07-15 14:39:10,960 | ERROR | [72/99] RTX: Failed
+2026-07-15 14:39:11,514 | WARNING | Attempt 1 failed for LMT: 'str' object has no attribute 'date'
+2026-07-15 14:39:14,515 | WARNING | Attempt 2 failed for LMT: 'str' object has no attribute 'date'
+2026-07-15 14:39:17,515 | WARNING | Attempt 3 failed for LMT: 'str' object has no attribute 'date'
+2026-07-15 14:39:17,516 | ERROR | [73/99] LMT: Failed
+2026-07-15 14:39:18,061 | WARNING | Attempt 1 failed for DE: 'str' object has no attribute 'date'
+2026-07-15 14:39:21,062 | WARNING | Attempt 2 failed for DE: 'str' object has no attribute 'date'
+2026-07-15 14:39:24,062 | WARNING | Attempt 3 failed for DE: 'str' object has no attribute 'date'
+2026-07-15 14:39:24,062 | ERROR | [74/99] DE: Failed
+2026-07-15 14:39:24,616 | WARNING | Attempt 1 failed for MMM: 'str' object has no attribute 'date'
+2026-07-15 14:39:27,616 | WARNING | Attempt 2 failed for MMM: 'str' object has no attribute 'date'
+2026-07-15 14:39:30,617 | WARNING | Attempt 3 failed for MMM: 'str' object has no attribute 'date'
+2026-07-15 14:39:30,617 | ERROR | [75/99] MMM: Failed
+2026-07-15 14:39:31,157 | WARNING | Attempt 1 failed for UNP: 'str' object has no attribute 'date'
+2026-07-15 14:39:34,158 | WARNING | Attempt 2 failed for UNP: 'str' object has no attribute 'date'
+2026-07-15 14:39:37,158 | WARNING | Attempt 3 failed for UNP: 'str' object has no attribute 'date'
+2026-07-15 14:39:37,159 | ERROR | [76/99] UNP: Failed
+2026-07-15 14:39:37,696 | WARNING | Attempt 1 failed for T: 'str' object has no attribute 'date'
+2026-07-15 14:39:40,697 | WARNING | Attempt 2 failed for T: 'str' object has no attribute 'date'
+2026-07-15 14:39:43,697 | WARNING | Attempt 3 failed for T: 'str' object has no attribute 'date'
+2026-07-15 14:39:43,698 | ERROR | [77/99] T: Failed
+2026-07-15 14:39:44,234 | WARNING | Attempt 1 failed for VZ: 'str' object has no attribute 'date'
+2026-07-15 14:39:47,235 | WARNING | Attempt 2 failed for VZ: 'str' object has no attribute 'date'
+2026-07-15 14:39:50,235 | WARNING | Attempt 3 failed for VZ: 'str' object has no attribute 'date'
+2026-07-15 14:39:50,236 | ERROR | [78/99] VZ: Failed
+2026-07-15 14:39:50,753 | WARNING | Attempt 1 failed for TMUS: 'str' object has no attribute 'date'
+2026-07-15 14:39:53,753 | WARNING | Attempt 2 failed for TMUS: 'str' object has no attribute 'date'
+2026-07-15 14:39:56,754 | WARNING | Attempt 3 failed for TMUS: 'str' object has no attribute 'date'
+2026-07-15 14:39:56,754 | ERROR | [79/99] TMUS: Failed
+2026-07-15 14:39:57,295 | WARNING | Attempt 1 failed for CMCSA: 'str' object has no attribute 'date'
+2026-07-15 14:40:00,295 | WARNING | Attempt 2 failed for CMCSA: 'str' object has no attribute 'date'
+2026-07-15 14:40:03,296 | WARNING | Attempt 3 failed for CMCSA: 'str' object has no attribute 'date'
+2026-07-15 14:40:03,296 | ERROR | [80/99] CMCSA: Failed
+2026-07-15 14:40:03,818 | WARNING | Attempt 1 failed for NFLX: 'str' object has no attribute 'date'
+2026-07-15 14:40:06,818 | WARNING | Attempt 2 failed for NFLX: 'str' object has no attribute 'date'
+2026-07-15 14:40:09,819 | WARNING | Attempt 3 failed for NFLX: 'str' object has no attribute 'date'
+2026-07-15 14:40:09,819 | ERROR | [81/99] NFLX: Failed
+2026-07-15 14:40:10,329 | WARNING | Attempt 1 failed for SNAP: 'str' object has no attribute 'date'
+2026-07-15 14:40:13,330 | WARNING | Attempt 2 failed for SNAP: 'str' object has no attribute 'date'
+2026-07-15 14:40:16,330 | WARNING | Attempt 3 failed for SNAP: 'str' object has no attribute 'date'
+2026-07-15 14:40:16,330 | ERROR | [82/99] SNAP: Failed
+2026-07-15 14:40:16,877 | WARNING | Attempt 1 failed for NEE: 'str' object has no attribute 'date'
+2026-07-15 14:40:19,877 | WARNING | Attempt 2 failed for NEE: 'str' object has no attribute 'date'
+2026-07-15 14:40:22,878 | WARNING | Attempt 3 failed for NEE: 'str' object has no attribute 'date'
+2026-07-15 14:40:22,878 | ERROR | [83/99] NEE: Failed
+2026-07-15 14:40:23,418 | WARNING | Attempt 1 failed for DUK: 'str' object has no attribute 'date'
+2026-07-15 14:40:26,419 | WARNING | Attempt 2 failed for DUK: 'str' object has no attribute 'date'
+2026-07-15 14:40:29,419 | WARNING | Attempt 3 failed for DUK: 'str' object has no attribute 'date'
+2026-07-15 14:40:29,419 | ERROR | [84/99] DUK: Failed
+2026-07-15 14:40:29,958 | WARNING | Attempt 1 failed for SO: 'str' object has no attribute 'date'
+2026-07-15 14:40:32,959 | WARNING | Attempt 2 failed for SO: 'str' object has no attribute 'date'
+2026-07-15 14:40:35,959 | WARNING | Attempt 3 failed for SO: 'str' object has no attribute 'date'
+2026-07-15 14:40:35,960 | ERROR | [85/99] SO: Failed
+2026-07-15 14:40:36,490 | WARNING | Attempt 1 failed for AMT: 'str' object has no attribute 'date'
+2026-07-15 14:40:39,490 | WARNING | Attempt 2 failed for AMT: 'str' object has no attribute 'date'
+2026-07-15 14:40:42,491 | WARNING | Attempt 3 failed for AMT: 'str' object has no attribute 'date'
+2026-07-15 14:40:42,491 | ERROR | [86/99] AMT: Failed
+2026-07-15 14:40:43,017 | WARNING | Attempt 1 failed for PLD: 'str' object has no attribute 'date'
+2026-07-15 14:40:46,018 | WARNING | Attempt 2 failed for PLD: 'str' object has no attribute 'date'
+2026-07-15 14:40:49,018 | WARNING | Attempt 3 failed for PLD: 'str' object has no attribute 'date'
+2026-07-15 14:40:49,018 | ERROR | [87/99] PLD: Failed
+2026-07-15 14:40:49,547 | WARNING | Attempt 1 failed for O: 'str' object has no attribute 'date'
+2026-07-15 14:40:52,547 | WARNING | Attempt 2 failed for O: 'str' object has no attribute 'date'
+2026-07-15 14:40:55,548 | WARNING | Attempt 3 failed for O: 'str' object has no attribute 'date'
+2026-07-15 14:40:55,548 | ERROR | [88/99] O: Failed
+2026-07-15 14:40:56,078 | WARNING | Attempt 1 failed for SPY: 'str' object has no attribute 'date'
+2026-07-15 14:40:59,078 | WARNING | Attempt 2 failed for SPY: 'str' object has no attribute 'date'
+2026-07-15 14:41:02,079 | WARNING | Attempt 3 failed for SPY: 'str' object has no attribute 'date'
+2026-07-15 14:41:02,079 | ERROR | [89/99] SPY: Failed
+2026-07-15 14:41:02,603 | WARNING | Attempt 1 failed for QQQ: 'str' object has no attribute 'date'
+2026-07-15 14:41:05,604 | WARNING | Attempt 2 failed for QQQ: 'str' object has no attribute 'date'
+2026-07-15 14:41:08,604 | WARNING | Attempt 3 failed for QQQ: 'str' object has no attribute 'date'
+2026-07-15 14:41:08,604 | ERROR | [90/99] QQQ: Failed
+2026-07-15 14:41:09,129 | WARNING | Attempt 1 failed for DIA: 'str' object has no attribute 'date'
+2026-07-15 14:41:12,130 | WARNING | Attempt 2 failed for DIA: 'str' object has no attribute 'date'
+2026-07-15 14:41:15,130 | WARNING | Attempt 3 failed for DIA: 'str' object has no attribute 'date'
+2026-07-15 14:41:15,130 | ERROR | [91/99] DIA: Failed
+2026-07-15 14:41:15,653 | WARNING | Attempt 1 failed for IWM: 'str' object has no attribute 'date'
+2026-07-15 14:41:18,654 | WARNING | Attempt 2 failed for IWM: 'str' object has no attribute 'date'
+2026-07-15 14:41:21,654 | WARNING | Attempt 3 failed for IWM: 'str' object has no attribute 'date'
+2026-07-15 14:41:21,654 | ERROR | [92/99] IWM: Failed
+2026-07-15 14:41:22,176 | WARNING | Attempt 1 failed for VTI: 'str' object has no attribute 'date'
+2026-07-15 14:41:25,176 | WARNING | Attempt 2 failed for VTI: 'str' object has no attribute 'date'
+2026-07-15 14:41:28,177 | WARNING | Attempt 3 failed for VTI: 'str' object has no attribute 'date'
+2026-07-15 14:41:28,177 | ERROR | [93/99] VTI: Failed
+2026-07-15 14:41:28,692 | WARNING | Attempt 1 failed for TSLA: 'str' object has no attribute 'date'
+2026-07-15 14:41:31,692 | WARNING | Attempt 2 failed for TSLA: 'str' object has no attribute 'date'
+2026-07-15 14:41:34,693 | WARNING | Attempt 3 failed for TSLA: 'str' object has no attribute 'date'
+2026-07-15 14:41:34,693 | ERROR | [94/99] TSLA: Failed
+2026-07-15 14:41:35,200 | WARNING | Attempt 1 failed for PLTR: 'str' object has no attribute 'date'
+2026-07-15 14:41:38,201 | WARNING | Attempt 2 failed for PLTR: 'str' object has no attribute 'date'
+2026-07-15 14:41:41,201 | WARNING | Attempt 3 failed for PLTR: 'str' object has no attribute 'date'
+2026-07-15 14:41:41,201 | ERROR | [95/99] PLTR: Failed
+2026-07-15 14:41:41,708 | WARNING | Attempt 1 failed for SNOW: 'str' object has no attribute 'date'
+2026-07-15 14:41:44,709 | WARNING | Attempt 2 failed for SNOW: 'str' object has no attribute 'date'
+2026-07-15 14:41:47,709 | WARNING | Attempt 3 failed for SNOW: 'str' object has no attribute 'date'
+2026-07-15 14:41:47,710 | ERROR | [96/99] SNOW: Failed
+2026-07-15 14:41:48,217 | WARNING | Attempt 1 failed for COIN: 'str' object has no attribute 'date'
+2026-07-15 14:41:51,217 | WARNING | Attempt 2 failed for COIN: 'str' object has no attribute 'date'
+2026-07-15 14:41:54,218 | WARNING | Attempt 3 failed for COIN: 'str' object has no attribute 'date'
+2026-07-15 14:41:54,218 | ERROR | [97/99] COIN: Failed
+2026-07-15 14:41:54,724 | WARNING | Attempt 1 failed for RIVN: 'str' object has no attribute 'date'
+2026-07-15 14:41:57,725 | WARNING | Attempt 2 failed for RIVN: 'str' object has no attribute 'date'
+2026-07-15 14:42:00,725 | WARNING | Attempt 3 failed for RIVN: 'str' object has no attribute 'date'
+2026-07-15 14:42:00,725 | ERROR | [98/99] RIVN: Failed
+2026-07-15 14:42:01,237 | WARNING | Attempt 1 failed for SHOP: 'str' object has no attribute 'date'
+2026-07-15 14:42:04,237 | WARNING | Attempt 2 failed for SHOP: 'str' object has no attribute 'date'
+2026-07-15 14:42:07,238 | WARNING | Attempt 3 failed for SHOP: 'str' object has no attribute 'date'
+2026-07-15 14:42:07,238 | ERROR | [99/99] SHOP: Failed
+2026-07-15 14:42:07,738 | INFO | Pipeline complete — 0 success | 99 failed
