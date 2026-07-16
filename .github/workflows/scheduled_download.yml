@@ -2,9 +2,8 @@ name: Scheduled Stock Download
 
 on:
   schedule:
-    # Every 30 min, 13:00-21:00 UTC Mon-Fri (covers EST and EDT window)
     - cron: "0,30 13-21 * * 1-5"
-  workflow_dispatch: # allow manual runs for testing
+  workflow_dispatch:
 
 jobs:
   download:
@@ -30,7 +29,8 @@ jobs:
         run: |
           mkdir -p logs
           echo "RUN $(date -u) - market open, downloading" | tee -a logs/run.log
-          python finance_pipeline.py
+          python finance_pipeline.py 2>&1 | tail -20 | tee -a logs/pipeline_detail.log
+          echo "RUN $(date -u) - download complete" | tee -a logs/run.log
 
       - name: Log skip (market closed)
         if: steps.guard.outcome == 'failure'
@@ -42,6 +42,6 @@ jobs:
         run: |
           git config user.name 'github-actions'
           git config user.email 'actions@github.com'
-          git add logs/ data/raw/ data/earliest_dates_summary.csv || true
+          git add logs/ data/earliest_dates_summary.csv || true
           git commit -m "scheduled run $(date -u)" || echo 'nothing to commit'
           git push || echo 'nothing to push'
