@@ -178,3 +178,23 @@
 2026-07-17 17:07:27,976 | WARNING | Attempt 3 failed for SHOP: 'str' object has no attribute 'date'
 2026-07-17 17:07:27,976 | ERROR | [99/99] SHOP: Failed
 2026-07-17 17:07:28,476 | INFO | Pipeline complete — 0 success | 99 failed
+2026-07-17 18:07:46,085 | WARNING | Attempt 2 failed for PLTR: 'str' object has no attribute 'date'
+2026-07-17 18:07:49,085 | WARNING | Attempt 3 failed for PLTR: 'str' object has no attribute 'date'
+2026-07-17 18:07:49,086 | ERROR | [95/99] PLTR: Failed
+2026-07-17 18:07:49,598 | WARNING | Attempt 1 failed for SNOW: 'str' object has no attribute 'date'
+2026-07-17 18:07:52,598 | WARNING | Attempt 2 failed for SNOW: 'str' object has no attribute 'date'
+2026-07-17 18:07:55,599 | WARNING | Attempt 3 failed for SNOW: 'str' object has no attribute 'date'
+2026-07-17 18:07:55,599 | ERROR | [96/99] SNOW: Failed
+2026-07-17 18:07:56,110 | WARNING | Attempt 1 failed for COIN: 'str' object has no attribute 'date'
+2026-07-17 18:07:59,110 | WARNING | Attempt 2 failed for COIN: 'str' object has no attribute 'date'
+2026-07-17 18:08:02,111 | WARNING | Attempt 3 failed for COIN: 'str' object has no attribute 'date'
+2026-07-17 18:08:02,111 | ERROR | [97/99] COIN: Failed
+2026-07-17 18:08:02,622 | WARNING | Attempt 1 failed for RIVN: 'str' object has no attribute 'date'
+2026-07-17 18:08:05,622 | WARNING | Attempt 2 failed for RIVN: 'str' object has no attribute 'date'
+2026-07-17 18:08:08,623 | WARNING | Attempt 3 failed for RIVN: 'str' object has no attribute 'date'
+2026-07-17 18:08:08,623 | ERROR | [98/99] RIVN: Failed
+2026-07-17 18:08:09,144 | WARNING | Attempt 1 failed for SHOP: 'str' object has no attribute 'date'
+2026-07-17 18:08:12,144 | WARNING | Attempt 2 failed for SHOP: 'str' object has no attribute 'date'
+2026-07-17 18:08:15,145 | WARNING | Attempt 3 failed for SHOP: 'str' object has no attribute 'date'
+2026-07-17 18:08:15,145 | ERROR | [99/99] SHOP: Failed
+2026-07-17 18:08:15,645 | INFO | Pipeline complete — 0 success | 99 failed
