@@ -4,7 +4,7 @@ Finance Data Pipeline — Automation Core
 Runs automatically with zero user input.
 Can be called by scheduler, agent, or n8n.
 
-Run: python finance_pipeline.py
+Run: python scripts/market_guard.py && python finance_pipeline.py
 """
 
 import yfinance as yf
@@ -42,7 +42,9 @@ def get_filepath(ticker):
 def load_existing(ticker):
     filepath = get_filepath(ticker)
     if os.path.exists(filepath):
-        return pd.read_csv(filepath, index_col=0, parse_dates=True)
+        df = pd.read_csv(filepath, index_col=0)
+        df.index = pd.to_datetime(df.index, utc=True)
+        return df
     return None
 
 
@@ -61,8 +63,9 @@ def download_ticker(ticker):
                     start=last_date.date(),
                     end=date.today()
                 )
-                new_data = new_data[new_data.index > last_date]
-                if new_data.empty:
+                if not new_data.empty:
+                    new_data.index = pd.to_datetime(new_data.index, utc=True)
+                new_data = new_data[new_data.index > last_date]                if new_data.empty:
                     return {
                         "ticker": ticker,
                         "status": "up_to_date",
