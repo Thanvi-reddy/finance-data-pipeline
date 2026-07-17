@@ -43,7 +43,7 @@ def load_existing(ticker):
     filepath = get_filepath(ticker)
     if os.path.exists(filepath):
         df = pd.read_csv(filepath, index_col=0)
-        df.index = pd.to_datetime(df.index, utc=True).tz_localize(None)
+        df.index = pd.to_datetime(df.index, utc=True).tz_convert(None)
         return df
     return None
 
@@ -65,7 +65,10 @@ def download_ticker(ticker):
                 )
                 if not new_data.empty:
                     new_data.index = pd.to_datetime(new_data.index, utc=True)
-                new_data = new_data[new_data.index > last_date]                if new_data.empty:
+                last_date_naive = last_date.tz_localize(None) if last_date.tzinfo else last_date
+                new_data.index = pd.to_datetime(new_data.index).tz_localize(None)
+                new_data = new_data[new_data.index > last_date_naive]           
+                if new_data.empty:
                     return {
                         "ticker": ticker,
                         "status": "up_to_date",
