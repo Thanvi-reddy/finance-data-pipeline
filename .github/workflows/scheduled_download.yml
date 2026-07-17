@@ -17,12 +17,26 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install yfinance pandas pandas_market_calendars
+        run: pip install yfinance pandas pandas_market_calendars supabase
 
       - name: Market-hours guard
         id: guard
         continue-on-error: true
         run: python scripts/market_guard.py
+
+      - name: Download CSVs from Supabase
+        if: steps.guard.outcome == 'success'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python -c "
+          import os, csv
+          from scripts.supabase_storage import download_all
+          with open('tickers.csv') as f:
+              tickers = [row['ticker'].strip() for row in csv.DictReader(f)]
+          download_all(tickers)
+          "
 
       - name: Run download (only if market open)
         if: steps.guard.outcome == 'success'
@@ -31,6 +45,20 @@ jobs:
           echo "RUN $(date -u) - market open, downloading" | tee -a logs/run.log
           python finance_pipeline.py 2>&1 | tail -20 | tee -a logs/pipeline_detail.log
           echo "RUN $(date -u) - download complete" | tee -a logs/run.log
+
+      - name: Upload updated CSVs to Supabase
+        if: steps.guard.outcome == 'success'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python -c "
+          import os, csv
+          from scripts.supabase_storage import upload_all
+          with open('tickers.csv') as f:
+              tickers = [row['ticker'].strip() for row in csv.DictReader(f)]
+          upload_all(tickers)
+          "
 
       - name: Log skip (market closed)
         if: steps.guard.outcome == 'failure'
