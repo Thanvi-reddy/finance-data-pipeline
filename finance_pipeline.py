@@ -43,7 +43,7 @@ def load_existing(ticker):
     filepath = get_filepath(ticker)
     if os.path.exists(filepath):
         df = pd.read_csv(filepath, index_col=0)
-        df.index = pd.to_datetime(df.index, utc=True)
+        df.index = pd.to_datetime(df.index, utc=True).tz_localize(None)
         return df
     return None
 
