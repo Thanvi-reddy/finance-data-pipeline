@@ -2,7 +2,7 @@ name: Scheduled Stock Download
 
 on:
   schedule:
-    - cron: "0,30 13-21 * * 1-5"
+    - cron: "0,20, 40 13-21 * * 1-5"
   workflow_dispatch:
 
 jobs:
