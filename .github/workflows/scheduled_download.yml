@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "0,20, 40 13-21 * * 1-5"
   workflow_dispatch:
+  repository_dispatch:
+    types: [f9ade327-85b1-42c7-8d84-ba5edfd8e98c]
 
 jobs:
   download:
