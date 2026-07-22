@@ -478,3 +478,23 @@
 2026-07-22 17:03:36,777 | INFO | [99/99] SHOP: Updated | +2 new rows
 2026-07-22 17:03:37,277 | INFO | Pipeline complete — 99 success | 0 failed
 2026-07-22 17:03:37,280 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-07-22 17:33:29,734 | INFO | [82/99] SNAP: Updated | +2 new rows
+2026-07-22 17:33:30,918 | INFO | [83/99] NEE: Updated | +2 new rows
+2026-07-22 17:33:31,738 | INFO | [84/99] DUK: Updated | +2 new rows
+2026-07-22 17:33:32,545 | INFO | [85/99] SO: Updated | +2 new rows
+2026-07-22 17:33:33,234 | INFO | [86/99] AMT: Updated | +2 new rows
+2026-07-22 17:33:33,949 | INFO | [87/99] PLD: Updated | +2 new rows
+2026-07-22 17:33:34,728 | INFO | [88/99] O: Updated | +2 new rows
+2026-07-22 17:33:35,458 | INFO | [89/99] SPY: Updated | +2 new rows
+2026-07-22 17:33:36,223 | INFO | [90/99] QQQ: Updated | +2 new rows
+2026-07-22 17:33:37,002 | INFO | [91/99] DIA: Updated | +2 new rows
+2026-07-22 17:33:37,832 | INFO | [92/99] IWM: Updated | +2 new rows
+2026-07-22 17:33:38,561 | INFO | [93/99] VTI: Updated | +2 new rows
+2026-07-22 17:33:39,181 | INFO | [94/99] TSLA: Updated | +2 new rows
+2026-07-22 17:33:39,798 | INFO | [95/99] PLTR: Updated | +2 new rows
+2026-07-22 17:33:40,409 | INFO | [96/99] SNOW: Updated | +2 new rows
+2026-07-22 17:33:41,043 | INFO | [97/99] COIN: Updated | +2 new rows
+2026-07-22 17:33:41,640 | INFO | [98/99] RIVN: Updated | +2 new rows
+2026-07-22 17:33:42,285 | INFO | [99/99] SHOP: Updated | +2 new rows
+2026-07-22 17:33:42,785 | INFO | Pipeline complete — 99 success | 0 failed
+2026-07-22 17:33:42,787 | INFO | Summary saved to data/earliest_dates_summary.csv
