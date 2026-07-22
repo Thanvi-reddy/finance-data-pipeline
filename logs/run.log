@@ -59,3 +59,4 @@ RUN Mon Jul 20 16:26:03 UTC 2026 - market open, downloading
 RUN Mon Jul 20 16:27:38 UTC 2026 - download complete
 RUN Mon Jul 20 18:27:46 UTC 2026 - market open, downloading
 RUN Mon Jul 20 18:28:57 UTC 2026 - download complete
+SKIP Wed Jul 22 05:55:58 UTC 2026 - market closed
