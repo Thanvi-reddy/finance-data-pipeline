@@ -6,6 +6,8 @@ Used by GitHub Actions to persist data between runs.
 
 Run: python scripts/supabase_storage.py
 """
+from dotenv import load_dotenv
+load_dotenv()
 
 import os
 import pandas as pd
