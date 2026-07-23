@@ -10,3 +10,4 @@ yfinance
 pandas_market_calendars
 schedule==1.2.2
 python-dotenv==1.2.2
+requests
