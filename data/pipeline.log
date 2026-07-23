@@ -5866,3 +5866,627 @@
 2026-07-15 20:10:35,738 | WARNING | Attempt 3 failed for SHOP: 'str' object has no attribute 'date'
 2026-07-15 20:10:35,738 | ERROR | [99/99] SHOP: Failed
 2026-07-15 20:10:36,238 | INFO | Pipeline complete â€” 0 success | 99 failed
+2026-07-18 02:57:58,694 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AAPL_max.csv "HTTP/2 200 OK"
+2026-07-18 02:57:59,783 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MSFT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:01,232 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NVDA_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:02,416 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GOOGL_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:03,666 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/META_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:04,732 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMZN_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:05,948 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ORCL_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:07,113 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ADBE_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:08,314 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CRM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:09,357 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/INTC_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:10,599 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMD_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:11,847 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CSCO_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:13,099 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/IBM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:14,531 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TXN_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:15,863 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/QCOM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:16,997 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/JPM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:18,332 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BAC_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:19,622 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/WFC_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:20,819 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GS_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:22,035 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MS_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:23,277 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/C_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:24,584 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BLK_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:25,748 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AXP_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:26,844 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SCHW_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:27,744 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/V_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:28,794 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MA_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:29,910 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BRK-B_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:31,112 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/JNJ_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:32,393 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UNH_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:33,610 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PFE_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:34,894 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MRK_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:36,093 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABBV_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:37,093 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LLY_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:38,242 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TMO_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:39,525 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:40,791 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BMY_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:42,054 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMGN_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:43,168 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GILD_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:44,225 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CVS_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:45,391 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PG_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:46,724 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/KO_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:47,992 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PEP_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:49,374 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/WMT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:50,973 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COST_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:52,155 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MDLZ_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:53,485 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CL_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:54,781 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/KMB_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:56,041 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/HD_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:57,157 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MCD_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:58,484 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NKE_max.csv "HTTP/2 200 OK"
+2026-07-18 02:58:59,754 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SBUX_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:01,004 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LOW_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:02,105 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TGT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:03,347 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BKNG_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:04,472 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TJX_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:05,613 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DIS_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:06,705 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/F_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:07,821 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UBER_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:08,837 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABNB_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:09,890 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/XOM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:11,236 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CVX_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:12,597 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COP_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:13,919 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SLB_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:15,131 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/EOG_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:16,237 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PSX_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:17,402 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/OXY_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:18,685 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BA_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:19,869 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CAT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:21,004 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GE_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:22,162 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/HON_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:23,270 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UPS_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:24,402 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/RTX_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:25,619 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LMT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:26,901 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DE_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:28,083 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MMM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:29,219 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UNP_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:30,318 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/T_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:31,384 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/VZ_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:32,616 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TMUS_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:33,750 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CMCSA_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:34,850 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NFLX_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:35,961 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SNAP_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:36,916 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NEE_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:38,096 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DUK_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:39,253 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SO_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:40,205 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMT_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:41,048 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PLD_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:42,268 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/O_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:43,531 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SPY_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:44,753 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/QQQ_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:45,948 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DIA_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:47,201 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/IWM_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:48,431 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/VTI_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:49,644 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TSLA_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:50,797 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PLTR_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:51,880 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SNOW_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:52,798 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COIN_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:53,863 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/RIVN_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:54,930 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SHOP_max.csv "HTTP/2 200 OK"
+2026-07-18 02:59:55,139 | INFO | Pipeline started — 99 tickers
+2026-07-18 02:59:59,860 | WARNING | Attempt 1 failed for AAPL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:02,928 | WARNING | Attempt 2 failed for AAPL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:06,002 | WARNING | Attempt 3 failed for AAPL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:06,002 | ERROR | [1/99] AAPL: Failed
+2026-07-18 03:00:06,891 | WARNING | Attempt 1 failed for MSFT: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:09,983 | WARNING | Attempt 2 failed for MSFT: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:13,051 | WARNING | Attempt 3 failed for MSFT: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:13,053 | ERROR | [2/99] MSFT: Failed
+2026-07-18 03:00:13,843 | WARNING | Attempt 1 failed for NVDA: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:16,909 | WARNING | Attempt 2 failed for NVDA: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:19,987 | WARNING | Attempt 3 failed for NVDA: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:19,987 | ERROR | [3/99] NVDA: Failed
+2026-07-18 03:00:20,675 | WARNING | Attempt 1 failed for GOOGL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:23,741 | WARNING | Attempt 2 failed for GOOGL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:26,807 | WARNING | Attempt 3 failed for GOOGL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:26,807 | ERROR | [4/99] GOOGL: Failed
+2026-07-18 03:00:27,507 | WARNING | Attempt 1 failed for META: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:30,573 | WARNING | Attempt 2 failed for META: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:33,643 | WARNING | Attempt 3 failed for META: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:33,643 | ERROR | [5/99] META: Failed
+2026-07-18 03:00:34,413 | WARNING | Attempt 1 failed for AMZN: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:37,482 | WARNING | Attempt 2 failed for AMZN: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:40,558 | WARNING | Attempt 3 failed for AMZN: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:40,558 | ERROR | [6/99] AMZN: Failed
+2026-07-18 03:00:41,304 | WARNING | Attempt 1 failed for ORCL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:44,387 | WARNING | Attempt 2 failed for ORCL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:47,454 | WARNING | Attempt 3 failed for ORCL: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:47,454 | ERROR | [7/99] ORCL: Failed
+2026-07-18 03:00:48,286 | WARNING | Attempt 1 failed for ADBE: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:51,355 | WARNING | Attempt 2 failed for ADBE: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:54,425 | WARNING | Attempt 3 failed for ADBE: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:54,427 | ERROR | [8/99] ADBE: Failed
+2026-07-18 03:00:55,114 | WARNING | Attempt 1 failed for CRM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:00:58,170 | WARNING | Attempt 2 failed for CRM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:01,271 | WARNING | Attempt 3 failed for CRM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:01,271 | ERROR | [9/99] CRM: Failed
+2026-07-18 03:01:02,116 | WARNING | Attempt 1 failed for INTC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:05,214 | WARNING | Attempt 2 failed for INTC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:08,323 | WARNING | Attempt 3 failed for INTC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:08,323 | ERROR | [10/99] INTC: Failed
+2026-07-18 03:01:09,174 | WARNING | Attempt 1 failed for AMD: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:12,258 | WARNING | Attempt 2 failed for AMD: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:15,342 | WARNING | Attempt 3 failed for AMD: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:15,342 | ERROR | [11/99] AMD: Failed
+2026-07-18 03:01:16,091 | WARNING | Attempt 1 failed for CSCO: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:19,172 | WARNING | Attempt 2 failed for CSCO: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:22,237 | WARNING | Attempt 3 failed for CSCO: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:22,237 | ERROR | [12/99] CSCO: Failed
+2026-07-18 03:01:23,231 | WARNING | Attempt 1 failed for IBM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:26,312 | WARNING | Attempt 2 failed for IBM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:29,365 | WARNING | Attempt 3 failed for IBM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:29,381 | ERROR | [13/99] IBM: Failed
+2026-07-18 03:01:30,327 | WARNING | Attempt 1 failed for TXN: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:33,462 | WARNING | Attempt 2 failed for TXN: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:36,529 | WARNING | Attempt 3 failed for TXN: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:36,543 | ERROR | [14/99] TXN: Failed
+2026-07-18 03:01:37,378 | WARNING | Attempt 1 failed for QCOM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:40,443 | WARNING | Attempt 2 failed for QCOM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:43,521 | WARNING | Attempt 3 failed for QCOM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:43,521 | ERROR | [15/99] QCOM: Failed
+2026-07-18 03:01:44,408 | WARNING | Attempt 1 failed for JPM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:47,477 | WARNING | Attempt 2 failed for JPM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:50,548 | WARNING | Attempt 3 failed for JPM: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:50,548 | ERROR | [16/99] JPM: Failed
+2026-07-18 03:01:51,322 | WARNING | Attempt 1 failed for BAC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:54,401 | WARNING | Attempt 2 failed for BAC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:57,470 | WARNING | Attempt 3 failed for BAC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:01:57,470 | ERROR | [17/99] BAC: Failed
+2026-07-18 03:01:58,393 | WARNING | Attempt 1 failed for WFC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:01,453 | WARNING | Attempt 2 failed for WFC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:04,518 | WARNING | Attempt 3 failed for WFC: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:04,518 | ERROR | [18/99] WFC: Failed
+2026-07-18 03:02:05,387 | WARNING | Attempt 1 failed for GS: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:08,464 | WARNING | Attempt 2 failed for GS: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:11,520 | WARNING | Attempt 3 failed for GS: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:11,520 | ERROR | [19/99] GS: Failed
+2026-07-18 03:02:12,359 | WARNING | Attempt 1 failed for MS: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:15,438 | WARNING | Attempt 2 failed for MS: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:18,511 | WARNING | Attempt 3 failed for MS: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:18,511 | ERROR | [20/99] MS: Failed
+2026-07-18 03:02:19,264 | WARNING | Attempt 1 failed for C: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:22,335 | WARNING | Attempt 2 failed for C: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:25,405 | WARNING | Attempt 3 failed for C: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:25,405 | ERROR | [21/99] C: Failed
+2026-07-18 03:02:26,186 | WARNING | Attempt 1 failed for BLK: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:29,257 | WARNING | Attempt 2 failed for BLK: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:32,324 | WARNING | Attempt 3 failed for BLK: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:32,324 | ERROR | [22/99] BLK: Failed
+2026-07-18 03:02:33,275 | WARNING | Attempt 1 failed for AXP: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:36,343 | WARNING | Attempt 2 failed for AXP: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:39,411 | WARNING | Attempt 3 failed for AXP: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:39,411 | ERROR | [23/99] AXP: Failed
+2026-07-18 03:02:40,272 | WARNING | Attempt 1 failed for SCHW: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:43,341 | WARNING | Attempt 2 failed for SCHW: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:46,414 | WARNING | Attempt 3 failed for SCHW: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:46,414 | ERROR | [24/99] SCHW: Failed
+2026-07-18 03:02:47,173 | WARNING | Attempt 1 failed for V: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:50,242 | WARNING | Attempt 2 failed for V: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:53,301 | WARNING | Attempt 3 failed for V: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:53,301 | ERROR | [25/99] V: Failed
+2026-07-18 03:02:53,999 | WARNING | Attempt 1 failed for MA: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:02:57,074 | WARNING | Attempt 2 failed for MA: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:00,127 | WARNING | Attempt 3 failed for MA: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:00,127 | ERROR | [26/99] MA: Failed
+2026-07-18 03:03:00,834 | WARNING | Attempt 1 failed for BRK-B: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:03,895 | WARNING | Attempt 2 failed for BRK-B: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:06,960 | WARNING | Attempt 3 failed for BRK-B: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:06,960 | ERROR | [27/99] BRK-B: Failed
+2026-07-18 03:03:07,763 | WARNING | Attempt 1 failed for JNJ: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:10,830 | WARNING | Attempt 2 failed for JNJ: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:13,901 | WARNING | Attempt 3 failed for JNJ: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:13,901 | ERROR | [28/99] JNJ: Failed
+2026-07-18 03:03:14,644 | WARNING | Attempt 1 failed for UNH: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:17,711 | WARNING | Attempt 2 failed for UNH: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:20,784 | WARNING | Attempt 3 failed for UNH: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:20,784 | ERROR | [29/99] UNH: Failed
+2026-07-18 03:03:21,578 | WARNING | Attempt 1 failed for PFE: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:24,660 | WARNING | Attempt 2 failed for PFE: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:27,743 | WARNING | Attempt 3 failed for PFE: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:27,743 | ERROR | [30/99] PFE: Failed
+2026-07-18 03:03:28,626 | WARNING | Attempt 1 failed for MRK: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:31,692 | WARNING | Attempt 2 failed for MRK: Invalid comparison between dtype=datetime64[s, UTC] and Timestamp
+2026-07-18 03:03:48,183 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AAPL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:48,672 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MSFT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:49,118 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NVDA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:49,483 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GOOGL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:49,822 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/META_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:50,183 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMZN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:50,572 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ORCL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:51,030 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ADBE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:51,474 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CRM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:51,822 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/INTC_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:52,290 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:52,689 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CSCO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:53,054 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/IBM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:53,605 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TXN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:54,165 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/QCOM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:54,554 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/JPM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:55,325 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BAC_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:56,354 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/WFC_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:56,821 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:57,168 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:57,571 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/C_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:57,986 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BLK_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:58,355 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AXP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:58,820 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SCHW_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:59,233 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/V_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:59,575 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:03:59,906 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BRK-B_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:00,293 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/JNJ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:01,038 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UNH_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:01,537 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PFE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:01,987 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MRK_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:02,487 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABBV_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:02,870 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LLY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:03,320 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TMO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:03,787 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:04,320 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BMY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:04,919 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMGN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:05,352 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GILD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:06,042 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CVS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:06,502 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PG_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:07,002 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/KO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:07,533 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PEP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:08,001 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/WMT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:08,468 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COST_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:08,902 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MDLZ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:09,270 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:10,210 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/KMB_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:10,685 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/HD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:11,152 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MCD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:11,635 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NKE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:12,083 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SBUX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:12,485 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LOW_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:12,919 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TGT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:13,420 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BKNG_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:13,969 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TJX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:14,401 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DIS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:15,249 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/F_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:15,687 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UBER_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:16,001 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABNB_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:16,304 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/XOM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:16,920 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CVX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:17,401 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:17,833 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SLB_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:18,269 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/EOG_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:19,065 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PSX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:19,451 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/OXY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:19,883 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:20,382 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CAT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:20,883 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:21,416 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/HON_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:21,933 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UPS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:22,298 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/RTX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:22,816 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LMT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:23,334 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:23,783 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MMM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:24,267 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UNP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:24,716 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/T_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:25,144 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/VZ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:25,569 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TMUS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:25,916 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CMCSA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:26,352 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NFLX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:26,729 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SNAP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:27,052 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NEE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:27,516 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DUK_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:28,179 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:28,649 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:29,048 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PLD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:29,449 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/O_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:29,850 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SPY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:30,243 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/QQQ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:30,654 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DIA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:31,259 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/IWM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:31,674 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/VTI_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:32,051 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TSLA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:32,431 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PLTR_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:32,824 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SNOW_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:33,174 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COIN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:33,581 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/RIVN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:33,914 | INFO | HTTP Request: GET https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SHOP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:04:33,964 | INFO | Pipeline started — 99 tickers
+2026-07-18 03:04:34,947 | INFO | [1/99] AAPL: Updated | +5 new rows
+2026-07-18 03:04:35,934 | INFO | [2/99] MSFT: Updated | +5 new rows
+2026-07-18 03:04:36,747 | INFO | [3/99] NVDA: Updated | +5 new rows
+2026-07-18 03:04:37,513 | INFO | [4/99] GOOGL: Updated | +5 new rows
+2026-07-18 03:04:38,210 | INFO | [5/99] META: Updated | +5 new rows
+2026-07-18 03:04:38,963 | INFO | [6/99] AMZN: Updated | +5 new rows
+2026-07-18 03:04:39,930 | INFO | [7/99] ORCL: Updated | +5 new rows
+2026-07-18 03:04:40,730 | INFO | [8/99] ADBE: Updated | +5 new rows
+2026-07-18 03:04:41,463 | INFO | [9/99] CRM: Updated | +5 new rows
+2026-07-18 03:04:42,405 | INFO | [10/99] INTC: Updated | +5 new rows
+2026-07-18 03:04:43,197 | INFO | [11/99] AMD: Updated | +5 new rows
+2026-07-18 03:04:43,998 | INFO | [12/99] CSCO: Updated | +5 new rows
+2026-07-18 03:04:44,996 | INFO | [13/99] IBM: Updated | +5 new rows
+2026-07-18 03:04:46,008 | INFO | [14/99] TXN: Updated | +5 new rows
+2026-07-18 03:04:46,880 | INFO | [15/99] QCOM: Updated | +5 new rows
+2026-07-18 03:04:47,821 | INFO | [16/99] JPM: Updated | +5 new rows
+2026-07-18 03:04:48,762 | INFO | [17/99] BAC: Updated | +5 new rows
+2026-07-18 03:04:49,779 | INFO | [18/99] WFC: Updated | +5 new rows
+2026-07-18 03:04:50,661 | INFO | [19/99] GS: Updated | +5 new rows
+2026-07-18 03:04:51,595 | INFO | [20/99] MS: Updated | +5 new rows
+2026-07-18 03:04:52,545 | INFO | [21/99] C: Updated | +5 new rows
+2026-07-18 03:04:53,297 | INFO | [22/99] BLK: Updated | +5 new rows
+2026-07-18 03:04:54,291 | INFO | [23/99] AXP: Updated | +5 new rows
+2026-07-18 03:04:55,177 | INFO | [24/99] SCHW: Updated | +5 new rows
+2026-07-18 03:04:55,904 | INFO | [25/99] V: Updated | +5 new rows
+2026-07-18 03:04:56,652 | INFO | [26/99] MA: Updated | +5 new rows
+2026-07-18 03:04:57,411 | INFO | [27/99] BRK-B: Updated | +5 new rows
+2026-07-18 03:04:58,419 | INFO | [28/99] JNJ: Updated | +5 new rows
+2026-07-18 03:04:59,394 | INFO | [29/99] UNH: Updated | +5 new rows
+2026-07-18 03:05:00,451 | INFO | [30/99] PFE: Updated | +5 new rows
+2026-07-18 03:05:01,590 | INFO | [31/99] MRK: Updated | +5 new rows
+2026-07-18 03:05:02,309 | INFO | [32/99] ABBV: Updated | +5 new rows
+2026-07-18 03:05:03,212 | INFO | [33/99] LLY: Updated | +5 new rows
+2026-07-18 03:05:04,072 | INFO | [34/99] TMO: Updated | +5 new rows
+2026-07-18 03:05:05,031 | INFO | [35/99] ABT: Updated | +5 new rows
+2026-07-18 03:05:06,071 | INFO | [36/99] BMY: Updated | +5 new rows
+2026-07-18 03:05:06,909 | INFO | [37/99] AMGN: Updated | +5 new rows
+2026-07-18 03:05:07,692 | INFO | [38/99] GILD: Updated | +5 new rows
+2026-07-18 03:05:08,625 | INFO | [39/99] CVS: Updated | +5 new rows
+2026-07-18 03:05:09,827 | INFO | [40/99] PG: Updated | +5 new rows
+2026-07-18 03:05:10,917 | INFO | [41/99] KO: Updated | +5 new rows
+2026-07-18 03:05:11,919 | INFO | [42/99] PEP: Updated | +5 new rows
+2026-07-18 03:05:12,953 | INFO | [43/99] WMT: Updated | +5 new rows
+2026-07-18 03:05:13,774 | INFO | [44/99] COST: Updated | +5 new rows
+2026-07-18 03:05:14,561 | INFO | [45/99] MDLZ: Updated | +5 new rows
+2026-07-18 03:05:15,490 | INFO | [46/99] CL: Updated | +5 new rows
+2026-07-18 03:05:16,390 | INFO | [47/99] KMB: Updated | +5 new rows
+2026-07-18 03:05:17,312 | INFO | [48/99] HD: Updated | +5 new rows
+2026-07-18 03:05:18,224 | INFO | [49/99] MCD: Updated | +5 new rows
+2026-07-18 03:05:19,149 | INFO | [50/99] NKE: Updated | +5 new rows
+2026-07-18 03:05:20,163 | INFO | [51/99] SBUX: Updated | +5 new rows
+2026-07-18 03:05:21,006 | INFO | [52/99] LOW: Updated | +5 new rows
+2026-07-18 03:05:22,054 | INFO | [53/99] TGT: Updated | +5 new rows
+2026-07-18 03:05:22,889 | INFO | [54/99] BKNG: Updated | +5 new rows
+2026-07-18 03:05:23,861 | INFO | [55/99] TJX: Updated | +5 new rows
+2026-07-18 03:05:25,038 | INFO | [56/99] DIS: Updated | +5 new rows
+2026-07-18 03:05:25,952 | INFO | [57/99] F: Updated | +5 new rows
+2026-07-18 03:05:26,669 | INFO | [58/99] UBER: Updated | +5 new rows
+2026-07-18 03:05:27,355 | INFO | [59/99] ABNB: Updated | +5 new rows
+2026-07-18 03:05:28,472 | INFO | [60/99] XOM: Updated | +5 new rows
+2026-07-18 03:05:29,455 | INFO | [61/99] CVX: Updated | +5 new rows
+2026-07-18 03:05:30,422 | INFO | [62/99] COP: Updated | +5 new rows
+2026-07-18 03:05:31,339 | INFO | [63/99] SLB: Updated | +5 new rows
+2026-07-18 03:05:32,240 | INFO | [64/99] EOG: Updated | +5 new rows
+2026-07-18 03:05:32,966 | INFO | [65/99] PSX: Updated | +5 new rows
+2026-07-18 03:05:33,887 | INFO | [66/99] OXY: Updated | +5 new rows
+2026-07-18 03:05:34,871 | INFO | [67/99] BA: Updated | +5 new rows
+2026-07-18 03:05:35,892 | INFO | [68/99] CAT: Updated | +5 new rows
+2026-07-18 03:05:36,903 | INFO | [69/99] GE: Updated | +5 new rows
+2026-07-18 03:05:37,936 | INFO | [70/99] HON: Updated | +5 new rows
+2026-07-18 03:05:38,703 | INFO | [71/99] UPS: Updated | +5 new rows
+2026-07-18 03:05:39,686 | INFO | [72/99] RTX: Updated | +5 new rows
+2026-07-18 03:05:40,703 | INFO | [73/99] LMT: Updated | +5 new rows
+2026-07-18 03:05:41,703 | INFO | [74/99] DE: Updated | +5 new rows
+2026-07-18 03:05:42,736 | INFO | [75/99] MMM: Updated | +5 new rows
+2026-07-18 03:05:43,635 | INFO | [76/99] UNP: Updated | +5 new rows
+2026-07-18 03:05:44,535 | INFO | [77/99] T: Updated | +5 new rows
+2026-07-18 03:05:45,460 | INFO | [78/99] VZ: Updated | +5 new rows
+2026-07-18 03:05:46,179 | INFO | [79/99] TMUS: Updated | +5 new rows
+2026-07-18 03:05:47,098 | INFO | [80/99] CMCSA: Updated | +5 new rows
+2026-07-18 03:05:47,835 | INFO | [81/99] NFLX: Updated | +5 new rows
+2026-07-18 03:05:48,518 | INFO | [82/99] SNAP: Updated | +5 new rows
+2026-07-18 03:05:49,468 | INFO | [83/99] NEE: Updated | +5 new rows
+2026-07-18 03:05:50,484 | INFO | [84/99] DUK: Updated | +5 new rows
+2026-07-18 03:05:51,401 | INFO | [85/99] SO: Updated | +5 new rows
+2026-07-18 03:05:52,147 | INFO | [86/99] AMT: Updated | +5 new rows
+2026-07-18 03:05:53,020 | INFO | [87/99] PLD: Updated | +5 new rows
+2026-07-18 03:05:53,834 | INFO | [88/99] O: Updated | +5 new rows
+2026-07-18 03:05:54,651 | INFO | [89/99] SPY: Updated | +5 new rows
+2026-07-18 03:05:55,419 | INFO | [90/99] QQQ: Updated | +5 new rows
+2026-07-18 03:05:56,189 | INFO | [91/99] DIA: Updated | +5 new rows
+2026-07-18 03:05:56,950 | INFO | [92/99] IWM: Updated | +5 new rows
+2026-07-18 03:05:57,716 | INFO | [93/99] VTI: Updated | +5 new rows
+2026-07-18 03:05:58,416 | INFO | [94/99] TSLA: Updated | +5 new rows
+2026-07-18 03:05:59,083 | INFO | [95/99] PLTR: Updated | +5 new rows
+2026-07-18 03:05:59,750 | INFO | [96/99] SNOW: Updated | +5 new rows
+2026-07-18 03:06:00,419 | INFO | [97/99] COIN: Updated | +5 new rows
+2026-07-18 03:06:01,154 | INFO | [98/99] RIVN: Updated | +5 new rows
+2026-07-18 03:06:01,833 | INFO | [99/99] SHOP: Updated | +5 new rows
+2026-07-18 03:06:02,339 | INFO | Pipeline complete — 99 success | 0 failed
+2026-07-18 03:06:02,344 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-07-18 03:06:03,367 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AAPL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:03,783 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MSFT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:04,189 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NVDA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:04,528 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GOOGL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:04,954 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/META_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:05,416 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMZN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:05,833 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ORCL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:06,249 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ADBE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:06,585 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CRM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:07,793 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/INTC_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:08,498 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:08,840 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CSCO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:09,314 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/IBM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:09,715 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TXN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:10,239 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/QCOM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:10,649 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/JPM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:11,161 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BAC_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:11,582 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/WFC_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:12,083 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:12,457 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:12,885 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/C_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:13,305 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BLK_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:14,056 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AXP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:14,542 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SCHW_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:14,873 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/V_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:15,456 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:15,855 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BRK-B_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:16,590 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/JNJ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:17,203 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UNH_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:17,917 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PFE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:18,527 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MRK_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:18,944 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABBV_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:19,458 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LLY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:19,895 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TMO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:20,344 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:20,883 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BMY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:21,396 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMGN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:21,797 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GILD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:22,208 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CVS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:22,734 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PG_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:23,242 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/KO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:23,663 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PEP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:24,166 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/WMT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:24,576 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COST_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:24,981 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MDLZ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:25,411 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CL_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:26,216 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/KMB_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:26,725 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/HD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:27,546 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MCD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:27,963 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NKE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:28,364 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SBUX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:28,750 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LOW_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:29,172 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TGT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:29,531 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BKNG_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:29,895 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TJX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:30,411 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DIS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:30,819 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/F_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:31,102 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UBER_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:31,536 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/ABNB_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:32,254 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/XOM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:32,961 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CVX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:33,379 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:33,885 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SLB_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:34,611 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/EOG_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:34,961 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PSX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:35,419 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/OXY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:35,935 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/BA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:36,452 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CAT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:37,043 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/GE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:37,786 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/HON_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:38,197 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UPS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:38,807 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/RTX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:39,419 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/LMT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:40,041 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:40,654 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/MMM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:41,166 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/UNP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:41,676 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/T_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:42,394 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/VZ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:42,685 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TMUS_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:43,101 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/CMCSA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:43,520 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NFLX_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:43,927 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SNAP_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:44,544 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/NEE_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:45,049 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DUK_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:45,668 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SO_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:46,177 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/AMT_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:46,743 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PLD_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:47,310 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/O_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:47,818 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SPY_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:48,533 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/QQQ_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:48,942 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/DIA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:49,283 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/IWM_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:49,664 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/VTI_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:49,982 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/TSLA_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:50,383 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/PLTR_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:50,702 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SNOW_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:51,201 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/COIN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:51,515 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/RIVN_max.csv "HTTP/2 200 OK"
+2026-07-18 03:06:51,916 | INFO | HTTP Request: POST https://uyfaoiudszznnnihedgc.supabase.co/storage/v1/object/stock-data/SHOP_max.csv "HTTP/2 200 OK"
+2026-07-23 14:35:51,187 | INFO | Pipeline started — 99 tickers
+2026-07-23 14:35:56,491 | INFO | [1/99] AAPL: Updated | +3 new rows
+2026-07-23 14:35:57,236 | INFO | [2/99] MSFT: Updated | +3 new rows
+2026-07-23 14:35:57,932 | INFO | [3/99] NVDA: Updated | +3 new rows
+2026-07-23 14:35:58,605 | INFO | [4/99] GOOGL: Updated | +3 new rows
+2026-07-23 14:35:59,266 | INFO | [5/99] META: Updated | +3 new rows
+2026-07-23 14:35:59,955 | INFO | [6/99] AMZN: Updated | +3 new rows
+2026-07-23 14:36:00,658 | INFO | [7/99] ORCL: Updated | +3 new rows
+2026-07-23 14:36:01,378 | INFO | [8/99] ADBE: Updated | +3 new rows
+2026-07-23 14:36:02,040 | INFO | [9/99] CRM: Updated | +3 new rows
+2026-07-23 14:36:02,810 | INFO | [10/99] INTC: Updated | +3 new rows
+2026-07-23 14:36:03,492 | INFO | [11/99] AMD: Updated | +3 new rows
+2026-07-23 14:36:04,198 | INFO | [12/99] CSCO: Updated | +3 new rows
+2026-07-23 14:36:04,996 | INFO | [13/99] IBM: Updated | +3 new rows
+2026-07-23 14:36:05,770 | INFO | [14/99] TXN: Updated | +3 new rows
+2026-07-23 14:36:06,492 | INFO | [15/99] QCOM: Updated | +3 new rows
+2026-07-23 14:36:07,248 | INFO | [16/99] JPM: Updated | +3 new rows
+2026-07-23 14:36:08,010 | INFO | [17/99] BAC: Updated | +3 new rows
+2026-07-23 14:36:08,794 | INFO | [18/99] WFC: Updated | +3 new rows
+2026-07-23 14:36:09,508 | INFO | [19/99] GS: Updated | +3 new rows
+2026-07-23 14:36:10,233 | INFO | [20/99] MS: Updated | +3 new rows
+2026-07-23 14:36:11,075 | INFO | [21/99] C: Updated | +3 new rows
+2026-07-23 14:36:11,832 | INFO | [22/99] BLK: Updated | +3 new rows
+2026-07-23 14:36:12,587 | INFO | [23/99] AXP: Updated | +3 new rows
+2026-07-23 14:36:13,308 | INFO | [24/99] SCHW: Updated | +3 new rows
+2026-07-23 14:36:13,987 | INFO | [25/99] V: Updated | +3 new rows
+2026-07-23 14:36:14,652 | INFO | [26/99] MA: Updated | +3 new rows
+2026-07-23 14:36:15,315 | INFO | [27/99] BRK-B: Updated | +3 new rows
+2026-07-23 14:36:16,151 | INFO | [28/99] JNJ: Updated | +3 new rows
+2026-07-23 14:36:16,897 | INFO | [29/99] UNH: Updated | +3 new rows
+2026-07-23 14:36:17,682 | INFO | [30/99] PFE: Updated | +3 new rows
+2026-07-23 14:36:18,518 | INFO | [31/99] MRK: Updated | +3 new rows
+2026-07-23 14:36:19,201 | INFO | [32/99] ABBV: Updated | +3 new rows
+2026-07-23 14:36:19,981 | INFO | [33/99] LLY: Updated | +3 new rows
+2026-07-23 14:36:20,722 | INFO | [34/99] TMO: Updated | +3 new rows
+2026-07-23 14:36:21,498 | INFO | [35/99] ABT: Updated | +3 new rows
+2026-07-23 14:36:22,336 | INFO | [36/99] BMY: Updated | +3 new rows
+2026-07-23 14:36:23,065 | INFO | [37/99] AMGN: Updated | +3 new rows
+2026-07-23 14:36:23,770 | INFO | [38/99] GILD: Updated | +3 new rows
+2026-07-23 14:36:24,568 | INFO | [39/99] CVS: Updated | +3 new rows
+2026-07-23 14:36:25,380 | INFO | [40/99] PG: Updated | +3 new rows
+2026-07-23 14:36:26,183 | INFO | [41/99] KO: Updated | +3 new rows
+2026-07-23 14:36:26,962 | INFO | [42/99] PEP: Updated | +3 new rows
+2026-07-23 14:36:27,750 | INFO | [43/99] WMT: Updated | +3 new rows
+2026-07-23 14:36:28,500 | INFO | [44/99] COST: Updated | +3 new rows
+2026-07-23 14:36:29,177 | INFO | [45/99] MDLZ: Updated | +3 new rows
+2026-07-23 14:36:29,951 | INFO | [46/99] CL: Updated | +3 new rows
+2026-07-23 14:36:30,743 | INFO | [47/99] KMB: Updated | +3 new rows
+2026-07-23 14:36:31,502 | INFO | [48/99] HD: Updated | +3 new rows
+2026-07-23 14:36:32,288 | INFO | [49/99] MCD: Updated | +3 new rows
+2026-07-23 14:36:33,034 | INFO | [50/99] NKE: Updated | +3 new rows
+2026-07-23 14:36:33,721 | INFO | [51/99] SBUX: Updated | +3 new rows
+2026-07-23 14:36:34,498 | INFO | [52/99] LOW: Updated | +3 new rows
+2026-07-23 14:36:35,304 | INFO | [53/99] TGT: Updated | +3 new rows
+2026-07-23 14:36:35,991 | INFO | [54/99] BKNG: Updated | +3 new rows
+2026-07-23 14:36:36,727 | INFO | [55/99] TJX: Updated | +3 new rows
+2026-07-23 14:36:37,584 | INFO | [56/99] DIS: Updated | +3 new rows
+2026-07-23 14:36:38,369 | INFO | [57/99] F: Updated | +3 new rows
+2026-07-23 14:36:38,992 | INFO | [58/99] UBER: Updated | +3 new rows
+2026-07-23 14:36:39,617 | INFO | [59/99] ABNB: Updated | +3 new rows
+2026-07-23 14:36:40,443 | INFO | [60/99] XOM: Updated | +3 new rows
+2026-07-23 14:36:41,263 | INFO | [61/99] CVX: Updated | +3 new rows
+2026-07-23 14:36:41,982 | INFO | [62/99] COP: Updated | +3 new rows
+2026-07-23 14:36:42,732 | INFO | [63/99] SLB: Updated | +3 new rows
+2026-07-23 14:36:43,464 | INFO | [64/99] EOG: Updated | +3 new rows
+2026-07-23 14:36:44,125 | INFO | [65/99] PSX: Updated | +3 new rows
+2026-07-23 14:36:44,867 | INFO | [66/99] OXY: Updated | +3 new rows
+2026-07-23 14:36:45,683 | INFO | [67/99] BA: Updated | +3 new rows
+2026-07-23 14:36:46,501 | INFO | [68/99] CAT: Updated | +3 new rows
+2026-07-23 14:36:47,310 | INFO | [69/99] GE: Updated | +3 new rows
+2026-07-23 14:36:48,132 | INFO | [70/99] HON: Updated | +3 new rows
+2026-07-23 14:36:48,832 | INFO | [71/99] UPS: Updated | +3 new rows
+2026-07-23 14:36:49,658 | INFO | [72/99] RTX: Updated | +3 new rows
+2026-07-23 14:36:50,490 | INFO | [73/99] LMT: Updated | +3 new rows
+2026-07-23 14:36:51,307 | INFO | [74/99] DE: Updated | +3 new rows
+2026-07-23 14:36:52,117 | INFO | [75/99] MMM: Updated | +3 new rows
+2026-07-23 14:36:52,912 | INFO | [76/99] UNP: Updated | +3 new rows
+2026-07-23 14:36:53,686 | INFO | [77/99] T: Updated | +3 new rows
+2026-07-23 14:36:54,439 | INFO | [78/99] VZ: Updated | +3 new rows
+2026-07-23 14:36:55,105 | INFO | [79/99] TMUS: Updated | +3 new rows
+2026-07-23 14:36:55,879 | INFO | [80/99] CMCSA: Updated | +3 new rows
+2026-07-23 14:36:56,543 | INFO | [81/99] NFLX: Updated | +3 new rows
+2026-07-23 14:36:57,175 | INFO | [82/99] SNAP: Updated | +3 new rows
+2026-07-23 14:36:57,968 | INFO | [83/99] NEE: Updated | +3 new rows
+2026-07-23 14:36:58,722 | INFO | [84/99] DUK: Updated | +3 new rows
+2026-07-23 14:36:59,480 | INFO | [85/99] SO: Updated | +3 new rows
+2026-07-23 14:37:00,185 | INFO | [86/99] AMT: Updated | +3 new rows
+2026-07-23 14:37:00,896 | INFO | [87/99] PLD: Updated | +3 new rows
+2026-07-23 14:37:01,611 | INFO | [88/99] O: Updated | +3 new rows
+2026-07-23 14:37:02,329 | INFO | [89/99] SPY: Updated | +3 new rows
+2026-07-23 14:37:03,011 | INFO | [90/99] QQQ: Updated | +3 new rows
+2026-07-23 14:37:03,739 | INFO | [91/99] DIA: Updated | +3 new rows
+2026-07-23 14:37:04,432 | INFO | [92/99] IWM: Updated | +3 new rows
+2026-07-23 14:37:05,127 | INFO | [93/99] VTI: Updated | +3 new rows
+2026-07-23 14:37:05,769 | INFO | [94/99] TSLA: Updated | +3 new rows
+2026-07-23 14:37:06,399 | INFO | [95/99] PLTR: Updated | +3 new rows
+2026-07-23 14:37:07,029 | INFO | [96/99] SNOW: Updated | +3 new rows
+2026-07-23 14:37:07,653 | INFO | [97/99] COIN: Updated | +3 new rows
+2026-07-23 14:37:08,281 | INFO | [98/99] RIVN: Updated | +3 new rows
+2026-07-23 14:37:08,921 | INFO | [99/99] SHOP: Updated | +3 new rows
+2026-07-23 14:37:09,422 | INFO | Pipeline complete — 99 success | 0 failed
+2026-07-23 14:37:09,427 | INFO | Summary saved to data/earliest_dates_summary.csv
