@@ -54,6 +54,7 @@ def upload_csv(ticker: str):
         return True
     except Exception as e:
         print(f"  ✗ {ticker}: upload failed — {e}")
+        traceback.print_exc()
         return False
 
 
