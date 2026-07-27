@@ -2438,3 +2438,23 @@
 2026-07-27 17:02:26,776 | INFO | [99/99] SHOP: Already up to date
 2026-07-27 17:02:27,277 | INFO | Pipeline complete — 99 success | 0 failed
 2026-07-27 17:02:27,279 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-07-27 17:13:41,660 | INFO | [83/99] NEE: Already up to date
+2026-07-27 17:13:42,530 | INFO | [84/99] DUK: Already up to date
+2026-07-27 17:13:43,864 | ERROR | $SO: possibly delisted; no price data found  (1d 2026-07-24 -> 2026-07-27)
+2026-07-27 17:13:43,865 | INFO | [85/99] SO: Already up to date
+2026-07-27 17:13:44,664 | INFO | [86/99] AMT: Already up to date
+2026-07-27 17:13:45,457 | INFO | [87/99] PLD: Already up to date
+2026-07-27 17:13:46,251 | INFO | [88/99] O: Already up to date
+2026-07-27 17:13:47,101 | INFO | [89/99] SPY: Already up to date
+2026-07-27 17:13:47,877 | INFO | [90/99] QQQ: Already up to date
+2026-07-27 17:13:48,689 | INFO | [91/99] DIA: Already up to date
+2026-07-27 17:13:49,484 | INFO | [92/99] IWM: Already up to date
+2026-07-27 17:13:50,333 | INFO | [93/99] VTI: Already up to date
+2026-07-27 17:13:51,043 | INFO | [94/99] TSLA: Already up to date
+2026-07-27 17:13:51,783 | INFO | [95/99] PLTR: Already up to date
+2026-07-27 17:13:52,459 | INFO | [96/99] SNOW: Already up to date
+2026-07-27 17:13:53,150 | INFO | [97/99] COIN: Already up to date
+2026-07-27 17:13:53,876 | INFO | [98/99] RIVN: Already up to date
+2026-07-27 17:13:54,579 | INFO | [99/99] SHOP: Already up to date
+2026-07-27 17:13:55,079 | INFO | Pipeline complete — 99 success | 0 failed
+2026-07-27 17:13:55,081 | INFO | Summary saved to data/earliest_dates_summary.csv
