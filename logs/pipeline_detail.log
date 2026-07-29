@@ -4098,3 +4098,23 @@
 2026-07-29 17:52:45,795 | INFO | [99/99] SHOP: Already up to date
 2026-07-29 17:52:46,295 | INFO | Pipeline complete — 99 success | 0 failed
 2026-07-29 17:52:46,298 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-07-29 18:03:27,858 | ERROR | $DIA: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:27,859 | INFO | [91/99] DIA: Already up to date
+2026-07-29 18:03:28,524 | ERROR | $IWM: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:28,525 | INFO | [92/99] IWM: Already up to date
+2026-07-29 18:03:29,229 | ERROR | $VTI: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:29,230 | INFO | [93/99] VTI: Already up to date
+2026-07-29 18:03:29,838 | ERROR | $TSLA: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:29,840 | INFO | [94/99] TSLA: Already up to date
+2026-07-29 18:03:30,430 | ERROR | $PLTR: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:30,431 | INFO | [95/99] PLTR: Already up to date
+2026-07-29 18:03:31,026 | ERROR | $SNOW: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:31,027 | INFO | [96/99] SNOW: Already up to date
+2026-07-29 18:03:31,624 | ERROR | $COIN: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:31,625 | INFO | [97/99] COIN: Already up to date
+2026-07-29 18:03:32,223 | ERROR | $RIVN: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:32,224 | INFO | [98/99] RIVN: Already up to date
+2026-07-29 18:03:32,822 | ERROR | $SHOP: possibly delisted; no price data found  (1d 2026-07-28 -> 2026-07-29)
+2026-07-29 18:03:32,823 | INFO | [99/99] SHOP: Already up to date
+2026-07-29 18:03:33,323 | INFO | Pipeline complete — 99 success | 0 failed
+2026-07-29 18:03:33,326 | INFO | Summary saved to data/earliest_dates_summary.csv
