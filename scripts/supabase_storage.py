@@ -16,9 +16,10 @@ load_dotenv()
 import os
 import requests
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+SUPABASE_URL = (os.environ.get("SUPABASE_URL") or "").strip()
+SUPABASE_KEY = (os.environ.get("SUPABASE_KEY") or "").strip()
 BUCKET_NAME = "stock-data"
 DATA_DIR = Path("data/raw")
 
@@ -88,17 +89,30 @@ def download_csv(ticker: str) -> bool:
         return False
 
 
+MAX_WORKERS = 20  # concurrent HTTP requests; tune based on Supabase rate limits
+
+
 def upload_all(tickers: list):
-    """Upload all ticker CSVs to Supabase."""
+    """Upload all ticker CSVs to Supabase in parallel."""
     print(f"Uploading {len(tickers)} tickers to Supabase...")
-    success = sum(upload_csv(t) for t in tickers)
+    success = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(upload_csv, t): t for t in tickers}
+        for future in as_completed(futures):
+            if future.result():
+                success += 1
     print(f"Done: {success}/{len(tickers)} uploaded")
 
 
 def download_all(tickers: list):
-    """Download all ticker CSVs from Supabase."""
+    """Download all ticker CSVs from Supabase in parallel."""
     print(f"Downloading {len(tickers)} tickers from Supabase...")
-    success = sum(download_csv(t) for t in tickers)
+    success = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(download_csv, t): t for t in tickers}
+        for future in as_completed(futures):
+            if future.result():
+                success += 1
     print(f"Done: {success}/{len(tickers)} downloaded")
 
 
