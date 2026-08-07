@@ -10858,3 +10858,43 @@ Nothing changed — skipping Supabase upload entirely
 
 0 tickers changed, 99 already up to date (skipping upload for those)
 Nothing changed — skipping Supabase upload entirely
+2026-08-07 18:18:44,813 | INFO | [65/99] COP: Already up to date
+2026-08-07 18:18:44,945 | INFO | [66/99] OXY: Already up to date
+2026-08-07 18:18:44,975 | INFO | [67/99] UPS: Already up to date
+2026-08-07 18:18:44,985 | INFO | [68/99] BA: Already up to date
+2026-08-07 18:18:45,032 | INFO | [69/99] CAT: Already up to date
+2026-08-07 18:18:45,051 | INFO | [70/99] GE: Already up to date
+2026-08-07 18:18:45,074 | INFO | [71/99] RTX: Already up to date
+2026-08-07 18:18:45,089 | INFO | [72/99] HON: Already up to date
+2026-08-07 18:18:45,098 | INFO | [73/99] LMT: Already up to date
+2026-08-07 18:18:45,202 | INFO | [74/99] DE: Already up to date
+2026-08-07 18:18:45,222 | INFO | [75/99] UNP: Already up to date
+2026-08-07 18:18:45,231 | INFO | [76/99] NFLX: Already up to date
+2026-08-07 18:18:45,240 | INFO | [77/99] MMM: Already up to date
+2026-08-07 18:18:45,251 | INFO | [78/99] TMUS: Already up to date
+2026-08-07 18:18:45,279 | INFO | [79/99] T: Already up to date
+2026-08-07 18:18:45,291 | INFO | [80/99] VZ: Already up to date
+2026-08-07 18:18:45,314 | INFO | [81/99] CMCSA: Already up to date
+2026-08-07 18:18:45,336 | INFO | [82/99] SNAP: Already up to date
+2026-08-07 18:18:45,426 | INFO | [83/99] AMT: Already up to date
+2026-08-07 18:18:45,511 | INFO | [84/99] SO: Already up to date
+2026-08-07 18:18:45,529 | INFO | [85/99] DUK: Already up to date
+2026-08-07 18:18:45,532 | INFO | [86/99] QQQ: Already up to date
+2026-08-07 18:18:45,543 | INFO | [87/99] SPY: Already up to date
+2026-08-07 18:18:45,589 | INFO | [88/99] O: Already up to date
+2026-08-07 18:18:45,590 | INFO | [89/99] NEE: Already up to date
+2026-08-07 18:18:45,591 | INFO | [90/99] PLD: Already up to date
+2026-08-07 18:18:45,625 | INFO | [91/99] DIA: Already up to date
+2026-08-07 18:18:45,643 | INFO | [92/99] PLTR: Already up to date
+2026-08-07 18:18:45,679 | INFO | [93/99] TSLA: Already up to date
+2026-08-07 18:18:45,687 | INFO | [94/99] COIN: Already up to date
+2026-08-07 18:18:45,698 | INFO | [95/99] SNOW: Already up to date
+2026-08-07 18:18:45,702 | INFO | [96/99] RIVN: Already up to date
+2026-08-07 18:18:45,710 | INFO | [97/99] SHOP: Already up to date
+2026-08-07 18:18:45,718 | INFO | [98/99] IWM: Already up to date
+2026-08-07 18:18:45,725 | INFO | [99/99] VTI: Already up to date
+2026-08-07 18:18:45,726 | INFO | Pipeline complete — 99 success | 0 failed
+2026-08-07 18:18:45,728 | INFO | Summary saved to data/earliest_dates_summary.csv
+
+0 tickers changed, 99 already up to date (skipping upload for those)
+Nothing changed — skipping Supabase upload entirely
