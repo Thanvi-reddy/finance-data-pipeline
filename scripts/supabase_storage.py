@@ -1,3 +1,4 @@
+
 """
 Supabase Storage Integration
 -----------------------------
@@ -17,6 +18,8 @@ import os
 import requests
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 SUPABASE_URL = (os.environ.get("SUPABASE_URL") or "").strip()
 SUPABASE_KEY = (os.environ.get("SUPABASE_KEY") or "").strip()
@@ -27,6 +30,34 @@ DATA_DIR = Path("data/raw")
 def _check_config():
     if not SUPABASE_URL or not SUPABASE_KEY:
         raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set as environment variables")
+
+
+def _make_session():
+    """Session with connection pooling sized for our concurrency level,
+    plus limited automatic retry on connection resets / transient 5xx errors.
+    Kept low (total=2) because each retry can re-consume the full timeout —
+    a single stuck request with too many retries can hold up the whole batch."""
+    session = requests.Session()
+    retry = Retry(
+        total=2,
+        backoff_factor=0.3,
+        status_forcelist=[500, 502, 503, 504],
+        allowed_methods=["GET", "POST", "PUT"],
+    )
+    adapter = HTTPAdapter(pool_connections=MAX_WORKERS, pool_maxsize=MAX_WORKERS, max_retries=retry)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
+
+
+_session = None
+
+
+def _get_session():
+    global _session
+    if _session is None:
+        _session = _make_session()
+    return _session
 
 
 def _headers(content_type: str = None):
@@ -55,7 +86,7 @@ def upload_csv(ticker: str) -> bool:
     headers["x-upsert"] = "true"  # overwrite if it already exists
 
     try:
-        resp = requests.post(url, headers=headers, data=data, timeout=30)
+        resp = _get_session().post(url, headers=headers, data=data, timeout=15)
         if resp.status_code in (200, 201):
             print(f"  ✓ {ticker}: uploaded")
             return True
@@ -74,7 +105,7 @@ def download_csv(ticker: str) -> bool:
 
     url = f"{SUPABASE_URL}/storage/v1/object/{BUCKET_NAME}/{ticker}_max.csv"
     try:
-        resp = requests.get(url, headers=_headers(), timeout=30)
+        resp = _get_session().get(url, headers=_headers(), timeout=15)
         if resp.status_code == 200:
             filepath = DATA_DIR / f"{ticker}_max.csv"
             with open(filepath, "wb") as f:
@@ -89,30 +120,66 @@ def download_csv(ticker: str) -> bool:
         return False
 
 
-MAX_WORKERS = 20  # concurrent HTTP requests; tune based on Supabase rate limits
+MAX_WORKERS = 10  # middle ground: 20 caused timeouts, 6 was safe but slow.
+                   # Retry logic above should absorb occasional failures at this level.
 
 
 def upload_all(tickers: list):
-    """Upload all ticker CSVs to Supabase in parallel."""
+    """Upload all ticker CSVs to Supabase in parallel, then retry any
+    failures once, sequentially (handles occasional connection blips
+    without slowing down the main batch)."""
     print(f"Uploading {len(tickers)} tickers to Supabase...")
+    failed = []
     success = 0
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {executor.submit(upload_csv, t): t for t in tickers}
         for future in as_completed(futures):
+            ticker = futures[future]
             if future.result():
                 success += 1
+            else:
+                failed.append(ticker)
+
+    if failed:
+        print(f"\nRetrying {len(failed)} failed upload(s)...")
+        still_failed = []
+        for ticker in failed:
+            if upload_csv(ticker):
+                success += 1
+            else:
+                still_failed.append(ticker)
+        if still_failed:
+            print(f"Still failed after retry: {still_failed}")
+
     print(f"Done: {success}/{len(tickers)} uploaded")
 
 
 def download_all(tickers: list):
-    """Download all ticker CSVs from Supabase in parallel."""
+    """Download all ticker CSVs from Supabase in parallel, then retry any
+    failures once, sequentially."""
     print(f"Downloading {len(tickers)} tickers from Supabase...")
+    failed = []
     success = 0
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {executor.submit(download_csv, t): t for t in tickers}
         for future in as_completed(futures):
+            ticker = futures[future]
             if future.result():
                 success += 1
+            else:
+                failed.append(ticker)
+
+    if failed:
+        print(f"\nRetrying {len(failed)} failed download(s)...")
+        still_failed = []
+        for ticker in failed:
+            if download_csv(ticker):
+                success += 1
+            else:
+                still_failed.append(ticker)
+        if still_failed:
+            print(f"Still failed after retry: {still_failed}")
+
     print(f"Done: {success}/{len(tickers)} downloaded")
 
 
