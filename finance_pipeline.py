@@ -1,5 +1,5 @@
 """
-Finance Data Pipeline — Automation Core
+Finance Data Pipeline
 -----------------------------------------
 Runs automatically with zero user input.
 Can be called by scheduler, agent, or n8n.
@@ -14,6 +14,7 @@ import time
 import csv
 import logging
 from datetime import date
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 DATA_DIR = "data/raw"
 TICKERS_FILE = "tickers.csv"
@@ -21,6 +22,11 @@ SUMMARY_FILE = "data/earliest_dates_summary.csv"
 LOG_FILE = "data/pipeline.log"
 MAX_RETRIES = 3
 RETRY_DELAY = 3
+
+# Keep this modest — yfinance can start throttling/rate-limiting if hit
+# with too many simultaneous requests. 8 is a safe starting point;
+# lower it if you start seeing more "failed" tickers than before.
+MAX_WORKERS = 8
 
 # Setup logging
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -67,7 +73,7 @@ def download_ticker(ticker):
                     new_data.index = pd.to_datetime(new_data.index, utc=True)
                 last_date_naive = last_date.tz_localize(None) if last_date.tzinfo else last_date
                 new_data.index = pd.to_datetime(new_data.index).tz_localize(None)
-                new_data = new_data[new_data.index > last_date_naive]           
+                new_data = new_data[new_data.index > last_date_naive]
                 if new_data.empty:
                     return {
                         "ticker": ticker,
@@ -142,23 +148,25 @@ def run_pipeline(tickers=None):
     if tickers is None:
         tickers = load_tickers()
 
-    log.info(f"Pipeline started — {len(tickers)} tickers")
+    log.info(f"Pipeline started — {len(tickers)} tickers (parallel, {MAX_WORKERS} workers)")
     results = []
+    completed = 0
 
-    for i, ticker in enumerate(tickers, 1):
-        result = download_ticker(ticker)
-        results.append(result)
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(download_ticker, t): t for t in tickers}
+        for future in as_completed(futures):
+            result = future.result()
+            results.append(result)
+            completed += 1
 
-        if result["status"] == "downloaded":
-            log.info(f"[{i}/{len(tickers)}] {ticker}: Full download | {result['rows']} rows | from {result['earliest_date']}")
-        elif result["status"] == "updated":
-            log.info(f"[{i}/{len(tickers)}] {ticker}: Updated | +{result['new_rows']} new rows")
-        elif result["status"] == "up_to_date":
-            log.info(f"[{i}/{len(tickers)}] {ticker}: Already up to date")
-        else:
-            log.error(f"[{i}/{len(tickers)}] {ticker}: Failed")
-
-        time.sleep(0.5)
+            if result["status"] == "downloaded":
+                log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Full download | {result['rows']} rows | from {result['earliest_date']}")
+            elif result["status"] == "updated":
+                log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Updated | +{result['new_rows']} new rows")
+            elif result["status"] == "up_to_date":
+                log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Already up to date")
+            else:
+                log.error(f"[{completed}/{len(tickers)}] {result['ticker']}: Failed")
 
     success = len([r for r in results if r["status"] != "failed"])
     failed = len([r for r in results if r["status"] == "failed"])

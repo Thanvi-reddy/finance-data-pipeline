@@ -1,28 +1,31 @@
 name: Scheduled Stock Download
-
 on:
   workflow_dispatch:
   repository_dispatch:
     types: [supabase-trigger]
 
+# Prevents overlapping/piled-up runs: if a run is already in progress,
+# the next trigger waits in a single-slot queue instead of GitHub
+# spinning up many concurrent jobs (which was overwhelming the
+# hosted-runner allocation and causing "Service Unavailable" failures).
+concurrency:
+  group: scheduled-stock-download
+  cancel-in-progress: false
+
 jobs:
   download:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Market-hours guard
         id: guard
         continue-on-error: true
         run: python scripts/market_guard.py
-
       - name: Download CSVs from Supabase
         if: steps.guard.outcome == 'success'
         env:
@@ -36,7 +39,6 @@ jobs:
               tickers = [row['ticker'].strip() for row in csv.DictReader(f)]
           download_all(tickers)
           "
-
       - name: Run download (only if market open)
         if: steps.guard.outcome == 'success'
         run: |
@@ -44,7 +46,6 @@ jobs:
           echo "RUN $(date -u) - market open, downloading" | tee -a logs/run.log
           python finance_pipeline.py 2>&1 | tail -20 | tee -a logs/pipeline_detail.log
           echo "RUN $(date -u) - download complete" | tee -a logs/run.log
-
       - name: Upload updated CSVs to Supabase
         if: steps.guard.outcome == 'success'
         env:
@@ -58,13 +59,11 @@ jobs:
               tickers = [row['ticker'].strip() for row in csv.DictReader(f)]
           upload_all(tickers)
           "
-
       - name: Log skip (market closed)
         if: steps.guard.outcome == 'failure'
         run: |
           mkdir -p logs
           echo "SKIP $(date -u) - market closed" | tee -a logs/run.log
-
       - name: Commit logs and data
         run: |
           git config user.name 'github-actions'
