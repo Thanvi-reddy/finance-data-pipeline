@@ -6,8 +6,7 @@ on:
 
 # Prevents overlapping/piled-up runs: if a run is already in progress,
 # the next trigger waits in a single-slot queue instead of GitHub
-# spinning up many concurrent jobs (which was overwhelming the
-# hosted-runner allocation and causing "Service Unavailable" failures).
+# spinning up many concurrent jobs.
 concurrency:
   group: scheduled-stock-download
   cancel-in-progress: false
@@ -26,28 +25,12 @@ jobs:
         id: guard
         continue-on-error: true
         run: python scripts/market_guard.py
-      - name: Download CSVs from Supabase
+      - name: Run pipeline (data/raw already up to date from git checkout)
         if: steps.guard.outcome == 'success'
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: |
-          python -c "
-          import os, csv
-          from scripts.supabase_storage import download_all
-          with open('tickers.csv') as f:
-              tickers = [row['ticker'].strip() for row in csv.DictReader(f)]
-          download_all(tickers)
-          "
-      - name: Run pipeline and sync changed tickers to Supabase
-        if: steps.guard.outcome == 'success'
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
           mkdir -p logs
           echo "RUN $(date -u) - market open, downloading" | tee -a logs/run.log
-          python scripts/run_and_sync.py 2>&1 | tail -40 | tee -a logs/pipeline_detail.log
+          python finance_pipeline.py 2>&1 | tail -40 | tee -a logs/pipeline_detail.log
           echo "RUN $(date -u) - download complete" | tee -a logs/run.log
       - name: Log skip (market closed)
         if: steps.guard.outcome == 'failure'
@@ -58,6 +41,7 @@ jobs:
         run: |
           git config user.name 'github-actions'
           git config user.email 'actions@github.com'
-          git add logs/ data/earliest_dates_summary.csv || true
+          git add logs/ data/raw/ data/earliest_dates_summary.csv data/pipeline.log || true
           git commit -m "scheduled run $(date -u)" || echo 'nothing to commit'
+          git pull --no-rebase --strategy-option=ours || true
           git push || echo 'nothing to push'
