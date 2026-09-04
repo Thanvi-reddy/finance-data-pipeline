@@ -16,9 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Market-hours guard
@@ -43,5 +46,5 @@ jobs:
           git config user.email 'actions@github.com'
           git add logs/ data/raw/ data/earliest_dates_summary.csv data/pipeline.log || true
           git commit -m "scheduled run $(date -u)" || echo 'nothing to commit'
-          git pull --no-rebase --strategy-option=ours || true
+          git pull --no-rebase --depth=1 --strategy-option=ours || true
           git push || echo 'nothing to push'
