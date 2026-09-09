@@ -13,7 +13,7 @@ import os
 import time
 import csv
 import logging
-from datetime import date
+from datetime import date, datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 DATA_DIR = "data/raw"
@@ -50,8 +50,25 @@ def load_existing(ticker):
     if os.path.exists(filepath):
         df = pd.read_csv(filepath, index_col=0)
         df.index = pd.to_datetime(df.index, utc=True).tz_convert(None)
+        # Older files won't have download_ts yet — add it as missing so
+        # dedupe/merge logic below doesn't break on legacy rows.
+        if "download_ts" not in df.columns:
+            df["download_ts"] = pd.NA
         return df
     return None
+
+
+def dedupe(df):
+    """Drop duplicate rows on the (date-index) key, keeping the latest
+    download_ts for each. Returns (deduped_df, num_duplicates_removed)."""
+    before = len(df)
+    # Index (data timestamp) is the dedupe key per the checklist.
+    # Sort so the most recent download_ts wins when duplicates exist.
+    df = df.sort_values("download_ts")
+    df = df[~df.index.duplicated(keep="last")]
+    df = df.sort_index()
+    removed = before - len(df)
+    return df, removed
 
 
 def download_ticker(ticker):
@@ -59,10 +76,13 @@ def download_ticker(ticker):
     existing = load_existing(ticker)
     attempt = 0
     last_error = None
+    dupes_removed = 0
 
     while attempt < MAX_RETRIES:
         attempt += 1
         try:
+            download_time = datetime.now(timezone.utc).isoformat()
+
             if existing is not None:
                 last_date = existing.index.max()
                 new_data = yf.Ticker(ticker).history(
@@ -74,6 +94,7 @@ def download_ticker(ticker):
                 last_date_naive = last_date.tz_localize(None) if last_date.tzinfo else last_date
                 new_data.index = pd.to_datetime(new_data.index).tz_localize(None)
                 new_data = new_data[new_data.index > last_date_naive]
+
                 if new_data.empty:
                     return {
                         "ticker": ticker,
@@ -82,9 +103,14 @@ def download_ticker(ticker):
                         "earliest_date": str(existing.index.min().date()),
                         "latest_date": str(existing.index.max().date()),
                         "new_rows": 0,
+                        "duplicates_removed": 0,
                     }
+
+                new_data["download_ts"] = download_time
                 combined = pd.concat([existing, new_data])
+                combined, dupes_removed = dedupe(combined)
                 combined.to_csv(get_filepath(ticker))
+
                 return {
                     "ticker": ticker,
                     "status": "updated",
@@ -92,6 +118,7 @@ def download_ticker(ticker):
                     "earliest_date": str(combined.index.min().date()),
                     "latest_date": str(combined.index.max().date()),
                     "new_rows": len(new_data),
+                    "duplicates_removed": dupes_removed,
                 }
             else:
                 data = yf.Ticker(ticker).history(period="max")
@@ -103,7 +130,10 @@ def download_ticker(ticker):
                         "earliest_date": None,
                         "latest_date": None,
                         "new_rows": 0,
+                        "duplicates_removed": 0,
                     }
+                data["download_ts"] = download_time
+                data, dupes_removed = dedupe(data)
                 data.to_csv(get_filepath(ticker))
                 return {
                     "ticker": ticker,
@@ -112,6 +142,7 @@ def download_ticker(ticker):
                     "earliest_date": str(data.index.min().date()),
                     "latest_date": str(data.index.max().date()),
                     "new_rows": len(data),
+                    "duplicates_removed": dupes_removed,
                 }
         except Exception as e:
             last_error = str(e)
@@ -126,6 +157,7 @@ def download_ticker(ticker):
         "earliest_date": None,
         "latest_date": None,
         "new_rows": 0,
+        "duplicates_removed": 0,
     }
 
 
@@ -139,7 +171,7 @@ def load_tickers():
 def save_summary(results):
     rows = [r for r in results if r["status"] != "failed"]
     if rows:
-        df = pd.DataFrame(rows)[["ticker", "earliest_date", "latest_date", "rows", "status"]]
+        df = pd.DataFrame(rows)[["ticker", "earliest_date", "latest_date", "rows", "status", "duplicates_removed"]]
         df.to_csv(SUMMARY_FILE, index=False)
         log.info(f"Summary saved to {SUMMARY_FILE}")
 
@@ -151,6 +183,7 @@ def run_pipeline(tickers=None):
     log.info(f"Pipeline started — {len(tickers)} tickers (parallel, {MAX_WORKERS} workers)")
     results = []
     completed = 0
+    total_dupes = 0
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = {executor.submit(download_ticker, t): t for t in tickers}
@@ -158,11 +191,13 @@ def run_pipeline(tickers=None):
             result = future.result()
             results.append(result)
             completed += 1
+            total_dupes += result.get("duplicates_removed", 0)
 
             if result["status"] == "downloaded":
                 log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Full download | {result['rows']} rows | from {result['earliest_date']}")
             elif result["status"] == "updated":
-                log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Updated | +{result['new_rows']} new rows")
+                dupe_note = f" | {result['duplicates_removed']} dupes removed" if result['duplicates_removed'] else ""
+                log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Updated | +{result['new_rows']} new rows{dupe_note}")
             elif result["status"] == "up_to_date":
                 log.info(f"[{completed}/{len(tickers)}] {result['ticker']}: Already up to date")
             else:
@@ -170,7 +205,7 @@ def run_pipeline(tickers=None):
 
     success = len([r for r in results if r["status"] != "failed"])
     failed = len([r for r in results if r["status"] == "failed"])
-    log.info(f"Pipeline complete — {success} success | {failed} failed")
+    log.info(f"Pipeline complete — {success} success | {failed} failed | {total_dupes} total duplicates removed")
 
     save_summary(results)
     return results
