@@ -290,7 +290,7 @@
   </div>
 
   <div id="chart-wrap">
-    <div id="chart"><div id="loading">Loading chart…</div></div>
+    <div id="chart"></div>
     <div id="volume-chart"></div>
   </div>
 </div>
@@ -467,20 +467,48 @@ function renderChart(sym){
   const sliced = currentRange > 0 ? rows.slice(-currentRange) : rows;
   const dates = sliced.map(r => r.Date);
 
-  const candle = {
-    x: dates,
-    open: sliced.map(r => r.Open),
-    high: sliced.map(r => r.High),
-    low: sliced.map(r => r.Low),
-    close: sliced.map(r => r.Close),
-    type: 'candlestick',
-    name: sym,
-    increasing: {line:{color:'#3FBF8F'}, fillcolor:'rgba(63,191,143,0.5)'},
-    decreasing: {line:{color:'#E5615A'}, fillcolor:'rgba(229,97,90,0.5)'},
-    hovertemplate: 'Open $%{open:.2f}<br>High $%{high:.2f}<br>Low $%{low:.2f}<br>Close $%{close:.2f}<extra></extra>'
-  };
+  // Candlesticks only make sense when there are few enough bars to read
+  // individually. Beyond ~120 bars they visually merge into a solid
+  // blob (this is why real finance sites switch to a line for 1Y/5Y/Max
+  // views and only use candles for short, zoomed-in ranges).
+  const useCandles = sliced.length <= 120;
+  const traces = [];
 
-  const traces = [candle];
+  if(useCandles){
+    traces.push({
+      x: dates,
+      open: sliced.map(r => r.Open),
+      high: sliced.map(r => r.High),
+      low: sliced.map(r => r.Low),
+      close: sliced.map(r => r.Close),
+      type: 'candlestick',
+      name: sym,
+      showlegend: false,
+      increasing: {line:{color:'#3FBF8F'}, fillcolor:'rgba(63,191,143,0.5)'},
+      decreasing: {line:{color:'#E5615A'}, fillcolor:'rgba(229,97,90,0.5)'},
+      text: sliced.map(r => r.Date),
+      hovertemplate:
+        '<b>%{text}</b><br>' +
+        'Open&nbsp;&nbsp;$%{open:.2f}<br>' +
+        'High&nbsp;&nbsp;$%{high:.2f}<br>' +
+        'Low&nbsp;&nbsp;&nbsp;$%{low:.2f}<br>' +
+        'Close&nbsp;$%{close:.2f}<extra></extra>'
+    });
+  } else {
+    const closes = sliced.map(r => r.Close);
+    const isUp = closes[closes.length-1] >= closes[0];
+    traces.push({
+      x: dates, y: closes,
+      type: 'scatter', mode: 'lines',
+      name: sym,
+      showlegend: false,
+      line: {color: isUp ? '#3FBF8F' : '#E5615A', width: 1.8},
+      fill: 'tozeroy',
+      fillcolor: isUp ? 'rgba(63,191,143,0.07)' : 'rgba(229,97,90,0.07)',
+      text: dates,
+      hovertemplate: '<b>%{text}</b><br>Close $%{y:.2f}<extra></extra>'
+    });
+  }
 
   if(showMA){
     const closes = sliced.map(r => r.Close);
@@ -518,7 +546,8 @@ function renderChart(sym){
         return r.Close >= sliced[i-1].Close ? 'rgba(63,191,143,0.5)' : 'rgba(229,97,90,0.5)';
       })
     },
-    hovertemplate: 'Vol %{y:,.0f}<extra></extra>'
+    text: dates,
+    hovertemplate: '<b>%{text}</b><br>Volume %{y:,.0f}<extra></extra>'
   };
   const volLayout = {
     paper_bgcolor:'transparent', plot_bgcolor:'transparent',
