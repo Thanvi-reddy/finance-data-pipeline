@@ -90,6 +90,7 @@
   .ticker-row .chg{font-size:12px;color:var(--muted);}
   .ticker-row .chg.up{color:var(--gain);}
   .ticker-row .chg.down{color:var(--loss);}
+  .ticker-row .chg.flat{color:var(--accent);}
 
   /* Main */
   #main{flex:1;min-width:0;padding:26px 36px 40px;}
@@ -133,6 +134,7 @@
   #price-block .delta{font-size:15px;font-weight:600;}
   #price-block .delta.up{color:var(--gain);}
   #price-block .delta.down{color:var(--loss);}
+  #price-block .delta.flat{color:var(--accent);}
 
   #pipeline-status{
     background:var(--panel);
@@ -175,6 +177,7 @@
   .kpi-card .kpi-value{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;}
   .kpi-card .kpi-value.up{color:var(--gain);}
   .kpi-card .kpi-value.down{color:var(--loss);}
+  .kpi-card .kpi-value.flat{color:var(--accent);}
   @media (max-width:900px){#kpi-row{grid-template-columns:repeat(2,1fr);}}
 
   #range-tabs{display:flex;gap:6px;margin-bottom:12px;align-items:center;flex-wrap:wrap;}
@@ -372,6 +375,12 @@ function movingAverage(values, window){
   return out;
 }
 
+function directionClass(delta){
+  if(delta > 0) return "up";
+  if(delta < 0) return "down";
+  return "flat";
+}
+
 async function loadLatestSummary(){
   try{
     const url = `${REPO_RAW}/data/latest.json?t=${Date.now()}`;
@@ -382,12 +391,14 @@ async function loadLatestSummary(){
       const snap = data[sym];
       const el = document.getElementById(`chg-${sym}`);
       if(!el) return;
-      const pct = ((snap.close - snap.prev_close) / snap.prev_close * 100);
-      el.textContent = (pct>=0?"+":"") + pct.toFixed(2) + "%";
-      el.className = "chg " + (pct>=0 ? "up":"down");
+      const change = snap.close - snap.prev_close;
+      const pct = (change / snap.prev_close * 100);
+      const dir = directionClass(change);
+      el.textContent = (pct>0?"+":"") + pct.toFixed(2) + "%";
+      el.className = "chg " + dir;
       if(!el.dataset.counted){
         marketCounts.seen++;
-        if(pct >= 0) marketCounts.up++; else marketCounts.down++;
+        if(dir === "up") marketCounts.up++; else if(dir === "down") marketCounts.down++;
         el.dataset.counted = "1";
       }
     });
@@ -457,16 +468,18 @@ function updateSidebarChange(sym, rows){
   if(!el || rows.length < 2) return;
   const last = rows[rows.length-1].Close;
   const prev = rows[rows.length-2].Close;
-  const pct = ((last-prev)/prev*100);
-  el.textContent = (pct>=0?"+":"") + pct.toFixed(2) + "%";
+  const change = last - prev;
+  const pct = (change/prev*100);
+  const dir = directionClass(change);
+  el.textContent = (pct>0?"+":"") + pct.toFixed(2) + "%";
   const wasCounted = el.dataset.counted;
   if(!wasCounted){
     marketCounts.seen++;
-    if(pct >= 0) marketCounts.up++; else marketCounts.down++;
+    if(dir === "up") marketCounts.up++; else if(dir === "down") marketCounts.down++;
     el.dataset.counted = "1";
     updateMarketOverview();
   }
-  el.className = "chg " + (pct>=0 ? "up":"down");
+  el.className = "chg " + dir;
 }
 
 function updateMarketOverview(){
@@ -481,17 +494,17 @@ function updateKPIs(rows){
   const prev = rows.length > 1 ? rows[rows.length-2] : last;
   const change = last.Close - prev.Close;
   const pct = (change/prev.Close*100);
-  const up = change >= 0;
+  const dir = directionClass(change);
 
   document.getElementById("price").textContent = "$" + last.Close.toFixed(2);
   const deltaEl = document.getElementById("delta");
-  deltaEl.textContent = (change>=0?"+":"") + change.toFixed(2) + " (" + (pct>=0?"+":"") + pct.toFixed(2) + "%)";
-  deltaEl.className = "delta " + (up ? "up":"down");
+  deltaEl.textContent = (change>0?"+":"") + change.toFixed(2) + " (" + (pct>0?"+":"") + pct.toFixed(2) + "%)";
+  deltaEl.className = "delta " + dir;
 
   document.getElementById("kpi-price").textContent = "$" + last.Close.toFixed(2);
   const chEl = document.getElementById("kpi-change");
-  chEl.textContent = (change>=0?"+":"") + change.toFixed(2) + " (" + (pct>=0?"+":"") + pct.toFixed(1) + "%)";
-  chEl.className = "kpi-value " + (up?"up":"down");
+  chEl.textContent = (change>0?"+":"") + change.toFixed(2) + " (" + (pct>0?"+":"") + pct.toFixed(1) + "%)";
+  chEl.className = "kpi-value " + dir;
   document.getElementById("kpi-high").textContent = "$" + Number(last.High).toFixed(2);
   document.getElementById("kpi-low").textContent = "$" + Number(last.Low).toFixed(2);
   const vol = Number(last.Volume) || 0;
@@ -557,7 +570,17 @@ function renderChart(sym){
     });
   } else {
     const closes = sliced.map(r => r.Close);
-    const isUp = closes[closes.length-1] >= closes[0];
+    // Color by TODAY's actual change (last close vs the close before it) —
+    // matches the KPI card and sidebar badge. Three states: up (green),
+    // down (red), and no change at all (neutral blue).
+    let lineColor, fillColor;
+    if(closes.length > 1 && closes[closes.length-1] > closes[closes.length-2]){
+      lineColor = '#3FBF8F'; fillColor = 'rgba(63,191,143,0.07)';
+    } else if(closes.length > 1 && closes[closes.length-1] < closes[closes.length-2]){
+      lineColor = '#E5615A'; fillColor = 'rgba(229,97,90,0.07)';
+    } else {
+      lineColor = '#6E8CFF'; fillColor = 'rgba(110,140,255,0.07)';
+    }
     traces.push({
       x: dates, y: closes,
       type: 'scattergl', mode: 'lines', // WebGL-accelerated — thousands of
@@ -565,9 +588,9 @@ function renderChart(sym){
                                           // of the slower SVG-based 'scatter'
       name: sym,
       showlegend: false,
-      line: {color: isUp ? '#3FBF8F' : '#E5615A', width: 1.8},
+      line: {color: lineColor, width: 1.8},
       fill: 'tozeroy',
-      fillcolor: isUp ? 'rgba(63,191,143,0.07)' : 'rgba(229,97,90,0.07)',
+      fillcolor: fillColor,
       text: dates,
       hovertemplate: '<b>%{text}</b><br>Close $%{y:.2f}<extra></extra>'
     });
