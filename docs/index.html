@@ -399,6 +399,22 @@ async function loadLatestSummary(){
   }
 }
 
+function parseCSV(text){
+  // worker:true runs parsing off the main thread — without this, parsing
+  // an 11,000+ row CSV freezes the entire page (clicks, scrolling,
+  // animations) for the duration, which is exactly the "stuck when data
+  // comes in" symptom.
+  return new Promise((resolve) => {
+    Papa.parse(text, {
+      header: true,
+      dynamicTyping: true,
+      skipEmptyLines: true,
+      worker: true,
+      complete: (results) => resolve(results)
+    });
+  });
+}
+
 let lastRenderedSignature = {};
 
 async function fetchTicker(sym, isPrimary){
@@ -408,7 +424,7 @@ async function fetchTicker(sym, isPrimary){
     const res = await fetch(url);
     if(!res.ok) throw new Error("not found");
     const text = await res.text();
-    const parsed = Papa.parse(text, {header:true, dynamicTyping:true, skipEmptyLines:true});
+    const parsed = await parseCSV(text);
     const rows = parsed.data.filter(r => r.Date);
     cache[sym] = rows;
     if(isPrimary){
