@@ -12,12 +12,14 @@ import pandas as pd
 import os
 import time
 import csv
+import json
 import logging
 from datetime import date, datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 DATA_DIR = "data/raw"
 TICKERS_FILE = "tickers.csv"
+LATEST_SUMMARY_FILE = "data/latest.json"
 SUMMARY_FILE = "data/earliest_dates_summary.csv"
 LOG_FILE = "data/pipeline.log"
 MAX_RETRIES = 3
@@ -71,6 +73,27 @@ def dedupe(df):
     return df, removed
 
 
+def snapshot(df):
+    """Grab just the handful of fields the dashboard sidebar needs from a
+    ticker's dataframe, so we don't have to ship the whole multi-MB CSV
+    just to show a price and a % change badge."""
+    if df is None or len(df) == 0:
+        return None
+    last = df.iloc[-1]
+    prev = df.iloc[-2] if len(df) > 1 else last
+    dl_ts = last.get("download_ts")
+    return {
+        "close": round(float(last["Close"]), 2),
+        "prev_close": round(float(prev["Close"]), 2),
+        "high": round(float(last["High"]), 2),
+        "low": round(float(last["Low"]), 2),
+        "volume": int(last["Volume"]) if pd.notna(last["Volume"]) else 0,
+        "date": str(df.index[-1].date()),
+        "download_ts": None if pd.isna(dl_ts) else str(dl_ts),
+        "rows": len(df),
+    }
+
+
 def download_ticker(ticker):
     ticker = ticker.strip().upper()
     existing = load_existing(ticker)
@@ -104,6 +127,7 @@ def download_ticker(ticker):
                         "latest_date": str(existing.index.max().date()),
                         "new_rows": 0,
                         "duplicates_removed": 0,
+                        "snapshot": snapshot(existing),
                     }
 
                 new_data["download_ts"] = download_time
@@ -119,6 +143,7 @@ def download_ticker(ticker):
                     "latest_date": str(combined.index.max().date()),
                     "new_rows": len(new_data),
                     "duplicates_removed": dupes_removed,
+                    "snapshot": snapshot(combined),
                 }
             else:
                 data = yf.Ticker(ticker).history(period="max")
@@ -143,6 +168,7 @@ def download_ticker(ticker):
                     "latest_date": str(data.index.max().date()),
                     "new_rows": len(data),
                     "duplicates_removed": dupes_removed,
+                    "snapshot": snapshot(data),
                 }
         except Exception as e:
             last_error = str(e)
@@ -174,6 +200,20 @@ def save_summary(results):
         df = pd.DataFrame(rows)[["ticker", "earliest_date", "latest_date", "rows", "status", "duplicates_removed"]]
         df.to_csv(SUMMARY_FILE, index=False)
         log.info(f"Summary saved to {SUMMARY_FILE}")
+
+
+def save_latest_summary(results):
+    """Write one small JSON file with each ticker's latest snapshot.
+    The dashboard reads this single file for the sidebar instead of
+    fetching all 99 full-history CSVs — the thing that was making the
+    live page load slowly."""
+    out = {}
+    for r in results:
+        if r.get("snapshot"):
+            out[r["ticker"]] = r["snapshot"]
+    with open(LATEST_SUMMARY_FILE, "w") as f:
+        json.dump(out, f)
+    log.info(f"Latest snapshot summary saved to {LATEST_SUMMARY_FILE} ({len(out)} tickers)")
 
 
 def run_pipeline(tickers=None):
@@ -208,6 +248,7 @@ def run_pipeline(tickers=None):
     log.info(f"Pipeline complete — {success} success | {failed} failed | {total_dupes} total duplicates removed")
 
     save_summary(results)
+    save_latest_summary(results)
     return results
 
 
