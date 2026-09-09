@@ -371,6 +371,33 @@ function movingAverage(values, window){
   return out;
 }
 
+async function loadLatestSummary(){
+  try{
+    const url = `${REPO_RAW}/data/latest.json?t=${Date.now()}`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error("latest.json not found");
+    const data = await res.json();
+    Object.keys(data).forEach(sym => {
+      const snap = data[sym];
+      const el = document.getElementById(`chg-${sym}`);
+      if(!el) return;
+      const pct = ((snap.close - snap.prev_close) / snap.prev_close * 100);
+      el.textContent = (pct>=0?"+":"") + pct.toFixed(2) + "%";
+      el.className = "chg " + (pct>=0 ? "up":"down");
+      if(!el.dataset.counted){
+        marketCounts.seen++;
+        if(pct >= 0) marketCounts.up++; else marketCounts.down++;
+        el.dataset.counted = "1";
+      }
+    });
+    updateMarketOverview();
+    return true;
+  }catch(err){
+    console.warn("latest.json not available yet, falling back to per-ticker fetch", err);
+    return false;
+  }
+}
+
 async function fetchTicker(sym, isPrimary){
   try{
     const url = `${REPO_RAW}/data/raw/${sym}_max.csv?t=${Date.now()}`;
@@ -563,10 +590,18 @@ function renderChart(sym){
 async function init(){
   buildSidebar();
   await fetchTicker(currentTicker, true);
-  TICKERS.filter(s => s !== currentTicker).forEach((sym, i) => {
-    setTimeout(() => fetchTicker(sym, false), i * 120);
-  });
+
+  const summaryOk = await loadLatestSummary();
+  if(!summaryOk){
+    // Fallback for before latest.json exists (e.g. right after this
+    // update deploys, before the next pipeline run has written it).
+    TICKERS.filter(s => s !== currentTicker).forEach((sym, i) => {
+      setTimeout(() => fetchTicker(sym, false), i * 120);
+    });
+  }
+
   setInterval(() => fetchTicker(currentTicker, true), REFRESH_MS);
+  setInterval(loadLatestSummary, REFRESH_MS);
 }
 
 init();
