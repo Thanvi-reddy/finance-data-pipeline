@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ledger — Live Ticker Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.32.0/plotly.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+  :root{
+    --ink:#0B0E14;
+    --panel:#12161F;
+    --panel-2:#171C27;
+    --line:#242B38;
+    --text:#E7ECF3;
+    --muted:#8A93A6;
+    --gain:#3FBF8F;
+    --loss:#E5615A;
+    --accent:#6E8CFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    font-variant-numeric: tabular-nums;
+    display:flex;
+    min-height:100vh;
+  }
+  ::selection{background:var(--accent);color:#fff;}
+
+  /* Sidebar */
+  #sidebar{
+    width:260px;
+    flex-shrink:0;
+    background:var(--panel);
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    position:sticky;
+    top:0;
+  }
+  #brand{
+    padding:22px 20px 16px;
+    border-bottom:1px solid var(--line);
+  }
+  #brand h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:19px;
+    margin:0 0 2px;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  #brand p{margin:0;color:var(--muted);font-size:12.5px;}
+  #search-wrap{padding:14px 16px 8px;}
+  #search{
+    width:100%;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    color:var(--text);
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:13.5px;
+    font-family:inherit;
+  }
+  #search:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  #search::placeholder{color:var(--muted);}
+  #ticker-list{
+    overflow-y:auto;
+    flex:1;
+    padding:4px 8px 16px;
+  }
+  .ticker-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:9px 12px;
+    border-radius:7px;
+    cursor:pointer;
+    margin-bottom:1px;
+    font-size:13.5px;
+  }
+  .ticker-row:hover{background:var(--panel-2);}
+  .ticker-row.active{background:rgba(110,140,255,0.14);}
+  .ticker-row .sym{font-weight:600;}
+  .ticker-row .chg{font-size:12px;color:var(--muted);}
+  .ticker-row .chg.up{color:var(--gain);}
+  .ticker-row .chg.down{color:var(--loss);}
+
+  /* Main */
+  #main{flex:1;min-width:0;padding:26px 36px 40px;}
+
+  /* Market overview strip */
+  #market-overview{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:20px;
+  }
+  #market-overview .dot{width:6px;height:6px;border-radius:50%;background:var(--muted);}
+  #market-overview b{color:var(--text);font-weight:600;}
+  #market-overview .up-count{color:var(--gain);font-weight:600;}
+  #market-overview .down-count{color:var(--loss);font-weight:600;}
+
+  #topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  #price-block .sym-label{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:2px;
+  }
+  #price-block h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:32px;
+    margin:0;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  #price-block .delta{font-size:15px;font-weight:600;}
+  #price-block .delta.up{color:var(--gain);}
+  #price-block .delta.down{color:var(--loss);}
+
+  #pipeline-status{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 16px;
+    min-width:230px;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+  #pipeline-status .row{display:flex;justify-content:space-between;margin-bottom:5px;}
+  #pipeline-status .row:last-child{margin-bottom:0;}
+  #pipeline-status .val{color:var(--text);font-weight:500;}
+  #pulse{
+    display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:var(--gain);margin-right:6px;
+    box-shadow:0 0 0 0 rgba(63,191,143,0.5);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(63,191,143,0.5);}
+    70%{box-shadow:0 0 0 6px rgba(63,191,143,0);}
+    100%{box-shadow:0 0 0 0 rgba(63,191,143,0);}
+  }
+
+  /* KPI cards */
+  #kpi-row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-bottom:20px;
+  }
+  .kpi-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:13px 16px;
+  }
+  .kpi-card .kpi-label{color:var(--muted);font-size:12px;margin-bottom:6px;}
+  .kpi-card .kpi-value{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;}
+  .kpi-card .kpi-value.up{color:var(--gain);}
+  .kpi-card .kpi-value.down{color:var(--loss);}
+  @media (max-width:900px){#kpi-row{grid-template-columns:repeat(2,1fr);}}
+
+  #range-tabs{display:flex;gap:6px;margin-bottom:12px;align-items:center;flex-wrap:wrap;}
+  .range-btn{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--muted);
+    padding:6px 13px;
+    border-radius:7px;
+    font-size:12.5px;
+    font-family:inherit;
+    cursor:pointer;
+  }
+  .range-btn.active{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  .toggle-btn{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--muted);
+    padding:6px 13px;
+    border-radius:7px;
+    font-size:12.5px;
+    font-family:inherit;
+    cursor:pointer;
+    margin-left:auto;
+  }
+  .toggle-btn.on{border-color:var(--accent);color:var(--accent);}
+
+  #chart-wrap{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:8px 4px 4px;
+  }
+  #chart{height:400px;}
+  #volume-chart{height:110px;border-top:1px solid var(--line);}
+
+  #loading{color:var(--muted);font-size:13px;padding:20px;}
+
+  @media (max-width:800px){
+    #sidebar{position:fixed;left:-260px;z-index:10;transition:left .2s;}
+    #sidebar.open{left:0;}
+    #main{padding:20px;}
+    #kpi-row{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="brand">
+    <h1>Ledger</h1>
+    <p>Live feed · 99 tickers</p>
+  </div>
+  <div id="search-wrap">
+    <input id="search" placeholder="Search ticker…" autocomplete="off" />
+  </div>
+  <div id="ticker-list"></div>
+</div>
+
+<div id="main">
+
+  <div id="market-overview">
+    <span class="dot"></span>
+    <span><b id="mo-total">99</b> tickers tracked · <span class="up-count" id="mo-up">—</span> up · <span class="down-count" id="mo-down">—</span> down</span>
+  </div>
+
+  <div id="topbar">
+    <div id="price-block">
+      <div class="sym-label" id="sym-label">AAPL</div>
+      <h2 id="price-line"><span id="price">—</span><span class="delta" id="delta">—</span></h2>
+    </div>
+    <div id="pipeline-status">
+      <div class="row"><span><span id="pulse"></span>Last pulled</span><span class="val" id="last-pulled">—</span></div>
+      <div class="row"><span>Rows on file</span><span class="val" id="row-count">—</span></div>
+      <div class="row"><span>Duplicates caught</span><span class="val" id="dupe-count">—</span></div>
+    </div>
+  </div>
+
+  <div id="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-label">Current Price</div>
+      <div class="kpi-value" id="kpi-price">—</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Day Change</div>
+      <div class="kpi-value" id="kpi-change">—</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">High</div>
+      <div class="kpi-value" id="kpi-high">—</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Low</div>
+      <div class="kpi-value" id="kpi-low">—</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Volume</div>
+      <div class="kpi-value" id="kpi-volume">—</div>
+    </div>
+  </div>
+
+  <div id="range-tabs">
+    <button class="range-btn" data-n="10">10D</button>
+    <button class="range-btn" data-n="30">30D</button>
+    <button class="range-btn" data-n="90">90D</button>
+    <button class="range-btn active" data-n="0">All</button>
+    <button class="toggle-btn" id="ma-toggle">MA 20</button>
+    <button class="toggle-btn" id="reset-zoom">Reset zoom</button>
+  </div>
+
+  <div id="chart-wrap">
+    <div id="chart"><div id="loading">Loading chart…</div></div>
+    <div id="volume-chart"></div>
+  </div>
+</div>
+
+<script>
+const REPO_RAW = "https://raw.githubusercontent.com/Thanvi-reddy/finance-data-pipeline/main";
+const REFRESH_MS = 30000;
+
+const TICKERS = ["AAPL","MSFT","NVDA","GOOGL","META","AMZN","ORCL","ADBE","CRM","INTC","AMD","CSCO",
+"IBM","TXN","QCOM","JPM","BAC","WFC","GS","MS","C","BLK","AXP","SCHW","V","MA","BRK-B","JNJ","UNH",
+"PFE","MRK","ABBV","LLY","TMO","ABT","BMY","AMGN","GILD","CVS","PG","KO","PEP","WMT","COST","MDLZ",
+"CL","KMB","HD","MCD","NKE","SBUX","LOW","TGT","BKNG","TJX","DIS","F","UBER","ABNB","XOM","CVX","COP",
+"SLB","EOG","PSX","OXY","BA","CAT","GE","HON","UPS","RTX","LMT","DE","MMM","UNP","T","VZ","TMUS",
+"CMCSA","NFLX","SNAP","NEE","DUK","SO","AMT","PLD","O","SPY","QQQ","DIA","IWM","VTI","TSLA","PLTR",
+"SNOW","COIN","RIVN","SHOP"];
+
+let currentTicker = "AAPL";
+let currentRange = 0;
+let showMA = false;
+let cache = {};
+let marketCounts = {up:0, down:0, seen:0};
+
+function buildSidebar(){
+  const list = document.getElementById("ticker-list");
+  list.innerHTML = "";
+  TICKERS.forEach(sym => {
+    const row = document.createElement("div");
+    row.className = "ticker-row" + (sym === currentTicker ? " active" : "");
+    row.dataset.sym = sym;
+    row.innerHTML = `<span class="sym">${sym}</span><span class="chg" id="chg-${sym}">…</span>`;
+    row.onclick = () => selectTicker(sym);
+    list.appendChild(row);
+  });
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  const q = e.target.value.trim().toUpperCase();
+  document.querySelectorAll(".ticker-row").forEach(row => {
+    row.style.display = row.dataset.sym.includes(q) ? "flex" : "none";
+  });
+});
+
+document.querySelectorAll(".range-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".range-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentRange = parseInt(btn.dataset.n, 10);
+    renderChart(currentTicker);
+  };
+});
+
+document.getElementById("ma-toggle").onclick = () => {
+  showMA = !showMA;
+  document.getElementById("ma-toggle").classList.toggle("on", showMA);
+  renderChart(currentTicker);
+};
+
+document.getElementById("reset-zoom").onclick = () => {
+  Plotly.relayout('chart', {'xaxis.autorange':true, 'yaxis.autorange':true});
+  Plotly.relayout('volume-chart', {'xaxis.autorange':true, 'yaxis.autorange':true});
+};
+
+function selectTicker(sym){
+  currentTicker = sym;
+  document.querySelectorAll(".ticker-row").forEach(r => r.classList.toggle("active", r.dataset.sym === sym));
+  document.getElementById("sym-label").textContent = sym;
+  fetchTicker(sym, true);
+}
+
+function movingAverage(values, window){
+  const out = [];
+  for(let i=0;i<values.length;i++){
+    if(i < window-1){ out.push(null); continue; }
+    let sum = 0;
+    for(let j=i-window+1;j<=i;j++) sum += values[j];
+    out.push(sum/window);
+  }
+  return out;
+}
+
+async function fetchTicker(sym, isPrimary){
+  try{
+    const url = `${REPO_RAW}/data/raw/${sym}_max.csv?t=${Date.now()}`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error("not found");
+    const text = await res.text();
+    const parsed = Papa.parse(text, {header:true, dynamicTyping:true, skipEmptyLines:true});
+    const rows = parsed.data.filter(r => r.Date);
+    cache[sym] = rows;
+    if(isPrimary){
+      updateKPIs(rows);
+      updatePipelineStatus(rows);
+      renderChart(sym);
+    }
+    updateSidebarChange(sym, rows);
+  }catch(err){
+    console.warn("Failed to load", sym, err);
+  }
+}
+
+function updateSidebarChange(sym, rows){
+  const el = document.getElementById(`chg-${sym}`);
+  if(!el || rows.length < 2) return;
+  const last = rows[rows.length-1].Close;
+  const prev = rows[rows.length-2].Close;
+  const pct = ((last-prev)/prev*100);
+  el.textContent = (pct>=0?"+":"") + pct.toFixed(2) + "%";
+  const wasCounted = el.dataset.counted;
+  if(!wasCounted){
+    marketCounts.seen++;
+    if(pct >= 0) marketCounts.up++; else marketCounts.down++;
+    el.dataset.counted = "1";
+    updateMarketOverview();
+  }
+  el.className = "chg " + (pct>=0 ? "up":"down");
+}
+
+function updateMarketOverview(){
+  document.getElementById("mo-total").textContent = TICKERS.length;
+  document.getElementById("mo-up").textContent = marketCounts.up + " up";
+  document.getElementById("mo-down").textContent = marketCounts.down + " down";
+}
+
+function updateKPIs(rows){
+  if(rows.length < 1) return;
+  const last = rows[rows.length-1];
+  const prev = rows.length > 1 ? rows[rows.length-2] : last;
+  const change = last.Close - prev.Close;
+  const pct = (change/prev.Close*100);
+  const up = change >= 0;
+
+  document.getElementById("price").textContent = "$" + last.Close.toFixed(2);
+  const deltaEl = document.getElementById("delta");
+  deltaEl.textContent = (change>=0?"+":"") + change.toFixed(2) + " (" + (pct>=0?"+":"") + pct.toFixed(2) + "%)";
+  deltaEl.className = "delta " + (up ? "up":"down");
+
+  document.getElementById("kpi-price").textContent = "$" + last.Close.toFixed(2);
+  const chEl = document.getElementById("kpi-change");
+  chEl.textContent = (change>=0?"+":"") + change.toFixed(2) + " (" + (pct>=0?"+":"") + pct.toFixed(1) + "%)";
+  chEl.className = "kpi-value " + (up?"up":"down");
+  document.getElementById("kpi-high").textContent = "$" + Number(last.High).toFixed(2);
+  document.getElementById("kpi-low").textContent = "$" + Number(last.Low).toFixed(2);
+  const vol = Number(last.Volume) || 0;
+  document.getElementById("kpi-volume").textContent = vol >= 1e6 ? (vol/1e6).toFixed(2)+"M" : vol.toLocaleString();
+}
+
+function updatePipelineStatus(rows){
+  if(rows.length < 1) return;
+  const last = rows[rows.length-1];
+  document.getElementById("row-count").textContent = rows.length.toLocaleString();
+  if(last.download_ts){
+    const dt = new Date(last.download_ts);
+    updateAgo(dt);
+    if(window._agoTimer) clearInterval(window._agoTimer);
+    window._agoTimer = setInterval(() => updateAgo(dt), 1000);
+  } else {
+    document.getElementById("last-pulled").textContent = "n/a (legacy row)";
+  }
+  document.getElementById("dupe-count").textContent = "0 this run";
+}
+
+function updateAgo(dt){
+  const secs = Math.floor((Date.now() - dt.getTime())/1000);
+  let label;
+  if(secs < 60) label = secs + "s ago";
+  else if(secs < 3600) label = Math.floor(secs/60) + "m ago";
+  else label = Math.floor(secs/3600) + "h ago";
+  document.getElementById("last-pulled").textContent = label;
+}
+
+function renderChart(sym){
+  const rows = cache[sym];
+  if(!rows || rows.length === 0) return;
+  const sliced = currentRange > 0 ? rows.slice(-currentRange) : rows;
+  const dates = sliced.map(r => r.Date);
+
+  const candle = {
+    x: dates,
+    open: sliced.map(r => r.Open),
+    high: sliced.map(r => r.High),
+    low: sliced.map(r => r.Low),
+    close: sliced.map(r => r.Close),
+    type: 'candlestick',
+    name: sym,
+    increasing: {line:{color:'#3FBF8F'}, fillcolor:'rgba(63,191,143,0.5)'},
+    decreasing: {line:{color:'#E5615A'}, fillcolor:'rgba(229,97,90,0.5)'},
+    hovertemplate: 'Open $%{open:.2f}<br>High $%{high:.2f}<br>Low $%{low:.2f}<br>Close $%{close:.2f}<extra></extra>'
+  };
+
+  const traces = [candle];
+
+  if(showMA){
+    const closes = sliced.map(r => r.Close);
+    const ma = movingAverage(closes, 20);
+    traces.push({
+      x: dates, y: ma,
+      type:'scatter', mode:'lines',
+      line:{color:'#6E8CFF', width:1.5, dash:'dot'},
+      name:'MA 20',
+      hovertemplate:'MA20 $%{y:.2f}<extra></extra>'
+    });
+  }
+
+  const layout = {
+    paper_bgcolor: 'transparent',
+    plot_bgcolor: 'transparent',
+    font: {color: '#8A93A6', family: 'Inter, sans-serif', size: 11},
+    margin: {l:48,r:16,t:12,b:8},
+    xaxis: {gridcolor:'#1C2230', showline:false, zeroline:false, rangeslider:{visible:false}},
+    yaxis: {gridcolor:'#1C2230', showline:false, zeroline:false, tickprefix:'$'},
+    hovermode: 'x unified',
+    showlegend: showMA,
+    legend: {orientation:'h', y:1.12, font:{size:10}}
+  };
+
+  Plotly.newPlot('chart', traces, layout, {displayModeBar:true, modeBarButtonsToRemove:['lasso2d','select2d'], responsive:true});
+
+  const volTrace = {
+    x: dates,
+    y: sliced.map(r => Number(r.Volume)||0),
+    type: 'bar',
+    marker: {
+      color: sliced.map((r,i) => {
+        if(i===0) return 'rgba(138,147,166,0.5)';
+        return r.Close >= sliced[i-1].Close ? 'rgba(63,191,143,0.5)' : 'rgba(229,97,90,0.5)';
+      })
+    },
+    hovertemplate: 'Vol %{y:,.0f}<extra></extra>'
+  };
+  const volLayout = {
+    paper_bgcolor:'transparent', plot_bgcolor:'transparent',
+    font:{color:'#8A93A6', family:'Inter, sans-serif', size:10},
+    margin:{l:48,r:16,t:4,b:24},
+    xaxis:{gridcolor:'#1C2230', showline:false, zeroline:false},
+    yaxis:{gridcolor:'#1C2230', showline:false, zeroline:false, tickformat:'.2s'},
+    showlegend:false
+  };
+  Plotly.newPlot('volume-chart', [volTrace], volLayout, {displayModeBar:false, responsive:true});
+}
+
+async function init(){
+  buildSidebar();
+  await fetchTicker(currentTicker, true);
+  TICKERS.filter(s => s !== currentTicker).forEach((sym, i) => {
+    setTimeout(() => fetchTicker(sym, false), i * 120);
+  });
+  setInterval(() => fetchTicker(currentTicker, true), REFRESH_MS);
+}
+
+init();
+</script>
+</body>
+</html>
