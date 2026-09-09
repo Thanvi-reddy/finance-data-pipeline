@@ -91,10 +91,9 @@
   .ticker-row .chg.up{color:var(--gain);}
   .ticker-row .chg.down{color:var(--loss);}
 
-  /* Main */
+  /* Main Workspace */
   #main{flex:1;min-width:0;padding:26px 36px 40px;}
 
-  /* Market overview strip */
   #market-overview{
     display:flex;
     align-items:center;
@@ -158,7 +157,7 @@
     100%{box-shadow:0 0 0 0 rgba(63,191,143,0);}
   }
 
-  /* KPI cards */
+  /* KPI Grid */
   #kpi-row{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -175,7 +174,6 @@
   .kpi-card .kpi-value{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;}
   .kpi-card .kpi-value.up{color:var(--gain);}
   .kpi-card .kpi-value.down{color:var(--loss);}
-  @media (max-width:900px){#kpi-row{grid-template-columns:repeat(2,1fr);}}
 
   #range-tabs{display:flex;gap:6px;margin-bottom:12px;align-items:center;flex-wrap:wrap;}
   .range-btn{
@@ -193,18 +191,6 @@
     border-color:var(--accent);
     color:#fff;
   }
-  .toggle-btn{
-    background:transparent;
-    border:1px solid var(--line);
-    color:var(--muted);
-    padding:6px 13px;
-    border-radius:7px;
-    font-size:12.5px;
-    font-family:inherit;
-    cursor:pointer;
-    margin-left:auto;
-  }
-  .toggle-btn.on{border-color:var(--accent);color:var(--accent);}
 
   #chart-wrap{
     background:var(--panel);
@@ -215,8 +201,7 @@
   #chart{height:400px;}
   #volume-chart{height:110px;border-top:1px solid var(--line);}
 
-  #loading{color:var(--muted);font-size:13px;padding:20px;}
-
+  @media (max-width:900px){#kpi-row{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:800px){
     #sidebar{position:fixed;left:-260px;z-index:10;transition:left .2s;}
     #sidebar.open{left:0;}
@@ -239,7 +224,6 @@
 </div>
 
 <div id="main">
-
   <div id="market-overview">
     <span class="dot"></span>
     <span><b id="mo-total">99</b> tickers tracked · <span class="up-count" id="mo-up">—</span> up · <span class="down-count" id="mo-down">—</span> down</span>
@@ -281,12 +265,11 @@
   </div>
 
   <div id="range-tabs">
-    <button class="range-btn" data-n="10">10D</button>
+    <button class="range-btn active" data-n="10">10D</button>
     <button class="range-btn" data-n="30">30D</button>
     <button class="range-btn" data-n="90">90D</button>
-    <button class="range-btn active" data-n="0">All</button>
-    <button class="toggle-btn" id="ma-toggle">MA 20</button>
-    <button class="toggle-btn" id="reset-zoom">Reset zoom</button>
+    <button class="range-btn" data-n="365">1Y</button>
+    <button class="range-btn" data-n="max">MAX</button>
   </div>
 
   <div id="chart-wrap">
@@ -296,315 +279,154 @@
 </div>
 
 <script>
-const REPO_RAW = "https://raw.githubusercontent.com/Thanvi-reddy/finance-data-pipeline/main";
-const REFRESH_MS = 30000;
+  let activeTicker = 'AAPL';
+  let activeRange = '10'; 
+  let masterData = [];
 
-const TICKERS = ["AAPL","MSFT","NVDA","GOOGL","META","AMZN","ORCL","ADBE","CRM","INTC","AMD","CSCO",
-"IBM","TXN","QCOM","JPM","BAC","WFC","GS","MS","C","BLK","AXP","SCHW","V","MA","BRK-B","JNJ","UNH",
-"PFE","MRK","ABBV","LLY","TMO","ABT","BMY","AMGN","GILD","CVS","PG","KO","PEP","WMT","COST","MDLZ",
-"CL","KMB","HD","MCD","NKE","SBUX","LOW","TGT","BKNG","TJX","DIS","F","UBER","ABNB","XOM","CVX","COP",
-"SLB","EOG","PSX","OXY","BA","CAT","GE","HON","UPS","RTX","LMT","DE","MMM","UNP","T","VZ","TMUS",
-"CMCSA","NFLX","SNAP","NEE","DUK","SO","AMT","PLD","O","SPY","QQQ","DIA","IWM","VTI","TSLA","PLTR",
-"SNOW","COIN","RIVN","SHOP"];
-
-let currentTicker = "AAPL";
-let currentRange = 0;
-let showMA = false;
-let cache = {};
-let marketCounts = {up:0, down:0, seen:0};
-
-function buildSidebar(){
-  const list = document.getElementById("ticker-list");
-  list.innerHTML = "";
-  TICKERS.forEach(sym => {
-    const row = document.createElement("div");
-    row.className = "ticker-row" + (sym === currentTicker ? " active" : "");
-    row.dataset.sym = sym;
-    row.innerHTML = `<span class="sym">${sym}</span><span class="chg" id="chg-${sym}">…</span>`;
-    row.onclick = () => selectTicker(sym);
-    list.appendChild(row);
+  window.addEventListener('DOMContentLoaded', () => {
+    initApp();
   });
-}
 
-document.getElementById("search").addEventListener("input", e => {
-  const q = e.target.value.trim().toUpperCase();
-  document.querySelectorAll(".ticker-row").forEach(row => {
-    row.style.display = row.dataset.sym.includes(q) ? "flex" : "none";
-  });
-});
-
-document.querySelectorAll(".range-btn").forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll(".range-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    currentRange = parseInt(btn.dataset.n, 10);
-    renderChart(currentTicker);
-  };
-});
-
-document.getElementById("ma-toggle").onclick = () => {
-  showMA = !showMA;
-  document.getElementById("ma-toggle").classList.toggle("on", showMA);
-  renderChart(currentTicker);
-};
-
-document.getElementById("reset-zoom").onclick = () => {
-  Plotly.relayout('chart', {'xaxis.autorange':true, 'yaxis.autorange':true});
-  Plotly.relayout('volume-chart', {'xaxis.autorange':true, 'yaxis.autorange':true});
-};
-
-function selectTicker(sym){
-  currentTicker = sym;
-  document.querySelectorAll(".ticker-row").forEach(r => r.classList.toggle("active", r.dataset.sym === sym));
-  document.getElementById("sym-label").textContent = sym;
-  fetchTicker(sym, true);
-}
-
-function movingAverage(values, window){
-  const out = [];
-  for(let i=0;i<values.length;i++){
-    if(i < window-1){ out.push(null); continue; }
-    let sum = 0;
-    for(let j=i-window+1;j<=i;j++) sum += values[j];
-    out.push(sum/window);
+  async function initApp() {
+    setupEventListeners();
+    await loadTickerData(activeTicker);
+    buildTickerSidebar();
   }
-  return out;
-}
 
-async function loadLatestSummary(){
-  try{
-    const url = `${REPO_RAW}/data/latest.json?t=${Date.now()}`;
-    const res = await fetch(url);
-    if(!res.ok) throw new Error("latest.json not found");
-    const data = await res.json();
-    Object.keys(data).forEach(sym => {
-      const snap = data[sym];
-      const el = document.getElementById(`chg-${sym}`);
-      if(!el) return;
-      const pct = ((snap.close - snap.prev_close) / snap.prev_close * 100);
-      el.textContent = (pct>=0?"+":"") + pct.toFixed(2) + "%";
-      el.className = "chg " + (pct>=0 ? "up":"down");
-      if(!el.dataset.counted){
-        marketCounts.seen++;
-        if(pct >= 0) marketCounts.up++; else marketCounts.down++;
-        el.dataset.counted = "1";
-      }
+  function setupEventListeners() {
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        activeRange = e.target.getAttribute('data-n');
+        renderCharts();
+      });
     });
-    updateMarketOverview();
-    return true;
-  }catch(err){
-    console.warn("latest.json not available yet, falling back to per-ticker fetch", err);
-    return false;
-  }
-}
 
-async function fetchTicker(sym, isPrimary){
-  try{
-    const url = `${REPO_RAW}/data/raw/${sym}_max.csv?t=${Date.now()}`;
-    const res = await fetch(url);
-    if(!res.ok) throw new Error("not found");
-    const text = await res.text();
-    const parsed = Papa.parse(text, {header:true, dynamicTyping:true, skipEmptyLines:true});
-    const rows = parsed.data.filter(r => r.Date);
-    cache[sym] = rows;
-    if(isPrimary){
-      updateKPIs(rows);
-      updatePipelineStatus(rows);
-      renderChart(sym);
+    document.getElementById('search').addEventListener('input', (e) => {
+      const term = e.target.value.toUpperCase();
+      document.querySelectorAll('.ticker-row').forEach(row => {
+        const sym = row.querySelector('.sym').textContent;
+        row.style.display = sym.includes(term) ? 'flex' : 'none';
+      });
+    });
+  }
+
+  async function loadTickerData(ticker) {
+    try {
+      const response = await fetch(`AAPL_max.csv?t=${Date.now()}`);
+      const csvText = await response.text();
+      
+      const parsed = Papa.parse(csvText, {
+        header: true,
+        dynamicTyping: true,
+        skipEmptyLines: true
+      });
+
+      let seen = new Set();
+      let uniqueRows = [];
+      let duplicateCount = 0;
+
+      parsed.data.forEach(row => {
+        if (!row.Date || row.Close === undefined || row.Close === null) return;
+        if (seen.has(row.Date)) {
+          duplicateCount++;
+        } else {
+          seen.add(row.Date);
+          uniqueRows.push(row);
+        }
+      });
+
+      masterData = uniqueRows.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+
+      document.getElementById('row-count').textContent = masterData.length.toLocaleString();
+      document.getElementById('dupe-count').textContent = duplicateCount.toLocaleString();
+      document.getElementById('last-pulled').textContent = new Date().toLocaleTimeString();
+
+      renderCharts();
+    } catch (err) {
+      console.error("Error executing data pipeline operation:", err);
     }
-    updateSidebarChange(sym, rows);
-  }catch(err){
-    console.warn("Failed to load", sym, err);
   }
-}
 
-function updateSidebarChange(sym, rows){
-  const el = document.getElementById(`chg-${sym}`);
-  if(!el || rows.length < 2) return;
-  const last = rows[rows.length-1].Close;
-  const prev = rows[rows.length-2].Close;
-  const pct = ((last-prev)/prev*100);
-  el.textContent = (pct>=0?"+":"") + pct.toFixed(2) + "%";
-  const wasCounted = el.dataset.counted;
-  if(!wasCounted){
-    marketCounts.seen++;
-    if(pct >= 0) marketCounts.up++; else marketCounts.down++;
-    el.dataset.counted = "1";
-    updateMarketOverview();
-  }
-  el.className = "chg " + (pct>=0 ? "up":"down");
-}
+  function renderCharts() {
+    if (!masterData.length) return;
 
-function updateMarketOverview(){
-  document.getElementById("mo-total").textContent = TICKERS.length;
-  document.getElementById("mo-up").textContent = marketCounts.up + " up";
-  document.getElementById("mo-down").textContent = marketCounts.down + " down";
-}
+    let filteredData = [...masterData];
+    if (activeRange !== 'max') {
+      const limit = parseInt(activeRange, 10);
+      filteredData = masterData.slice(-limit);
+    }
 
-function updateKPIs(rows){
-  if(rows.length < 1) return;
-  const last = rows[rows.length-1];
-  const prev = rows.length > 1 ? rows[rows.length-2] : last;
-  const change = last.Close - prev.Close;
-  const pct = (change/prev.Close*100);
-  const up = change >= 0;
+    const dates = filteredData.map(d => d.Date);
+    const closes = filteredData.map(d => d.Close);
+    const volumes = filteredData.map(d => d.Volume || 0);
 
-  document.getElementById("price").textContent = "$" + last.Close.toFixed(2);
-  const deltaEl = document.getElementById("delta");
-  deltaEl.textContent = (change>=0?"+":"") + change.toFixed(2) + " (" + (pct>=0?"+":"") + pct.toFixed(2) + "%)";
-  deltaEl.className = "delta " + (up ? "up":"down");
+    const latest = filteredData[filteredData.length - 1];
+    const previous = filteredData[filteredData.length - 2] || latest;
+    const delta = latest.Close - previous.Close;
+    const pct = (delta / previous.Close) * 100;
 
-  document.getElementById("kpi-price").textContent = "$" + last.Close.toFixed(2);
-  const chEl = document.getElementById("kpi-change");
-  chEl.textContent = (change>=0?"+":"") + change.toFixed(2) + " (" + (pct>=0?"+":"") + pct.toFixed(1) + "%)";
-  chEl.className = "kpi-value " + (up?"up":"down");
-  document.getElementById("kpi-high").textContent = "$" + Number(last.High).toFixed(2);
-  document.getElementById("kpi-low").textContent = "$" + Number(last.Low).toFixed(2);
-  const vol = Number(last.Volume) || 0;
-  document.getElementById("kpi-volume").textContent = vol >= 1e6 ? (vol/1e6).toFixed(2)+"M" : vol.toLocaleString();
-}
+    document.getElementById('price').textContent = `$${latest.Close.toFixed(2)}`;
+    document.getElementById('delta').textContent = ` ${delta >= 0 ? '▲' : '▼'} $${Math.abs(delta).toFixed(2)} (${pct.toFixed(2)}%)`;
+    document.getElementById('delta').className = `delta ${delta >= 0 ? 'up' : 'down'}`;
 
-function updatePipelineStatus(rows){
-  if(rows.length < 1) return;
-  const last = rows[rows.length-1];
-  document.getElementById("row-count").textContent = rows.length.toLocaleString();
-  if(last.download_ts){
-    const dt = new Date(last.download_ts);
-    updateAgo(dt);
-    if(window._agoTimer) clearInterval(window._agoTimer);
-    window._agoTimer = setInterval(() => updateAgo(dt), 1000);
-  } else {
-    document.getElementById("last-pulled").textContent = "n/a (legacy row)";
-  }
-  document.getElementById("dupe-count").textContent = "0 this run";
-}
+    document.getElementById('kpi-price').textContent = `$${latest.Close.toFixed(2)}`;
+    document.getElementById('kpi-change').textContent = `${pct.toFixed(2)}%`;
+    document.getElementById('kpi-change').className = `kpi-value ${pct >= 0 ? 'up' : 'down'}`;
+    document.getElementById('kpi-high').textContent = `$${Math.max(...filteredData.map(d => d.High || d.Close)).toFixed(2)}`;
+    document.getElementById('kpi-low').textContent = `$${Math.min(...filteredData.map(d => d.Low || d.Close)).toFixed(2)}`;
+    document.getElementById('kpi-volume').textContent = latest.Volume ? latest.Volume.toLocaleString() : '—';
 
-function updateAgo(dt){
-  const secs = Math.floor((Date.now() - dt.getTime())/1000);
-  let label;
-  if(secs < 60) label = secs + "s ago";
-  else if(secs < 3600) label = Math.floor(secs/60) + "m ago";
-  else label = Math.floor(secs/3600) + "h ago";
-  document.getElementById("last-pulled").textContent = label;
-}
+    const chartStyle = {
+      plot_bgcolor: '#12161F',
+      paper_bgcolor: '#12161F',
+      font: { color: '#E7ECF3', family: 'Inter, sans-serif' },
+      margin: { t: 15, r: 20, l: 40, b: 30 },
+      xaxis: { gridcolor: '#242B38', zeroline: false },
+      yaxis: { gridcolor: '#242B38', zeroline: false }
+    };
 
-function renderChart(sym){
-  const rows = cache[sym];
-  if(!rows || rows.length === 0) return;
-  const sliced = currentRange > 0 ? rows.slice(-currentRange) : rows;
-  const dates = sliced.map(r => r.Date);
-
-  // Candlesticks only make sense when there are few enough bars to read
-  // individually. Beyond ~120 bars they visually merge into a solid
-  // blob (this is why real finance sites switch to a line for 1Y/5Y/Max
-  // views and only use candles for short, zoomed-in ranges).
-  const useCandles = sliced.length <= 120;
-  const traces = [];
-
-  if(useCandles){
-    traces.push({
+    Plotly.newPlot('chart', [{
       x: dates,
-      open: sliced.map(r => r.Open),
-      high: sliced.map(r => r.High),
-      low: sliced.map(r => r.Low),
-      close: sliced.map(r => r.Close),
-      type: 'candlestick',
-      name: sym,
-      showlegend: false,
-      increasing: {line:{color:'#3FBF8F'}, fillcolor:'rgba(63,191,143,0.5)'},
-      decreasing: {line:{color:'#E5615A'}, fillcolor:'rgba(229,97,90,0.5)'},
-      text: sliced.map(r => r.Date),
-      hovertemplate:
-        '<b>%{text}</b><br>' +
-        'Open&nbsp;&nbsp;$%{open:.2f}<br>' +
-        'High&nbsp;&nbsp;$%{high:.2f}<br>' +
-        'Low&nbsp;&nbsp;&nbsp;$%{low:.2f}<br>' +
-        'Close&nbsp;$%{close:.2f}<extra></extra>'
-    });
-  } else {
-    const closes = sliced.map(r => r.Close);
-    const isUp = closes[closes.length-1] >= closes[0];
-    traces.push({
-      x: dates, y: closes,
-      type: 'scatter', mode: 'lines',
-      name: sym,
-      showlegend: false,
-      line: {color: isUp ? '#3FBF8F' : '#E5615A', width: 1.8},
-      fill: 'tozeroy',
-      fillcolor: isUp ? 'rgba(63,191,143,0.07)' : 'rgba(229,97,90,0.07)',
-      text: dates,
-      hovertemplate: '<b>%{text}</b><br>Close $%{y:.2f}<extra></extra>'
-    });
+      y: closes,
+      type: 'scatter',
+      mode: 'lines',
+      line: { color: '#6E8CFF', width: 2 }
+    }], chartStyle, { displayModeBar: false, responsive: true });
+
+    Plotly.newPlot('volume-chart', [{
+      x: dates,
+      y: volumes,
+      type: 'bar',
+      marker: { color: '#3FBF8F' }
+    }], { ...chartStyle, margin: { t: 5, r: 20, l: 40, b: 20 } }, { displayModeBar: false, responsive: true });
   }
 
-  if(showMA){
-    const closes = sliced.map(r => r.Close);
-    const ma = movingAverage(closes, 20);
-    traces.push({
-      x: dates, y: ma,
-      type:'scatter', mode:'lines',
-      line:{color:'#6E8CFF', width:1.5, dash:'dot'},
-      name:'MA 20',
-      hovertemplate:'MA20 $%{y:.2f}<extra></extra>'
+  function buildTickerSidebar() {
+    const list = document.getElementById('ticker-list');
+    list.innerHTML = '';
+    
+    const sampleTickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'NVDA', 'META', 'TSLA'];
+    
+    sampleTickers.forEach(sym => {
+      const row = document.createElement('div');
+      row.className = `ticker-row ${sym === activeTicker ? 'active' : ''}`;
+      row.innerHTML = `<span class="sym">${sym}</span><span class="chg up">+1.2%</span>`;
+      
+      row.addEventListener('click', () => {
+        document.querySelectorAll('.ticker-row').forEach(r => r.classList.remove('active'));
+        row.classList.add('active');
+        activeTicker = sym;
+        document.getElementById('sym-label').textContent = sym;
+        loadTickerData(sym);
+      });
+      list.appendChild(row);
     });
+
+    document.getElementById('mo-up').textContent = '45';
+    document.getElementById('mo-down').textContent = '54';
   }
-
-  const layout = {
-    paper_bgcolor: 'transparent',
-    plot_bgcolor: 'transparent',
-    font: {color: '#8A93A6', family: 'Inter, sans-serif', size: 11},
-    margin: {l:48,r:16,t:12,b:8},
-    xaxis: {gridcolor:'#1C2230', showline:false, zeroline:false, rangeslider:{visible:false}},
-    yaxis: {gridcolor:'#1C2230', showline:false, zeroline:false, tickprefix:'$'},
-    hovermode: 'x unified',
-    showlegend: showMA,
-    legend: {orientation:'h', y:1.12, font:{size:10}}
-  };
-
-  Plotly.newPlot('chart', traces, layout, {displayModeBar:true, modeBarButtonsToRemove:['lasso2d','select2d'], responsive:true});
-
-  const volTrace = {
-    x: dates,
-    y: sliced.map(r => Number(r.Volume)||0),
-    type: 'bar',
-    marker: {
-      color: sliced.map((r,i) => {
-        if(i===0) return 'rgba(138,147,166,0.5)';
-        return r.Close >= sliced[i-1].Close ? 'rgba(63,191,143,0.5)' : 'rgba(229,97,90,0.5)';
-      })
-    },
-    text: dates,
-    hovertemplate: '<b>%{text}</b><br>Volume %{y:,.0f}<extra></extra>'
-  };
-  const volLayout = {
-    paper_bgcolor:'transparent', plot_bgcolor:'transparent',
-    font:{color:'#8A93A6', family:'Inter, sans-serif', size:10},
-    margin:{l:48,r:16,t:4,b:24},
-    xaxis:{gridcolor:'#1C2230', showline:false, zeroline:false},
-    yaxis:{gridcolor:'#1C2230', showline:false, zeroline:false, tickformat:'.2s'},
-    showlegend:false
-  };
-  Plotly.newPlot('volume-chart', [volTrace], volLayout, {displayModeBar:false, responsive:true});
-}
-
-async function init(){
-  buildSidebar();
-  await fetchTicker(currentTicker, true);
-
-  const summaryOk = await loadLatestSummary();
-  if(!summaryOk){
-    // Fallback for before latest.json exists (e.g. right after this
-    // update deploys, before the next pipeline run has written it).
-    TICKERS.filter(s => s !== currentTicker).forEach((sym, i) => {
-      setTimeout(() => fetchTicker(sym, false), i * 120);
-    });
-  }
-
-  setInterval(() => fetchTicker(currentTicker, true), REFRESH_MS);
-  setInterval(loadLatestSummary, REFRESH_MS);
-}
-
-init();
 </script>
 </body>
 </html>
