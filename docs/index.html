@@ -361,6 +361,17 @@ function selectTicker(sym){
   currentTicker = sym;
   document.querySelectorAll(".ticker-row").forEach(r => r.classList.toggle("active", r.dataset.sym === sym));
   document.getElementById("sym-label").textContent = sym;
+
+  // Stale-while-revalidate: if we already have this ticker's data from
+  // earlier in the session, show it INSTANTLY (no network wait at all),
+  // then quietly re-fetch in the background in case something changed.
+  // Without this, switching back to a ticker you already viewed pays
+  // full network latency every single time for no reason.
+  if(cache[sym]){
+    updateKPIs(cache[sym]);
+    updatePipelineStatus(cache[sym]);
+    renderChart(sym);
+  }
   fetchTicker(sym, true);
 }
 
@@ -383,7 +394,7 @@ function directionClass(delta){
 
 async function loadLatestSummary(){
   try{
-    const url = `${REPO_RAW}/data/latest.json?t=${Date.now()}`;
+    const url = `${REPO_RAW}/data/latest.json?v=${cacheBucket()}`;
     const res = await fetch(url);
     if(!res.ok) throw new Error("latest.json not found");
     const data = await res.json();
@@ -428,10 +439,19 @@ function parseCSV(text){
 
 let lastRenderedSignature = {};
 
+function cacheBucket(){
+  // Same value for the whole REFRESH_MS window, so repeated fetches
+  // within that window hit the browser's HTTP cache instantly instead
+  // of always forcing a full network round-trip. A new value only
+  // appears once the window rolls over, which is when we actually want
+  // fresh data anyway.
+  return Math.floor(Date.now() / REFRESH_MS);
+}
+
 async function fetchTicker(sym, isPrimary){
   try{
     if(isPrimary) setChartLoading(true);
-    const url = `${REPO_RAW}/data/raw/${sym}_max.csv?t=${Date.now()}`;
+    const url = `${REPO_RAW}/data/raw/${sym}_max.csv?v=${cacheBucket()}`;
     const res = await fetch(url);
     if(!res.ok) throw new Error("not found");
     const text = await res.text();
