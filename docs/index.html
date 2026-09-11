@@ -285,9 +285,9 @@
 
   <div id="range-tabs">
     <button class="range-btn" data-n="10">10D</button>
-    <button class="range-btn" data-n="30">30D</button>
+    <button class="range-btn active" data-n="30">30D</button>
     <button class="range-btn" data-n="90">90D</button>
-    <button class="range-btn active" data-n="0">All</button>
+    <button class="range-btn" data-n="0">All</button>
     <button class="toggle-btn" id="ma-toggle">MA 20</button>
     <button class="toggle-btn" id="reset-zoom">Reset zoom</button>
   </div>
@@ -312,9 +312,11 @@ const TICKERS = ["AAPL","MSFT","NVDA","GOOGL","META","AMZN","ORCL","ADBE","CRM",
 "SNOW","COIN","RIVN","SHOP"];
 
 let currentTicker = "AAPL";
-let currentRange = 0;
+let currentRange = 30;
 let showMA = false;
-let cache = {};
+let cache = {};        // full multi-year CSV data, only populated lazily for "All" view
+let recentData = {};   // last ~120 days per ticker, from recent.json — used by default
+let latestData = {};   // latest snapshot per ticker, from latest.json — used for KPIs/sidebar
 let marketCounts = {up:0, down:0, seen:0};
 
 function buildSidebar(){
@@ -338,10 +340,20 @@ document.getElementById("search").addEventListener("input", e => {
 });
 
 document.querySelectorAll(".range-btn").forEach(btn => {
-  btn.onclick = () => {
+  btn.onclick = async () => {
     document.querySelectorAll(".range-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     currentRange = parseInt(btn.dataset.n, 10);
+
+    // "All" needs the full multi-year history, which we deliberately
+    // don't load by default (that 300-400+ KB fetch per ticker was the
+    // main cause of slow ticker switching). Fetch it now, lazily, only
+    // the first time it's actually requested for this ticker.
+    if(currentRange === 0 && !cache[currentTicker]){
+      setChartLoading(true);
+      await fetchFullHistory(currentTicker);
+      setChartLoading(false);
+    }
     renderChart(currentTicker);
   };
 });
@@ -357,22 +369,27 @@ document.getElementById("reset-zoom").onclick = () => {
   Plotly.relayout('volume-chart', {'xaxis.autorange':true, 'yaxis.autorange':true});
 };
 
-function selectTicker(sym){
+async function selectTicker(sym){
   currentTicker = sym;
   document.querySelectorAll(".ticker-row").forEach(r => r.classList.toggle("active", r.dataset.sym === sym));
   document.getElementById("sym-label").textContent = sym;
 
-  // Stale-while-revalidate: if we already have this ticker's data from
-  // earlier in the session, show it INSTANTLY (no network wait at all),
-  // then quietly re-fetch in the background in case something changed.
-  // Without this, switching back to a ticker you already viewed pays
-  // full network latency every single time for no reason.
-  if(cache[sym]){
-    updateKPIs(cache[sym]);
-    updatePipelineStatus(cache[sym]);
-    renderChart(sym);
+  // Both latestData and recentData were already loaded for ALL 99
+  // tickers up front (two small files, loaded once). So switching to
+  // any ticker for the default 10D/30D/90D views needs ZERO network
+  // requests — it's just reading from memory, which is why this can
+  // render instantly instead of waiting on a fetch every time.
+  if(latestData[sym]) applySnapshot(latestData[sym]);
+  if(currentRange === 0){
+    // Only the "All" view needs the full CSV — fetch lazily if we
+    // don't have it yet, otherwise it's already cached from before.
+    if(!cache[sym]){
+      setChartLoading(true);
+      await fetchFullHistory(sym);
+      setChartLoading(false);
+    }
   }
-  fetchTicker(sym, true);
+  renderChart(sym);
 }
 
 function movingAverage(values, window){
@@ -400,6 +417,7 @@ async function loadLatestSummary(){
     const data = await res.json();
     Object.keys(data).forEach(sym => {
       const snap = data[sym];
+      latestData[sym] = snap;
       const el = document.getElementById(`chg-${sym}`);
       if(!el) return;
       const change = snap.close - snap.prev_close;
@@ -414,11 +432,68 @@ async function loadLatestSummary(){
       }
     });
     updateMarketOverview();
+    // Keep the currently-viewed ticker's KPI cards live too.
+    if(latestData[currentTicker]) applySnapshot(latestData[currentTicker]);
     return true;
   }catch(err){
     console.warn("latest.json not available yet, falling back to per-ticker fetch", err);
     return false;
   }
+}
+
+async function loadRecentSummary(){
+  try{
+    const url = `${REPO_RAW}/data/recent.json?v=${cacheBucket()}`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error("recent.json not found");
+    const data = await res.json();
+    Object.keys(data).forEach(sym => {
+      // Convert the compact [date,O,H,L,C,V] arrays into the same
+      // {Date,Open,High,Low,Close,Volume} row-object shape the rest of
+      // the app already works with, so renderChart doesn't need two
+      // separate code paths.
+      recentData[sym] = data[sym].map(r => ({
+        Date: r[0], Open: r[1], High: r[2], Low: r[3], Close: r[4], Volume: r[5]
+      }));
+    });
+    return true;
+  }catch(err){
+    console.warn("recent.json not available yet", err);
+    return false;
+  }
+}
+
+function applySnapshot(snap){
+  // Populate KPI cards + pipeline status straight from a small snapshot
+  // object (from latest.json) — no need to touch the full CSV at all
+  // for this. Used for the default (non-"All") view.
+  const change = snap.close - snap.prev_close;
+  const pct = (change / snap.prev_close * 100);
+  const dir = directionClass(change);
+
+  document.getElementById("price").textContent = "$" + snap.close.toFixed(2);
+  const deltaEl = document.getElementById("delta");
+  deltaEl.textContent = (change>0?"+":"") + change.toFixed(2) + " (" + (pct>0?"+":"") + pct.toFixed(2) + "%)";
+  deltaEl.className = "delta " + dir;
+
+  document.getElementById("kpi-price").textContent = "$" + snap.close.toFixed(2);
+  const chEl = document.getElementById("kpi-change");
+  chEl.textContent = (change>0?"+":"") + change.toFixed(2) + " (" + (pct>0?"+":"") + pct.toFixed(1) + "%)";
+  chEl.className = "kpi-value " + dir;
+  document.getElementById("kpi-high").textContent = "$" + snap.high.toFixed(2);
+  document.getElementById("kpi-low").textContent = "$" + snap.low.toFixed(2);
+  document.getElementById("kpi-volume").textContent = snap.volume >= 1e6 ? (snap.volume/1e6).toFixed(2)+"M" : snap.volume.toLocaleString();
+
+  document.getElementById("row-count").textContent = snap.rows.toLocaleString();
+  if(snap.download_ts){
+    const dt = new Date(snap.download_ts);
+    updateAgo(dt);
+    if(window._agoTimer) clearInterval(window._agoTimer);
+    window._agoTimer = setInterval(() => updateAgo(dt), 1000);
+  } else {
+    document.getElementById("last-pulled").textContent = "n/a (legacy row)";
+  }
+  document.getElementById("dupe-count").textContent = "0 this run";
 }
 
 function parseCSV(text){
@@ -437,8 +512,6 @@ function parseCSV(text){
   });
 }
 
-let lastRenderedSignature = {};
-
 function cacheBucket(){
   // Same value for the whole REFRESH_MS window, so repeated fetches
   // within that window hit the browser's HTTP cache instantly instead
@@ -448,9 +521,10 @@ function cacheBucket(){
   return Math.floor(Date.now() / REFRESH_MS);
 }
 
-async function fetchTicker(sym, isPrimary){
+async function fetchFullHistory(sym){
+  // Only called lazily when someone clicks "All" for a ticker we
+  // haven't already fetched the full history for this session.
   try{
-    if(isPrimary) setChartLoading(true);
     const url = `${REPO_RAW}/data/raw/${sym}_max.csv?v=${cacheBucket()}`;
     const res = await fetch(url);
     if(!res.ok) throw new Error("not found");
@@ -458,23 +532,10 @@ async function fetchTicker(sym, isPrimary){
     const parsed = await parseCSV(text);
     const rows = parsed.data.filter(r => r.Date);
     cache[sym] = rows;
-    if(isPrimary){
-      updateKPIs(rows);
-      updatePipelineStatus(rows);
-      // Skip the (comparatively expensive) chart redraw if the data is
-      // identical to what's already on screen — most 30s refresh cycles
-      // won't actually have new data, so this avoids needless re-renders.
-      const signature = rows.length + ":" + (rows[rows.length-1]?.download_ts || "");
-      if(lastRenderedSignature[sym] !== signature){
-        renderChart(sym);
-        lastRenderedSignature[sym] = signature;
-      }
-      setChartLoading(false);
-    }
-    updateSidebarChange(sym, rows);
+    return rows;
   }catch(err){
-    console.warn("Failed to load", sym, err);
-    if(isPrimary) setChartLoading(false);
+    console.warn("Failed to load full history for", sym, err);
+    return null;
   }
 }
 
@@ -483,67 +544,10 @@ function setChartLoading(isLoading){
   if(el) el.style.opacity = isLoading ? "1" : "0";
 }
 
-function updateSidebarChange(sym, rows){
-  const el = document.getElementById(`chg-${sym}`);
-  if(!el || rows.length < 2) return;
-  const last = rows[rows.length-1].Close;
-  const prev = rows[rows.length-2].Close;
-  const change = last - prev;
-  const pct = (change/prev*100);
-  const dir = directionClass(change);
-  el.textContent = (pct>0?"+":"") + pct.toFixed(2) + "%";
-  const wasCounted = el.dataset.counted;
-  if(!wasCounted){
-    marketCounts.seen++;
-    if(dir === "up") marketCounts.up++; else if(dir === "down") marketCounts.down++;
-    el.dataset.counted = "1";
-    updateMarketOverview();
-  }
-  el.className = "chg " + dir;
-}
-
 function updateMarketOverview(){
   document.getElementById("mo-total").textContent = TICKERS.length;
   document.getElementById("mo-up").textContent = marketCounts.up + " up";
   document.getElementById("mo-down").textContent = marketCounts.down + " down";
-}
-
-function updateKPIs(rows){
-  if(rows.length < 1) return;
-  const last = rows[rows.length-1];
-  const prev = rows.length > 1 ? rows[rows.length-2] : last;
-  const change = last.Close - prev.Close;
-  const pct = (change/prev.Close*100);
-  const dir = directionClass(change);
-
-  document.getElementById("price").textContent = "$" + last.Close.toFixed(2);
-  const deltaEl = document.getElementById("delta");
-  deltaEl.textContent = (change>0?"+":"") + change.toFixed(2) + " (" + (pct>0?"+":"") + pct.toFixed(2) + "%)";
-  deltaEl.className = "delta " + dir;
-
-  document.getElementById("kpi-price").textContent = "$" + last.Close.toFixed(2);
-  const chEl = document.getElementById("kpi-change");
-  chEl.textContent = (change>0?"+":"") + change.toFixed(2) + " (" + (pct>0?"+":"") + pct.toFixed(1) + "%)";
-  chEl.className = "kpi-value " + dir;
-  document.getElementById("kpi-high").textContent = "$" + Number(last.High).toFixed(2);
-  document.getElementById("kpi-low").textContent = "$" + Number(last.Low).toFixed(2);
-  const vol = Number(last.Volume) || 0;
-  document.getElementById("kpi-volume").textContent = vol >= 1e6 ? (vol/1e6).toFixed(2)+"M" : vol.toLocaleString();
-}
-
-function updatePipelineStatus(rows){
-  if(rows.length < 1) return;
-  const last = rows[rows.length-1];
-  document.getElementById("row-count").textContent = rows.length.toLocaleString();
-  if(last.download_ts){
-    const dt = new Date(last.download_ts);
-    updateAgo(dt);
-    if(window._agoTimer) clearInterval(window._agoTimer);
-    window._agoTimer = setInterval(() => updateAgo(dt), 1000);
-  } else {
-    document.getElementById("last-pulled").textContent = "n/a (legacy row)";
-  }
-  document.getElementById("dupe-count").textContent = "0 this run";
 }
 
 function updateAgo(dt){
@@ -556,7 +560,10 @@ function updateAgo(dt){
 }
 
 function renderChart(sym){
-  const rows = cache[sym];
+  // Default (10D/30D/90D): use the small recent.json data — no network
+  // wait, since it was already loaded for all 99 tickers up front.
+  // "All": use the full CSV, only fetched lazily when requested.
+  const rows = currentRange === 0 ? cache[sym] : (recentData[sym] || cache[sym]);
   if(!rows || rows.length === 0) return;
   const sliced = currentRange > 0 ? rows.slice(-currentRange) : rows;
   const dates = sliced.map(r => r.Date);
@@ -668,19 +675,23 @@ function renderChart(sym){
 
 async function init(){
   buildSidebar();
-  await fetchTicker(currentTicker, true);
 
-  const summaryOk = await loadLatestSummary();
-  if(!summaryOk){
-    // Fallback for before latest.json exists (e.g. right after this
-    // update deploys, before the next pipeline run has written it).
-    TICKERS.filter(s => s !== currentTicker).forEach((sym, i) => {
-      setTimeout(() => fetchTicker(sym, false), i * 120);
-    });
-  }
+  // Load both small summary files up front. Together these are a few
+  // hundred KB for all 99 tickers combined — versus the old approach of
+  // fetching each ticker's full 300-400+ KB CSV individually, which is
+  // what was causing multi-second lag on every ticker switch.
+  await Promise.all([loadLatestSummary(), loadRecentSummary()]);
 
-  setInterval(() => fetchTicker(currentTicker, true), REFRESH_MS);
+  if(latestData[currentTicker]) applySnapshot(latestData[currentTicker]);
+  renderChart(currentTicker);
+
+  // Keep the two small files fresh; this alone keeps KPIs, sidebar
+  // badges, and the default chart view live without ever touching a
+  // full per-ticker CSV unless "All" is explicitly requested.
   setInterval(loadLatestSummary, REFRESH_MS);
+  setInterval(() => { loadRecentSummary().then(() => {
+    if(currentRange !== 0) renderChart(currentTicker);
+  }); }, REFRESH_MS);
 }
 
 init();

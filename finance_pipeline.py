@@ -20,6 +20,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 DATA_DIR = "data/raw"
 TICKERS_FILE = "tickers.csv"
 LATEST_SUMMARY_FILE = "data/latest.json"
+RECENT_FILE = "data/recent.json"
+RECENT_DAYS = 120  # covers the 10D/30D/90D chart views without needing
+                    # the full multi-year CSV (which is what was making
+                    # ticker switches slow — 300-400+ KB per switch)
 SUMMARY_FILE = "data/earliest_dates_summary.csv"
 LOG_FILE = "data/pipeline.log"
 MAX_RETRIES = 3
@@ -94,6 +98,27 @@ def snapshot(df):
     }
 
 
+def recent_rows(df, n=RECENT_DAYS):
+    """Return the last N days as a compact list of [date, O, H, L, C, V]
+    arrays (not objects with repeated key names) to keep the file small —
+    this is what the dashboard loads by default so it doesn't have to
+    download the entire multi-year CSV just to draw a 10D/30D/90D chart."""
+    if df is None or len(df) == 0:
+        return []
+    tail = df.tail(n)
+    out = []
+    for idx, row in tail.iterrows():
+        out.append([
+            str(idx.date()),
+            round(float(row["Open"]), 2),
+            round(float(row["High"]), 2),
+            round(float(row["Low"]), 2),
+            round(float(row["Close"]), 2),
+            int(row["Volume"]) if pd.notna(row["Volume"]) else 0,
+        ])
+    return out
+
+
 def download_ticker(ticker):
     ticker = ticker.strip().upper()
     existing = load_existing(ticker)
@@ -128,6 +153,7 @@ def download_ticker(ticker):
                         "new_rows": 0,
                         "duplicates_removed": 0,
                         "snapshot": snapshot(existing),
+                        "recent": recent_rows(existing),
                     }
 
                 new_data["download_ts"] = download_time
@@ -144,6 +170,7 @@ def download_ticker(ticker):
                     "new_rows": len(new_data),
                     "duplicates_removed": dupes_removed,
                     "snapshot": snapshot(combined),
+                    "recent": recent_rows(combined),
                 }
             else:
                 data = yf.Ticker(ticker).history(period="max")
@@ -169,6 +196,7 @@ def download_ticker(ticker):
                     "new_rows": len(data),
                     "duplicates_removed": dupes_removed,
                     "snapshot": snapshot(data),
+                    "recent": recent_rows(data),
                 }
         except Exception as e:
             last_error = str(e)
@@ -216,6 +244,21 @@ def save_latest_summary(results):
     log.info(f"Latest snapshot summary saved to {LATEST_SUMMARY_FILE} ({len(out)} tickers)")
 
 
+def save_recent_summary(results):
+    """Write one compact JSON file with the last RECENT_DAYS of OHLCV
+    for every ticker. The dashboard loads this by default (small, fast)
+    for the 10D/30D/90D chart views, instead of downloading each
+    ticker's full multi-year CSV (300-400+ KB) just to switch tickers.
+    The full CSV is only fetched lazily if someone clicks 'All'."""
+    out = {}
+    for r in results:
+        if r.get("recent"):
+            out[r["ticker"]] = r["recent"]
+    with open(RECENT_FILE, "w") as f:
+        json.dump(out, f)
+    log.info(f"Recent-days summary saved to {RECENT_FILE} ({len(out)} tickers)")
+
+
 def run_pipeline(tickers=None):
     if tickers is None:
         tickers = load_tickers()
@@ -249,6 +292,7 @@ def run_pipeline(tickers=None):
 
     save_summary(results)
     save_latest_summary(results)
+    save_recent_summary(results)
     return results
 
 
