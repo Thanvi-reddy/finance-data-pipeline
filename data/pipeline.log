@@ -209487,3 +209487,109 @@
 2026-09-15 14:01:34,085 | INFO | Summary saved to data/earliest_dates_summary.csv
 2026-09-15 14:01:34,086 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
 2026-09-15 14:01:34,138 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
+2026-09-15 14:02:34,501 | INFO | Pipeline started — 99 tickers (parallel, 8 workers)
+2026-09-15 14:02:34,553 | INFO | Failed to create TzCache, reason: Error creating TzCache folder: '/home/runner/.cache/py-yfinance' reason: [Errno 17] File exists: '/home/runner/.cache/py-yfinance'. TzCache will not be used. Tip: You can direct cache to use a different location with 'set_tz_cache_location(mylocation)'
+2026-09-15 14:02:34,801 | INFO | [1/99] AMZN: Already up to date
+2026-09-15 14:02:34,821 | INFO | [2/99] GOOGL: Already up to date
+2026-09-15 14:02:34,839 | INFO | [3/99] META: Already up to date
+2026-09-15 14:02:34,858 | INFO | [4/99] ADBE: Already up to date
+2026-09-15 14:02:34,880 | INFO | [5/99] ORCL: Already up to date
+2026-09-15 14:02:34,902 | INFO | [6/99] AAPL: Already up to date
+2026-09-15 14:02:34,971 | INFO | [7/99] MSFT: Already up to date
+2026-09-15 14:02:34,999 | INFO | [8/99] NVDA: Already up to date
+2026-09-15 14:02:35,078 | INFO | [9/99] AMD: Already up to date
+2026-09-15 14:02:35,095 | INFO | [10/99] CRM: Already up to date
+2026-09-15 14:02:35,133 | INFO | [11/99] CSCO: Already up to date
+2026-09-15 14:02:35,150 | INFO | [12/99] INTC: Already up to date
+2026-09-15 14:02:35,201 | INFO | [13/99] TXN: Already up to date
+2026-09-15 14:02:35,241 | INFO | [14/99] JPM: Already up to date
+2026-09-15 14:02:35,242 | INFO | [15/99] IBM: Already up to date
+2026-09-15 14:02:35,326 | INFO | [16/99] GS: Already up to date
+2026-09-15 14:02:35,346 | INFO | [17/99] BAC: Already up to date
+2026-09-15 14:02:35,367 | INFO | [18/99] WFC: Already up to date
+2026-09-15 14:02:35,421 | INFO | [19/99] BLK: Already up to date
+2026-09-15 14:02:35,438 | INFO | [20/99] MS: Already up to date
+2026-09-15 14:02:35,455 | INFO | [21/99] C: Already up to date
+2026-09-15 14:02:35,525 | INFO | [22/99] AXP: Already up to date
+2026-09-15 14:02:35,544 | INFO | [23/99] V: Already up to date
+2026-09-15 14:02:35,562 | INFO | [24/99] MA: Already up to date
+2026-09-15 14:02:35,580 | INFO | [25/99] SCHW: Already up to date
+2026-09-15 14:02:35,609 | INFO | [26/99] BRK-B: Already up to date
+2026-09-15 14:02:35,681 | INFO | [27/99] UNH: Already up to date
+2026-09-15 14:02:35,726 | INFO | [28/99] ABBV: Already up to date
+2026-09-15 14:02:35,813 | INFO | [29/99] QCOM: Already up to date
+2026-09-15 14:02:35,848 | INFO | [30/99] TMO: Already up to date
+2026-09-15 14:02:35,848 | INFO | [31/99] PFE: Already up to date
+2026-09-15 14:02:35,879 | INFO | [32/99] LLY: Already up to date
+2026-09-15 14:02:35,896 | INFO | [33/99] JNJ: Already up to date
+2026-09-15 14:02:35,977 | INFO | [34/99] BMY: Already up to date
+2026-09-15 14:02:36,023 | INFO | [35/99] MRK: Already up to date
+2026-09-15 14:02:36,045 | INFO | [36/99] GILD: Already up to date
+2026-09-15 14:02:36,067 | INFO | [37/99] AMGN: Already up to date
+2026-09-15 14:02:36,144 | INFO | [38/99] CVS: Already up to date
+2026-09-15 14:02:36,160 | INFO | [39/99] KO: Already up to date
+2026-09-15 14:02:36,223 | INFO | [40/99] PEP: Already up to date
+2026-09-15 14:02:36,249 | INFO | [41/99] MDLZ: Already up to date
+2026-09-15 14:02:36,294 | INFO | [42/99] COST: Already up to date
+2026-09-15 14:02:36,310 | INFO | [43/99] WMT: Already up to date
+2026-09-15 14:02:36,352 | INFO | [44/99] KMB: Already up to date
+2026-09-15 14:02:36,386 | INFO | [45/99] CL: Already up to date
+2026-09-15 14:02:36,430 | INFO | [46/99] HD: Already up to date
+2026-09-15 14:02:36,458 | INFO | [47/99] SBUX: Already up to date
+2026-09-15 14:02:36,477 | INFO | [48/99] MCD: Already up to date
+2026-09-15 14:02:36,544 | INFO | [49/99] NKE: Already up to date
+2026-09-15 14:02:36,560 | INFO | [50/99] LOW: Already up to date
+2026-09-15 14:02:36,578 | INFO | [51/99] BKNG: Already up to date
+2026-09-15 14:02:36,670 | INFO | [52/99] TJX: Already up to date
+2026-09-15 14:02:36,689 | INFO | [53/99] ABNB: Already up to date
+2026-09-15 14:02:36,707 | INFO | [54/99] UBER: Already up to date
+2026-09-15 14:02:36,735 | INFO | [55/99] DIS: Already up to date
+2026-09-15 14:02:36,818 | INFO | [56/99] F: Already up to date
+2026-09-15 14:02:36,921 | INFO | [57/99] ABT: Already up to date
+2026-09-15 14:02:37,009 | INFO | [58/99] CVX: Already up to date
+2026-09-15 14:02:37,036 | INFO | [59/99] EOG: Already up to date
+2026-09-15 14:02:37,054 | INFO | [60/99] PSX: Already up to date
+2026-09-15 14:02:37,266 | INFO | [61/99] OXY: Already up to date
+2026-09-15 14:02:37,285 | INFO | [62/99] CAT: Already up to date
+2026-09-15 14:02:37,418 | INFO | [63/99] BA: Already up to date
+2026-09-15 14:02:37,520 | INFO | [64/99] GE: Already up to date
+2026-09-15 14:02:37,590 | INFO | [65/99] UPS: Already up to date
+2026-09-15 14:02:37,608 | INFO | [66/99] HON: Already up to date
+2026-09-15 14:02:37,732 | INFO | [67/99] RTX: Already up to date
+2026-09-15 14:02:37,849 | INFO | [68/99] DE: Already up to date
+2026-09-15 14:02:37,973 | INFO | [69/99] MMM: Already up to date
+2026-09-15 14:02:38,039 | INFO | [70/99] LMT: Already up to date
+2026-09-15 14:02:38,055 | INFO | [71/99] UNP: Already up to date
+2026-09-15 14:02:38,198 | INFO | [72/99] TMUS: Already up to date
+2026-09-15 14:02:38,247 | INFO | [73/99] VZ: Already up to date
+2026-09-15 14:02:38,264 | INFO | [74/99] PG: Already up to date
+2026-09-15 14:02:38,375 | INFO | [75/99] SNAP: Already up to date
+2026-09-15 14:02:38,394 | INFO | [76/99] CMCSA: Already up to date
+2026-09-15 14:02:38,557 | INFO | [77/99] NFLX: Already up to date
+2026-09-15 14:02:38,612 | INFO | [78/99] DUK: Already up to date
+2026-09-15 14:02:38,628 | INFO | [79/99] NEE: Already up to date
+2026-09-15 14:02:38,783 | INFO | [80/99] SO: Already up to date
+2026-09-15 14:02:38,816 | INFO | [81/99] AMT: Already up to date
+2026-09-15 14:02:38,818 | INFO | [82/99] PLD: Already up to date
+2026-09-15 14:02:38,985 | INFO | [83/99] QQQ: Already up to date
+2026-09-15 14:02:39,049 | INFO | [84/99] SPY: Already up to date
+2026-09-15 14:02:39,084 | INFO | [85/99] O: Already up to date
+2026-09-15 14:02:39,194 | INFO | [86/99] DIA: Already up to date
+2026-09-15 14:02:39,232 | INFO | [87/99] VTI: Already up to date
+2026-09-15 14:02:39,269 | INFO | [88/99] IWM: Already up to date
+2026-09-15 14:02:39,338 | INFO | [89/99] PLTR: Already up to date
+2026-09-15 14:02:39,363 | INFO | [90/99] TSLA: Already up to date
+2026-09-15 14:02:39,421 | INFO | [91/99] SNOW: Already up to date
+2026-09-15 14:02:39,495 | INFO | [92/99] RIVN: Already up to date
+2026-09-15 14:02:39,540 | INFO | [93/99] COIN: Already up to date
+2026-09-15 14:02:39,574 | INFO | [94/99] SHOP: Already up to date
+2026-09-15 14:02:39,666 | INFO | [95/99] XOM: Already up to date
+2026-09-15 14:02:41,132 | INFO | [96/99] COP: Already up to date
+2026-09-15 14:02:42,045 | INFO | [97/99] SLB: Already up to date
+2026-09-15 14:02:43,257 | INFO | [98/99] TGT: Already up to date
+2026-09-15 14:02:47,993 | ERROR | Failed to get ticker 'T' reason: Failed to perform, curl: (28) Operation timed out after 10002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-09-15 14:02:48,299 | INFO | [99/99] T: Already up to date
+2026-09-15 14:02:48,300 | INFO | Pipeline complete — 99 success | 0 failed | 0 total duplicates removed
+2026-09-15 14:02:48,302 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-09-15 14:02:48,303 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
+2026-09-15 14:02:48,354 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
