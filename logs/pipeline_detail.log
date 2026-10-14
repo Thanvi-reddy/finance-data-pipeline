@@ -423418,3 +423418,43 @@ Done: 0/99 uploaded
 2026-10-13 19:59:36,308 | INFO | Summary saved to data/earliest_dates_summary.csv
 2026-10-13 19:59:36,310 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
 2026-10-13 19:59:36,361 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
+2026-10-14 13:30:14,970 | INFO | [65/99] OXY: Updated | +1 new rows
+2026-10-14 13:30:15,383 | INFO | [66/99] BA: Updated | +1 new rows
+2026-10-14 13:30:15,528 | INFO | [67/99] UPS: Updated | +1 new rows
+2026-10-14 13:30:15,594 | INFO | [68/99] HON: Updated | +1 new rows
+2026-10-14 13:30:15,759 | INFO | [69/99] CAT: Updated | +1 new rows
+2026-10-14 13:30:16,097 | INFO | [70/99] GE: Updated | +1 new rows
+2026-10-14 13:30:16,118 | INFO | [71/99] RTX: Updated | +1 new rows
+2026-10-14 13:30:16,200 | INFO | [72/99] LMT: Updated | +1 new rows
+2026-10-14 13:30:16,495 | INFO | [73/99] DE: Updated | +1 new rows
+2026-10-14 13:30:16,546 | INFO | [74/99] MMM: Updated | +1 new rows
+2026-10-14 13:30:16,556 | INFO | [75/99] UNP: Updated | +1 new rows
+2026-10-14 13:30:16,924 | INFO | [76/99] T: Updated | +1 new rows
+2026-10-14 13:30:16,958 | INFO | [77/99] VZ: Updated | +1 new rows
+2026-10-14 13:30:17,149 | INFO | [78/99] SNAP: Updated | +1 new rows
+2026-10-14 13:30:17,206 | INFO | [79/99] TMUS: Updated | +1 new rows
+2026-10-14 13:30:17,299 | INFO | [80/99] NFLX: Updated | +1 new rows
+2026-10-14 13:30:17,314 | INFO | [81/99] CMCSA: Updated | +1 new rows
+2026-10-14 13:30:17,374 | INFO | [82/99] NEE: Updated | +1 new rows
+2026-10-14 13:30:18,154 | INFO | [83/99] PLD: Updated | +1 new rows
+2026-10-14 13:30:18,198 | INFO | [84/99] SPY: Updated | +1 new rows
+2026-10-14 13:30:18,307 | INFO | [85/99] DUK: Updated | +1 new rows
+2026-10-14 13:30:18,353 | INFO | [86/99] QQQ: Updated | +1 new rows
+2026-10-14 13:30:18,399 | INFO | [87/99] O: Updated | +1 new rows
+2026-10-14 13:30:18,427 | INFO | [88/99] SO: Updated | +1 new rows
+2026-10-14 13:30:18,443 | INFO | [89/99] AMT: Updated | +1 new rows
+2026-10-14 13:30:18,932 | INFO | [90/99] COIN: Updated | +1 new rows
+2026-10-14 13:30:18,932 | INFO | [91/99] DIA: Updated | +1 new rows
+2026-10-14 13:30:19,023 | INFO | [92/99] VTI: Updated | +1 new rows
+2026-10-14 13:30:19,035 | INFO | [93/99] TSLA: Updated | +1 new rows
+2026-10-14 13:30:19,231 | INFO | [94/99] IWM: Updated | +1 new rows
+2026-10-14 13:30:19,269 | INFO | [95/99] PLTR: Updated | +1 new rows
+2026-10-14 13:30:19,317 | INFO | [96/99] SNOW: Updated | +1 new rows
+2026-10-14 13:30:19,762 | INFO | [97/99] RIVN: Updated | +1 new rows
+2026-10-14 13:30:19,825 | INFO | [98/99] SHOP: Updated | +1 new rows
+2026-10-14 13:30:23,249 | ERROR | Failed to get ticker 'ABNB' reason: Failed to perform, curl: (28) Operation timed out after 10002 milliseconds with 0 bytes received. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-10-14 13:30:24,326 | INFO | [99/99] ABNB: Updated | +1 new rows
+2026-10-14 13:30:24,327 | INFO | Pipeline complete — 99 success | 0 failed | 0 total duplicates removed
+2026-10-14 13:30:24,329 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-10-14 13:30:24,330 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
+2026-10-14 13:30:24,382 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
