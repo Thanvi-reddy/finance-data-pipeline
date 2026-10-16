@@ -444178,3 +444178,43 @@ Done: 0/99 uploaded
 2026-10-16 15:46:17,053 | INFO | Summary saved to data/earliest_dates_summary.csv
 2026-10-16 15:46:17,054 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
 2026-10-16 15:46:17,107 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
+2026-10-16 15:48:14,673 | INFO | [66/99] HON: Already up to date
+2026-10-16 15:48:14,703 | INFO | [67/99] GE: Already up to date
+2026-10-16 15:48:14,721 | INFO | [68/99] CAT: Already up to date
+2026-10-16 15:48:14,740 | INFO | [69/99] UPS: Already up to date
+2026-10-16 15:48:14,780 | INFO | [70/99] RTX: Already up to date
+2026-10-16 15:48:14,853 | INFO | [71/99] LMT: Already up to date
+2026-10-16 15:48:14,953 | INFO | [72/99] DE: Already up to date
+2026-10-16 15:48:14,979 | INFO | [73/99] UNP: Already up to date
+2026-10-16 15:48:14,999 | INFO | [74/99] MMM: Already up to date
+2026-10-16 15:48:15,017 | INFO | [75/99] TMUS: Already up to date
+2026-10-16 15:48:15,051 | INFO | [76/99] T: Already up to date
+2026-10-16 15:48:15,075 | INFO | [77/99] VZ: Already up to date
+2026-10-16 15:48:15,232 | INFO | [78/99] SNAP: Already up to date
+2026-10-16 15:48:15,250 | INFO | [79/99] CMCSA: Already up to date
+2026-10-16 15:48:15,286 | INFO | [80/99] NFLX: Already up to date
+2026-10-16 15:48:15,302 | INFO | [81/99] NEE: Already up to date
+2026-10-16 15:48:15,347 | INFO | [82/99] SO: Already up to date
+2026-10-16 15:48:15,363 | INFO | [83/99] DUK: Already up to date
+2026-10-16 15:48:15,410 | INFO | [84/99] AMT: Already up to date
+2026-10-16 15:48:15,468 | INFO | [85/99] PLD: Already up to date
+2026-10-16 15:48:15,501 | INFO | [86/99] SPY: Already up to date
+2026-10-16 15:48:15,532 | INFO | [87/99] QQQ: Already up to date
+2026-10-16 15:48:15,559 | INFO | [88/99] DIA: Already up to date
+2026-10-16 15:48:15,578 | INFO | [89/99] O: Already up to date
+2026-10-16 15:48:15,600 | INFO | [90/99] IWM: Already up to date
+2026-10-16 15:48:15,676 | INFO | [91/99] TSLA: Already up to date
+2026-10-16 15:48:15,697 | INFO | [92/99] PLTR: Already up to date
+2026-10-16 15:48:15,716 | INFO | [93/99] VTI: Already up to date
+2026-10-16 15:48:15,785 | INFO | [94/99] RIVN: Already up to date
+2026-10-16 15:48:15,803 | INFO | [95/99] COIN: Already up to date
+2026-10-16 15:48:15,878 | INFO | [96/99] SHOP: Already up to date
+2026-10-16 15:48:16,144 | INFO | [97/99] SNOW: Already up to date
+2026-10-16 15:48:21,820 | ERROR | Failed to get ticker 'META' reason: Failed to perform, curl: (28) Connection timed out after 10002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-10-16 15:48:21,821 | ERROR | Failed to get ticker 'AMZN' reason: Failed to perform, curl: (28) Connection timed out after 10002 milliseconds. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.
+2026-10-16 15:48:22,074 | INFO | [98/99] META: Already up to date
+2026-10-16 15:48:22,127 | INFO | [99/99] AMZN: Already up to date
+2026-10-16 15:48:22,128 | INFO | Pipeline complete — 99 success | 0 failed | 0 total duplicates removed
+2026-10-16 15:48:22,131 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-10-16 15:48:22,132 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
+2026-10-16 15:48:22,184 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
