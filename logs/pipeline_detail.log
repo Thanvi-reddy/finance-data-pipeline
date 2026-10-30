@@ -528538,3 +528538,43 @@ See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace 
 2026-10-29 19:59:53,533 | INFO | Summary saved to data/earliest_dates_summary.csv
 2026-10-29 19:59:53,534 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
 2026-10-29 19:59:53,566 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:514: Pandas4Warning: The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.drop(
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:518: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.rename(columns={
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:514: Pandas4Warning: The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.drop(
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:518: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.rename(columns={
+2026-10-30 13:31:01,953 | INFO | [91/99] COIN: Updated | +1 new rows
+2026-10-30 13:31:01,970 | INFO | [92/99] PLTR: Updated | +1 new rows
+2026-10-30 13:31:01,979 | INFO | [93/99] RIVN: Updated | +1 new rows
+2026-10-30 13:31:02,003 | INFO | [94/99] TSLA: Updated | +1 new rows
+2026-10-30 13:31:02,005 | INFO | [95/99] SNOW: Updated | +1 new rows
+2026-10-30 13:31:02,070 | INFO | [96/99] DIA: Updated | +1 new rows
+2026-10-30 13:31:02,080 | INFO | [97/99] IWM: Updated | +1 new rows
+2026-10-30 13:31:02,096 | INFO | [98/99] VTI: Updated | +1 new rows
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:568: Pandas4Warning: The inplace keyword in DataFrame.sort_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  quotes.sort_index(inplace=True)
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:514: Pandas4Warning: The inplace keyword in DataFrame.drop is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.drop(
+/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/yfinance/utils.py:518: Pandas4Warning: The inplace keyword in DataFrame.rename is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.rename(columns={
+2026-10-30 13:31:02,216 | INFO | [99/99] SHOP: Updated | +1 new rows
+2026-10-30 13:31:02,217 | INFO | Pipeline complete — 99 success | 0 failed | 0 total duplicates removed
+2026-10-30 13:31:02,219 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-10-30 13:31:02,220 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
+2026-10-30 13:31:02,271 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
