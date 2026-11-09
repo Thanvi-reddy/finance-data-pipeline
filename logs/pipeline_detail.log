@@ -588018,3 +588018,43 @@ See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace 
 2026-11-09 19:37:04,117 | INFO | Summary saved to data/earliest_dates_summary.csv
 2026-11-09 19:37:04,118 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
 2026-11-09 19:37:04,150 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
+2026-11-09 19:39:22,794 | INFO | [65/99] DIS: Already up to date
+2026-11-09 19:39:22,869 | INFO | [66/99] BA: Already up to date
+2026-11-09 19:39:22,906 | INFO | [67/99] CAT: Already up to date
+2026-11-09 19:39:22,994 | INFO | [68/99] UPS: Already up to date
+2026-11-09 19:39:23,031 | INFO | [69/99] GE: Already up to date
+2026-11-09 19:39:23,048 | INFO | [70/99] RTX: Already up to date
+2026-11-09 19:39:23,085 | INFO | [71/99] LMT: Already up to date
+2026-11-09 19:39:23,115 | INFO | [72/99] HON: Already up to date
+2026-11-09 19:39:23,145 | INFO | [73/99] DE: Already up to date
+2026-11-09 19:39:23,170 | INFO | [74/99] MMM: Already up to date
+2026-11-09 19:39:23,199 | INFO | [75/99] UNP: Already up to date
+2026-11-09 19:39:23,280 | INFO | [76/99] T: Already up to date
+2026-11-09 19:39:23,310 | INFO | [77/99] CMCSA: Already up to date
+2026-11-09 19:39:23,326 | INFO | [78/99] VZ: Already up to date
+2026-11-09 19:39:23,343 | INFO | [79/99] SNAP: Already up to date
+2026-11-09 19:39:23,361 | INFO | [80/99] NFLX: Already up to date
+2026-11-09 19:39:23,379 | INFO | [81/99] TMUS: Already up to date
+2026-11-09 19:39:23,498 | INFO | [82/99] NEE: Already up to date
+2026-11-09 19:39:23,547 | INFO | [83/99] DUK: Already up to date
+2026-11-09 19:39:23,563 | INFO | [84/99] AMT: Already up to date
+2026-11-09 19:39:23,580 | INFO | [85/99] PLD: Already up to date
+2026-11-09 19:39:23,601 | INFO | [86/99] SPY: Already up to date
+2026-11-09 19:39:23,637 | INFO | [87/99] SO: Already up to date
+2026-11-09 19:39:23,645 | INFO | [88/99] O: Already up to date
+2026-11-09 19:39:23,689 | INFO | [89/99] QQQ: Already up to date
+2026-11-09 19:39:23,806 | INFO | [90/99] PLTR: Already up to date
+2026-11-09 19:39:23,840 | INFO | [91/99] SNOW: Already up to date
+2026-11-09 19:39:23,841 | INFO | [92/99] DIA: Already up to date
+2026-11-09 19:39:23,878 | INFO | [93/99] VTI: Already up to date
+2026-11-09 19:39:23,879 | INFO | [94/99] IWM: Already up to date
+2026-11-09 19:39:23,895 | INFO | [95/99] COIN: Already up to date
+2026-11-09 19:39:24,034 | INFO | [96/99] RIVN: Already up to date
+2026-11-09 19:39:24,060 | INFO | [97/99] SHOP: Already up to date
+2026-11-09 19:39:24,528 | INFO | [98/99] TSLA: Already up to date
+2026-11-09 19:39:30,986 | ERROR | $JNJ: possibly delisted; no price data found  (1d 2026-11-06 -> 2026-11-09)
+2026-11-09 19:39:30,994 | INFO | [99/99] JNJ: Already up to date
+2026-11-09 19:39:30,995 | INFO | Pipeline complete — 99 success | 0 failed | 0 total duplicates removed
+2026-11-09 19:39:30,997 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-11-09 19:39:30,999 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
+2026-11-09 19:39:31,048 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
