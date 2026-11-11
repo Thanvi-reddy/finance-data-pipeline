@@ -598658,3 +598658,43 @@ See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace 
 2026-11-10 20:58:33,575 | INFO | Summary saved to data/earliest_dates_summary.csv
 2026-11-10 20:58:33,576 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
 2026-11-10 20:58:33,628 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
+2026-11-11 14:31:08,395 | INFO | [64/99] XOM: Updated | +1 new rows
+2026-11-11 14:31:08,486 | INFO | [65/99] SLB: Updated | +1 new rows
+2026-11-11 14:31:08,588 | INFO | [66/99] OXY: Updated | +1 new rows
+2026-11-11 14:31:08,904 | INFO | [67/99] UPS: Updated | +1 new rows
+2026-11-11 14:31:09,417 | INFO | [68/99] BA: Updated | +1 new rows
+2026-11-11 14:31:09,430 | INFO | [69/99] CAT: Updated | +1 new rows
+2026-11-11 14:31:09,563 | INFO | [70/99] GE: Updated | +1 new rows
+2026-11-11 14:31:09,579 | INFO | [71/99] HON: Updated | +1 new rows
+2026-11-11 14:31:09,602 | INFO | [72/99] RTX: Updated | +1 new rows
+2026-11-11 14:31:09,744 | INFO | [73/99] LMT: Updated | +1 new rows
+2026-11-11 14:31:09,770 | INFO | [74/99] DE: Updated | +1 new rows
+2026-11-11 14:31:09,832 | INFO | [75/99] MMM: Updated | +1 new rows
+2026-11-11 14:31:10,283 | INFO | [76/99] T: Updated | +1 new rows
+2026-11-11 14:31:10,297 | INFO | [77/99] SNAP: Updated | +1 new rows
+2026-11-11 14:31:10,346 | INFO | [78/99] CMCSA: Updated | +1 new rows
+2026-11-11 14:31:10,423 | INFO | [79/99] TMUS: Updated | +1 new rows
+2026-11-11 14:31:10,462 | INFO | [80/99] VZ: Updated | +1 new rows
+2026-11-11 14:31:10,489 | INFO | [81/99] NFLX: Updated | +1 new rows
+2026-11-11 14:31:10,516 | INFO | [82/99] UNP: Updated | +1 new rows
+2026-11-11 14:31:10,571 | INFO | [83/99] NEE: Updated | +1 new rows
+2026-11-11 14:31:10,956 | INFO | [84/99] AMT: Updated | +1 new rows
+2026-11-11 14:31:11,081 | INFO | [85/99] PLD: Updated | +1 new rows
+2026-11-11 14:31:11,177 | INFO | [86/99] SO: Updated | +1 new rows
+2026-11-11 14:31:11,202 | INFO | [87/99] QQQ: Updated | +1 new rows
+2026-11-11 14:31:11,261 | INFO | [88/99] DUK: Updated | +1 new rows
+2026-11-11 14:31:11,285 | INFO | [89/99] DIA: Updated | +1 new rows
+2026-11-11 14:31:11,298 | INFO | [90/99] SPY: Updated | +1 new rows
+2026-11-11 14:31:11,308 | INFO | [91/99] O: Updated | +1 new rows
+2026-11-11 14:31:11,419 | INFO | [92/99] PLTR: Updated | +1 new rows
+2026-11-11 14:31:11,541 | INFO | [93/99] TSLA: Updated | +1 new rows
+2026-11-11 14:31:11,614 | INFO | [94/99] RIVN: Updated | +1 new rows
+2026-11-11 14:31:11,614 | INFO | [95/99] COIN: Updated | +1 new rows
+2026-11-11 14:31:11,632 | INFO | [96/99] VTI: Updated | +1 new rows
+2026-11-11 14:31:11,659 | INFO | [97/99] SHOP: Updated | +1 new rows
+2026-11-11 14:31:11,687 | INFO | [98/99] SNOW: Updated | +1 new rows
+2026-11-11 14:31:11,707 | INFO | [99/99] IWM: Updated | +1 new rows
+2026-11-11 14:31:11,708 | INFO | Pipeline complete — 99 success | 0 failed | 0 total duplicates removed
+2026-11-11 14:31:11,710 | INFO | Summary saved to data/earliest_dates_summary.csv
+2026-11-11 14:31:11,711 | INFO | Latest snapshot summary saved to data/latest.json (99 tickers)
+2026-11-11 14:31:11,758 | INFO | Recent-days summary saved to data/recent.json (99 tickers)
